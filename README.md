@@ -27,3 +27,13 @@ The following will be a rough outline on the upcoming documentation and structur
 - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [License](#license)
+
+---
+
+## Frontend Setup
+
+### Create the Vite React Project:
+
+```bash
+npm create vite@latest .
+```
