@@ -37,3 +37,5 @@ The following will be a rough outline on the upcoming documentation and structur
 ```bash
 npm create vite@latest .
 ```
+
+As Options I chose: React and JavaScript.
