@@ -1,6 +1,6 @@
 # nikolai-kocev-v2
 
-Reworking my 90's looking, poor excuse for a frontend, but hey it works! But like a pheonix we rise again, always renewed!
+Let's do a beatiful Tailwind CSS personal website.
 
 The following will be a rough outline on the upcoming documentation and structure of the project.
 
