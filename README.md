@@ -25,8 +25,6 @@ The following will be a rough outline on the upcoming documentation and structur
 - [Testing](#testing)
 - [CI/CD Pipeline](#cicd-pipeline)
 - [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
