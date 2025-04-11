@@ -1,11 +1,11 @@
 import './styles.css';
+import HomeSection from './components/sections/HomeSection';
 
 function App() {
   return (
     <>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
+      Hello from App!
+      <HomeSection />
     </>
   );
 }
