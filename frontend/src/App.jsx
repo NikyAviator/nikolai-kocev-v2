@@ -1,11 +1,12 @@
 import './styles.css';
 import HomeSection from './components/sections/HomeSection';
-
+import AboutmeSection from './components/sections/AboutmeSection';
 function App() {
   return (
     <>
-      Hello from App!
+      APP.jsx
       <HomeSection />
+      <AboutmeSection />
     </>
   );
 }
