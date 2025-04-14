@@ -94,7 +94,7 @@ npm install @headlessui/react @heroicons/react
 I also installed:
 
 ```bash
-npm install clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss
+npm install clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss framer-motion
 ```
 
 P.S. Utan prettier fil atm!
