@@ -1,12 +1,32 @@
+import Header from './components/ui/Header';
 import './styles.css';
-import HomeSection from './components/sections/HomeSection';
-import AboutmeSection from './components/sections/AboutmeSection';
+
 function App() {
   return (
     <>
-      APP.jsx
-      <HomeSection />
-      <AboutmeSection />
+      {/* <BrowserRouter>
+        <header>
+          <Header />
+        </header>
+        <main>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/randomcolor' element={<RandomColor />} />
+            <Route path='/imageslider' element={<Images />} />
+          </Routes>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </BrowserRouter> */}
+      <header>
+        <Header />
+      </header>
+      <main>
+        {/* <Routes>  
+        </Routes> */}
+      </main>
+      <footer>{/* <Footer /> */}</footer>
     </>
   );
 }
