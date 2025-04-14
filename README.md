@@ -91,6 +91,14 @@ I am also using Tailwind Plus and it depends on:
 npm install @headlessui/react @heroicons/react
 ```
 
+I also installed:
+
+```bash
+npm install clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss
+```
+
+P.S. Utan prettier fil atm!
+
 Configure the Vite plugin (**_vite.config.ts_**):
 
 ```javascript
