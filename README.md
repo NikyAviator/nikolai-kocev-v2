@@ -62,42 +62,20 @@ Options that I chose: **JavaScript** and **React**.
 
 #### Installing Dependencies
 
-Let us now take a look at all the dependencies we will need for the project.
-
-(More dependencies might be added later but for now we start with these).
-
-We will use:
+We shall use:
 
 ```
 Express (https://expressjs.com/) 🚅
 TailwindCSS (https://tailwindcss.com/)🌬️✈️
 ```
 
-To install Express:
+Install all dependencies (for this specific project) at once:
 
 ```bash
-npm install express
+npm install express tailwindcss @tailwindcss/vite @headlessui/react @heroicons/react clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss framer-motion react-router-dom
 ```
 
-To install TailwindCSS (please follow the official guide if things change):
-
-```bash
-npm install tailwindcss @tailwindcss/vite
-```
-
-I am also using Tailwind Plus and it depends on:
-
-```bash
-npm install @headlessui/react @heroicons/react
-```
-
-I also installed:
-
-```bash
-npm install clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss framer-motion
-```
-
-P.S. Utan prettier fil atm!
+I have no .prettier file right now!
 
 Configure the Vite plugin (**_vite.config.ts_**):
 
