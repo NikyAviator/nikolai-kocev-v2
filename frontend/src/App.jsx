@@ -1,33 +1,22 @@
-import Header from './Components/Header.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header.jsx';
+
 import './styles.css';
 
 function App() {
   return (
-    <>
-      {/* <BrowserRouter>
-        <header>
-          <Header />
-        </header>
-        <main>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/randomcolor' element={<RandomColor />} />
-            <Route path='/imageslider' element={<Images />} />
-          </Routes>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
-      </BrowserRouter> */}
+    <BrowserRouter>
       <header>
         <Header />
       </header>
       <main>
-        {/* <Routes>  
-        </Routes> */}
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/about' element={<AboutmeSection />} />
+        </Routes>
       </main>
-      <footer>{/* <Footer /> */}</footer>
-    </>
+      <footer>{/* Footer goes here */}</footer>
+    </BrowserRouter>
   );
 }
 
