@@ -17,7 +17,9 @@ export default function Header() {
       >
         <div className='flex lg:flex-1'>
           <a href='/' className='-m-1.5 p-1.5'>
-            <span className='text-xl font-bold text-indigo-600'>Nikolai</span>
+            <span className='text-xl font-bold text-indigo-600'>
+              NikyAviator
+            </span>
           </a>
         </div>
         <div className='flex lg:hidden'>
