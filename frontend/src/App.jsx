@@ -9,18 +9,18 @@ import './styles.css';
 function App() {
   return (
     <BrowserRouter>
-      <header>
+      <div className='min-h-screen flex flex-col'>
         <Header />
-      </header>
-      <main>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/about' element={<AboutmePage />} />
-        </Routes>
-      </main>
-      <footer>
+
+        <main className='flex-grow'>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/about' element={<AboutmePage />} />
+          </Routes>
+        </main>
+
         <Footer />
-      </footer>
+      </div>
     </BrowserRouter>
   );
 }
