@@ -18,6 +18,20 @@ const Footer = () => {
             <span className='sr-only'>Instagram</span>
             <img src='/svg/instagram.svg' alt='Instagram' className='w-6 h-6' />
           </a>
+
+          <a
+            href='https://github.com/NikyAviator'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-gray-400 hover:text-gray-300'
+          >
+            <span className='sr-only'>GitHub</span>
+            <img
+              src='/svg/github-mark-white.svg'
+              alt='GitHub'
+              className='w-6 h-6'
+            />
+          </a>
         </div>
 
         {/* Copyright Text */}
