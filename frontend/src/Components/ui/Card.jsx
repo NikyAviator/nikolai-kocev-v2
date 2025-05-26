@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 const Card = ({ name, description, Icon }) => {
   return (
     <div className='flex gap-x-4 rounded-xl bg-white/5 p-6 ring-1 ring-white/10 ring-inset'>
