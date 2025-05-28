@@ -1,4 +1,4 @@
-import AboutmeSection from '../Components/sections/AboutmeSection';
+import AboutmeSection from "../Components/sections/AboutmeSection";
 
 const HomePage = () => {
   return (
