@@ -75,6 +75,14 @@ Install all dependencies (for this specific project) at once:
 npm install express tailwindcss @tailwindcss/vite @headlessui/react @heroicons/react clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss framer-motion react-router-dom
 ```
 
+Please follow this guide: https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file
+
+For the best class order.
+
+```bash
+npm install -D prettier prettier-plugin-tailwindcss
+```
+
 I have no .prettier file right now!
 
 Configure the Vite plugin (**_vite.config.ts_**):
