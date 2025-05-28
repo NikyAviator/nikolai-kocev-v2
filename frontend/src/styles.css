@@ -5,8 +5,18 @@
   font-weight: 400;
   font-style: normal;
 } */
-@import 'tailwindcss';
 
 /* @theme {
   --font-lobster: 'Lobster', 'sans-serif';
-} */
+  } */
+
+@import 'tailwindcss';
+
+@layer components {
+  .btn-primary {
+    @apply rounded-md bg-indigo-600 px-4 py-2 text-white
+           shadow hover:bg-indigo-500 active:bg-indigo-700;
+  }
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
