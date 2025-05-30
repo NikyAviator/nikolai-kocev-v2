@@ -29,7 +29,7 @@ export default function AboutmeSection() {
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
         alt=""
-        src="/images/airplane.jpg"
+        src="/images/pic1.jpg"
         className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center"
       />
       <div className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl">
@@ -56,7 +56,9 @@ export default function AboutmeSection() {
             Nikolai Kocev
           </h2>
           <p className="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-            Software Developer and Pilot from Lund Sweden.
+            Software developer and Pilot – I’m a developer and flight instructor
+            based in Lund, Sweden, passionate about building scalable,
+            real-world software with purpose.
           </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
