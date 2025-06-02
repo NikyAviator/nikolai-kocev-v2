@@ -66,7 +66,7 @@ export default function AboutmeSection() {
 
           {/* → GitHub (Outline) */}
           <a
-            href="https://github.com/YourGitHubUsername"
+            href="https://github.com/NikyAviator"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline"
