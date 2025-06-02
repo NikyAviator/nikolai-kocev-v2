@@ -1,29 +1,3 @@
-import {
-  LifebuoyIcon,
-  NewspaperIcon,
-  PhoneIcon,
-} from '@heroicons/react/20/solid';
-
-import Card from '../ui/Card';
-
-const cards = [
-  {
-    name: 'Resume',
-    description: 'See my full professional CV and education history',
-    icon: LifebuoyIcon,
-  },
-  {
-    name: 'Projects',
-    description: 'Explore my DevOps & Fullstack portfolio',
-    icon: NewspaperIcon,
-  },
-  {
-    name: 'Contact',
-    description: 'Let’s connect and build something amazing',
-    icon: PhoneIcon,
-  },
-];
-
 export default function AboutmeSection() {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
@@ -68,15 +42,58 @@ export default function AboutmeSection() {
             little easier.
           </p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-          {cards.map((card) => (
-            <Card
-              key={card.name}
-              name={card.name}
-              description={card.description}
-              Icon={card.icon}
-            />
-          ))}
+        {/* 4. Buttons row */}
+        <div className="mx-auto mt-12 flex flex-col gap-4 sm:flex-row lg:mx-0">
+          {/* → Resume (Primary) */}
+          <a href="/Nikolai-Kocev-CV.pdf" download className="btn-primary">
+            {/* Icon from Heroicons or any “Download” icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 8l5-5m0 0l5 5m-5-5v12"
+              />
+            </svg>
+            <span>Download CV</span>
+          </a>
+
+          {/* → GitHub (Outline) */}
+          <a
+            href="https://github.com/YourGitHubUsername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            <img src="/svg/github.svg" alt="GitHub" className="h-5 w-5" />
+            <span>GitHub</span>
+          </a>
+
+          {/* → Contact (Outline) */}
+          <a href="mailto:nikyaviator@gmail.com" className="btn-outline">
+            {/* Envelope icon from Heroicons */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 12l-4-4-4 4m8 4l-4-4-4 4"
+              />
+            </svg>
+            <span>Contact Me</span>
+          </a>
         </div>
       </div>
     </div>
