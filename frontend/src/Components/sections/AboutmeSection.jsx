@@ -2,7 +2,7 @@ export default function AboutmeSection() {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
-        alt=""
+        alt="Twin engine jet airliner climbing away from the camera, with blue sky as background."
         src="/images/pic1.jpg"
         className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center"
       />
