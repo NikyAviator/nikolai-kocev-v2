@@ -4,14 +4,13 @@ Let's do a beatiful Tailwind CSS personal website.
 
 The following will be a rough outline on the upcoming documentation and structure of the project.
 
-### Technologies Used:
+### Technologies that will be used:
 
 - **Node.js**
 - **Express**
 - **React**
 - **Tailwind CSS**
 - **Docker**
-- **Kubernetes**
 - **Google Cloud Platform (GCP)**
 
 ## Table of Contents
