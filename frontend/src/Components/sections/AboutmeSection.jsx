@@ -45,7 +45,7 @@ export default function AboutmeSection() {
         {/* 4. Buttons row */}
         <div className="mx-auto mt-12 flex flex-col gap-4 sm:flex-row lg:mx-0">
           {/* → Resume (Primary) */}
-          <a href="/Nikolai-Kocev-CV.pdf" download className="btn-outline">
+          <a href="/Nikolai-Kocev-CV.pdf" download className="btn-contact">
             {/* Icon from Heroicons or any “Download” icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,14 +69,14 @@ export default function AboutmeSection() {
             href="https://github.com/NikyAviator"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline"
+            className="btn-contact"
           >
             <img src="/svg/github.svg" alt="GitHub" className="h-5 w-5" />
             <span>GitHub</span>
           </a>
 
           {/* → Contact (Outline) */}
-          <a href="mailto:nikyaviator@gmail.com" className="btn-outline">
+          <a href="mailto:nikyaviator@gmail.com" className="btn-contact">
             {/* Envelope icon from Heroicons */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
