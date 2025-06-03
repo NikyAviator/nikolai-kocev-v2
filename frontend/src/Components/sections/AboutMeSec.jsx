@@ -14,18 +14,17 @@ export default function AboutMeSec() {
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         {/* Header */}
         <div className="max-w-4xl">
-          <p className="text-base/7 font-semibold text-indigo-600">About me</p>
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-            So who am I?
+            About me
           </h1>
           <p className="mt-6 text-xl/8 text-balance text-gray-700">
-            Deep question, but let us start with the basics. I am Nikolai Kocev,
-            born and raised in Sweden with roots from Bulgaria.
+            Hello fellow traveler, I am Nikolai Kocev, born and raised in Sweden
+            with roots from Bulgaria.
           </p>
         </div>
 
         {/* Grid: two columns on lg, one column on smaller */}
-        <section className="mt-20 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
+        <section className="mt-15 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-16">
           {/* Left column: text */}
           <div className="lg:pr-8">
             <h2 className="text-2xl font-semibold tracking-tight text-pretty text-gray-900">
@@ -72,11 +71,11 @@ export default function AboutMeSec() {
               {/* Image 2 */}
               <div
                 className="-mt-8 aspect-square cursor-pointer overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40"
-                onClick={() => setSelectedImage('/images/pic6.jpg')}
+                onClick={() => setSelectedImage('/images/pic2.jpg')}
               >
                 <img
                   alt="Snapshot 2"
-                  src="/images/pic6.jpg"
+                  src="/images/pic2.jpg"
                   className="block h-full w-full object-cover"
                 />
               </div>
@@ -84,11 +83,11 @@ export default function AboutMeSec() {
               {/* Image 3 */}
               <div
                 className="aspect-square cursor-pointer overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10"
-                onClick={() => setSelectedImage('/images/pic4.jpg')}
+                onClick={() => setSelectedImage('/images/pic8.jpg')}
               >
                 <img
                   alt="Snapshot 3"
-                  src="/images/pic4.jpg"
+                  src="/images/pic8.jpg"
                   className="block h-full w-full object-cover"
                 />
               </div>
@@ -123,21 +122,25 @@ export default function AboutMeSec() {
                 </dd>
               </div>
               <div className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4">
-                <dt className="text-sm/6 text-gray-600">Companies</dt>
+                <dt className="text-sm/6 text-gray-600">
+                  Current book I am reading?
+                </dt>
                 <dd className="order-first text-6xl font-semibold tracking-tight">
-                  <span>30</span>K
+                  <span>Dune - Chapterhouse</span>
                 </dd>
               </div>
               <div className="flex flex-col gap-y-2 max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4">
-                <dt className="text-sm/6 text-gray-600">Deals Closed</dt>
+                <dt className="text-sm/6 text-gray-600">
+                  Favorite way of exercise?{' '}
+                </dt>
                 <dd className="order-first text-6xl font-semibold tracking-tight">
-                  <span>1.5</span>M
+                  <span>Yoga, outdoor gym & tennis.</span>
                 </dd>
               </div>
               <div className="flex flex-col gap-y-2">
-                <dt className="text-sm/6 text-gray-600">Leads Generated</dt>
+                <dt className="text-sm/6 text-gray-600">Favorite Tea?</dt>
                 <dd className="order-first text-6xl font-semibold tracking-tight">
-                  <span>200</span>M
+                  <span>Magnolia Oolong</span>
                 </dd>
               </div>
             </dl>
