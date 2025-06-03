@@ -31,19 +31,22 @@ export default function AboutMeSec() {
               My background
             </h2>
             <p className="mt-6 text-base/7 text-gray-600">
-              Hi, I’m Nikolai – a fullstack developer and DevOps enthusiast with
-              a deep love for Linux, cloud infrastructure, and smart automation.
-              My journey started in aviation, teaching others how to fly and
-              handling high-pressure situations with precision and calm. That
-              same mindset now fuels my work in tech. After pivoting from
-              aviation during the pandemic, I dove headfirst into the world of
-              open-source, backend systems, and containerized infrastructure.
-              I’ve since built and deployed fullstack apps using Node.js, React,
-              Docker, Kubernetes, and GCP. From writing clean APIs to optimizing
-              CI/CD pipelines and managing infrastructure, I enjoy solving tough
-              technical challenges that have real impact. Whether I’m developing
-              a quiz platform for pilots or helping artists launch websites, I
-              love bridging tech with creativity and structure.
+              Hi, I’m Nikolai — a fullstack developer and DevOps enthusiast with
+              a deep passion for Linux, cloud infrastructure, and smart
+              automation. My journey began in aviation, where I taught others
+              how to fly and learned to handle high-pressure situations with
+              precision and calm. That same mindset now fuels my work in tech.
+              When the opportunity came to explore a new field, I dove into the
+              world of open source, backend systems, and containerized
+              infrastructure. A good friend nudged me in the right direction by
+              suggesting I install Arch Linux — and the rest is history. (My
+              first install took 8 hours, but I was hooked.) Since then, I’ve
+              built and deployed fullstack applications using Node.js, React,
+              Docker and Google Cloud Platform. Whether I’m writing clean APIs,
+              optimizing CI/CD pipelines, or managing infrastructure, I enjoy
+              solving complex challenges that make a real difference. From
+              building a quiz platform for pilots to helping artists launch
+              websites, I love bridging tech with creativity and structure.
             </p>
             <p className="mt-8 text-base/7 text-gray-600">
               Outside of coding, I’m usually playing bass guitar, tweaking my
