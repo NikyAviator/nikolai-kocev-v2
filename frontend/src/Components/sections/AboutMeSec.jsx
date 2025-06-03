@@ -62,7 +62,7 @@ export default function AboutMeSec() {
                 onClick={() => setSelectedImage('/images/pic7.jpg')}
               >
                 <img
-                  alt="Snapshot 1"
+                  alt="A picture taken from a light aircraft, showing a clear day of Malmö and Turning Torso."
                   src="/images/pic7.jpg"
                   className="block h-full w-full object-cover"
                 />
@@ -74,7 +74,7 @@ export default function AboutMeSec() {
                 onClick={() => setSelectedImage('/images/pic2.jpg')}
               >
                 <img
-                  alt="Snapshot 2"
+                  alt="Picture of my bass setup. A 4 string bass guitar, a Roland amplifier and a external sound card."
                   src="/images/pic2.jpg"
                   className="block h-full w-full object-cover"
                 />
@@ -86,7 +86,7 @@ export default function AboutMeSec() {
                 onClick={() => setSelectedImage('/images/pic8.jpg')}
               >
                 <img
-                  alt="Snapshot 3"
+                  alt="Picture of Malmö from above, showing the Turning Torso and the cityscape."
                   src="/images/pic8.jpg"
                   className="block h-full w-full object-cover"
                 />
@@ -98,7 +98,7 @@ export default function AboutMeSec() {
                 onClick={() => setSelectedImage('/images/pic3.jpg')}
               >
                 <img
-                  alt="Snapshot 4"
+                  alt="A picture of my favorite outdoor gym at evening."
                   src="/images/pic3.jpg"
                   className="block h-full w-full object-cover"
                 />
