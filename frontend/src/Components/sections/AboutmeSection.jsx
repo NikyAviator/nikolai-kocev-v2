@@ -50,7 +50,7 @@ export default function AboutmeSection() {
             rel="noopener noreferrer"
             className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span className="mx-5">Download my CV</span>
+            <span className="mx-5">Download My CV</span>
             <img
               src="/svg/download.svg"
               alt="GitHub"
