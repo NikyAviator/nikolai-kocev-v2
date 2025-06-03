@@ -45,7 +45,7 @@ export default function AboutmeSection() {
         {/* 4. Buttons row */}
         <div className="mx-auto mt-12 flex flex-col gap-4 sm:flex-row lg:mx-0">
           {/* → Resume (Primary) */}
-          <a href="/Nikolai-Kocev-CV.pdf" download className="btn-primary">
+          <a href="/Nikolai-Kocev-CV.pdf" download className="btn-outline">
             {/* Icon from Heroicons or any “Download” icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
