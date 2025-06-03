@@ -24,6 +24,7 @@ export default function AboutmeSection() {
           className="aspect-1097/845 w-274.25 bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20"
         />
       </div>
+
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
@@ -42,57 +43,64 @@ export default function AboutmeSection() {
             little easier.
           </p>
         </div>
+
         {/* 4. Buttons row */}
-        <div className="mx-auto mt-12 flex flex-col gap-4 sm:flex-row lg:mx-0">
-          {/* → Resume (Primary) */}
-          <a href="/Nikolai-Kocev-CV.pdf" download className="btn-contact">
-            {/* Icon from Heroicons or any “Download” icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 8l5-5m0 0l5 5m-5-5v12"
-              />
-            </svg>
-            <span>Download CV</span>
+        <div className="mx-auto mt-12 grid grid-cols-1 gap-4 sm:grid-cols-4 lg:mx-0">
+          <a
+            href="/Nikolai-Kocev-CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-contact text-lg sm:text-xl"
+          >
+            <span>Download my CV</span>
+            <img
+              src="/svg/download.svg"
+              alt="GitHub"
+              className="h-6 w-6 flex-shrink-0"
+            />
           </a>
 
-          {/* → GitHub (Outline) */}
+          {/* → GitHub (opens in new tab) */}
           <a
             href="https://github.com/NikyAviator"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-contact"
+            className="btn-contact text-lg sm:text-xl"
           >
-            <img src="/svg/github.svg" alt="GitHub" className="h-5 w-5" />
             <span>GitHub</span>
+            <img
+              src="/svg/github.svg"
+              alt="GitHub"
+              className="h-6 w-6 flex-shrink-0"
+            />
           </a>
 
-          {/* → Contact (Outline) */}
-          <a href="mailto:nikyaviator@gmail.com" className="btn-contact">
-            {/* Envelope icon from Heroicons */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M16 12l-4-4-4 4m8 4l-4-4-4 4"
-              />
-            </svg>
-            <span>Contact Me</span>
+          {/* → LinkedIn (opens in new tab) */}
+          <a
+            href="https://www.linkedin.com/in/nikolai-kocev-33799167/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-contact text-lg sm:text-xl"
+          >
+            <span>LinkedIn</span>
+            <img
+              src="/svg/linkedin.svg"
+              alt="LinkedIn"
+              className="h-6 w-6 flex-shrink-0"
+            />
+          </a>
+
+          {/* → Contact (mailto link, with email.svg on the right) */}
+          <a
+            href="mailto:nikyaviator@gmail.com"
+            className="btn-contact text-lg sm:text-xl"
+          >
+            <span>Email Me</span>
+            <img
+              src="/svg/email.svg"
+              alt="Email"
+              className="h-6 w-6 flex-shrink-0"
+            />
           </a>
         </div>
       </div>
