@@ -17,14 +17,7 @@ The following will be a rough outline on the upcoming documentation and structur
 ## Table of Contents
 
 - [Frontend Setup](#frontend-setup)
-- [Backend Setup](#backend-setup)
-- [Project Structure](#project-structure)
-- [Docker Setup](#docker-setup)
-- [Kubernetes Deployment](#kubernetes-deployment)
-- [GCP Hosting](#gcp-hosting)
-- [Testing](#testing)
-- [CI/CD Pipeline](#cicd-pipeline)
-- [Documentation](#documentation)
+- [Scripts](#scripts)
 
 ---
 
@@ -108,6 +101,34 @@ Add an `@import` to your CSS file that imports Tailwinds CSS.
 
 ---
 
-### Backend Setup
+### Scripts
 
-None for now! But want to add login and blogging capabilities.
+To get a clear snapshot of any project you are working on, use:
+
+```bash
+tree -I 'node_modules|.git|dist' -a -L 10
+```
+
+**Command Breakdown:**
+
+- `tree`
+
+Lists directory contents in a tree-like format.
+
+- `-I 'node_modules|.git|dist'`
+
+Excludes any directory (or file) matching the patterns node_modules, .git, or dist.
+
+-I stands for “ignore pattern.”
+
+The patterns are separated by |, so anything matching any of those names will be skipped.
+
+- `-a`
+
+Shows all files, including hidden ones (those starting with a dot, e.g. .env, .gitignore).
+
+- `-L 10`
+
+Limits the output to 10 levels deep. Adjust this number if you want more or fewer nested levels.
+
+---

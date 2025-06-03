@@ -50,9 +50,9 @@ export default function AboutmeSection() {
             href="/Nikolai-Kocev-CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-contact text-lg sm:text-xl"
+            className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span>Download my CV</span>
+            <span className="mx-5">Download my CV</span>
             <img
               src="/svg/download.svg"
               alt="GitHub"
@@ -65,9 +65,9 @@ export default function AboutmeSection() {
             href="https://github.com/NikyAviator"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-contact text-lg sm:text-xl"
+            className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span>GitHub</span>
+            <span className="mx-5">GitHub</span>
             <img
               src="/svg/github.svg"
               alt="GitHub"
@@ -80,9 +80,9 @@ export default function AboutmeSection() {
             href="https://www.linkedin.com/in/nikolai-kocev-33799167/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-contact text-lg sm:text-xl"
+            className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span>LinkedIn</span>
+            <span className="mx-5">LinkedIn</span>
             <img
               src="/svg/linkedin.svg"
               alt="LinkedIn"
@@ -93,9 +93,9 @@ export default function AboutmeSection() {
           {/* → Contact (mailto link, with email.svg on the right) */}
           <a
             href="mailto:nikyaviator@gmail.com"
-            className="btn-contact text-lg sm:text-xl"
+            className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span>Email Me</span>
+            <span className="mx-5">Email Me</span>
             <img
               src="/svg/email.svg"
               alt="Email"
