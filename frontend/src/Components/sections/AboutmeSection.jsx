@@ -1,4 +1,13 @@
+import { useState } from 'react';
+import Modal from '../ui/Modal';
+
 export default function AboutmeSection() {
+  // 1. Track which image (if any) is open in the modal
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // 2. A helper to close the modal
+  const closeModal = () => setSelectedImage(null);
+
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
@@ -33,7 +42,10 @@ export default function AboutmeSection() {
           </div>
 
           {/* right column: image, same flex-1 so it shares width */}
-          <div className="mt-8 lg:mt-0 lg:flex-1">
+          <div
+            onClick={() => setSelectedImage('/images/pic4.jpg')}
+            className="mt-8 lg:mt-0 lg:flex-1"
+          >
             <img
               src="/images/pic4.jpg"
               alt="Portrait of Nikolai in front of a workstation"
@@ -102,6 +114,14 @@ export default function AboutmeSection() {
           </a>
         </div>
       </div>
+      {/* 3. Only render Modal if selectedImage is non-null */}
+      {selectedImage && (
+        <Modal
+          imageSrc={selectedImage}
+          altText="Enlarged artwork or photo"
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 }
