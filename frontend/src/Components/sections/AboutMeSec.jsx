@@ -33,20 +33,23 @@ export default function AboutMeSec() {
             <p className="mt-6 text-base/7 text-gray-600">
               Hi, I’m Nikolai — a fullstack developer and DevOps enthusiast with
               a deep passion for Linux, cloud infrastructure, and smart
-              automation. My journey began in aviation, where I taught others
-              how to fly and learned to handle high-pressure situations with
-              precision and calm. That same mindset now fuels my work in tech.
-              When the opportunity came to explore a new field, I dove into the
-              world of open source, backend systems, and containerized
-              infrastructure. A good friend nudged me in the right direction by
-              suggesting I install Arch Linux — and the rest is history. (My
-              first install took 8 hours, but I was hooked.) Since then, I’ve
-              built and deployed fullstack applications using Node.js, React,
-              Docker and Google Cloud Platform. Whether I’m writing clean APIs,
-              optimizing CI/CD pipelines, or managing infrastructure, I enjoy
-              solving complex challenges that make a real difference. From
-              building a quiz platform for pilots to helping artists launch
-              websites, I love bridging tech with creativity and structure.
+              automation.
+            </p>
+            <p className="mt-6 text-base/7 text-gray-600">
+              I have always wanted to connect people, so I was naturally drawn
+              to aviation. After a few years of flight training I took to the
+              skies as Flight Instructor, teaching people to fly small aircraft.
+              Aviation taught me to deal with stressful situations with calm and
+              precision. That same mindset now permeates my work in tech.
+            </p>
+
+            <p className="mt-6 text-base/7 text-gray-600">
+              When the pandemic hit, I wanted to explore new things,a friend
+              gave me the idea of stepping into tech and they way in was through
+              Linux. I dove headfirst into the world of Linux and programming, I
+              studied a two years higher vocational education here in Lund,
+              Sweden. I never stop to learn new things, I have a curious and
+              driven mindset fueled by my discipline.
             </p>
             <p className="mt-8 text-base/7 text-gray-600">
               Outside of coding, I’m usually playing bass guitar, tweaking my
