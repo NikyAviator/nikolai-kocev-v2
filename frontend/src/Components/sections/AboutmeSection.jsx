@@ -31,13 +31,12 @@ export default function AboutmeSection() {
               Developer, pilot, and lifelong learner based in Lund, Sweden.
             </p>
             <p className="rounded-xl bg-black/40 p-6 text-white backdrop-blur-md">
-              I first got hands-on experience with “the cloud” as a flight
-              instructor, helping people take off — literally. But I wanted to
-              explore a different kind of altitude, so I taught myself
-              programming and dove into DevOps, cloud platforms, and automation.
-              I’m passionate about Linux, open source, and making systems run
-              smarter and safer. I love tinkering and building tools that make
-              life a little easier.
+              My first hands-on experience with “the cloud” came as a flight
+              instructor, helping people take off — quite literally. Over time,
+              my curiosity led me to explore a different kind of altitude
+              through programming, DevOps, and cloud infrastructure. Today, I
+              enjoy working with Linux, open source technologies, and building
+              systems that are reliable, secure, and thoughtfully designed.
             </p>
           </div>
 
