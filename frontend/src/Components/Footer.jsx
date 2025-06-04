@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-900">
+    <footer className="z-20 w-full bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex items-center gap-x-4 md:order-2">
           {/* Text to the left of icons */}

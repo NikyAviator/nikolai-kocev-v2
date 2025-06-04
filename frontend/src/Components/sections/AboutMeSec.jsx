@@ -32,8 +32,7 @@ export default function AboutMeSec() {
             </h2>
             <p className="mt-6 text-base/7 text-gray-600">
               Hi, I’m Nikolai — a fullstack developer and DevOps enthusiast with
-              a deep love for Linux, cloud infrastructure, and elegant
-              automation.
+              a deep love for Linux, cloud infrastructure, and smart automation.
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600">
