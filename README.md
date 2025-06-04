@@ -222,7 +222,7 @@ docker tag nkv2-frontend <your-username>/nkv2-frontend:latest
 
 I am doing the latter, with **:latest** tag.
 
-📝 My Docker Hub repo name is the same as my project repo name on GitHub.
+📝 My Docker Hub repo name is **not** the same as my project repo name on GitHub.
 
 Side Note, **Tag** the image for **GCP**:
 
@@ -237,6 +237,8 @@ docker tag <local-name> <registry-path>/<repo-name>/<image-name>:<tag>
 ```
 
 ---
+
+1
 
 #### 👉 Step 3: Push the Image to Docker Hub
 
