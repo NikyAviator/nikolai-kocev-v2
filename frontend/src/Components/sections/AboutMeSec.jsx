@@ -32,30 +32,39 @@ export default function AboutMeSec() {
             </h2>
             <p className="mt-6 text-base/7 text-gray-600">
               Hi, I’m Nikolai — a fullstack developer and DevOps enthusiast with
-              a deep passion for Linux, cloud infrastructure, and smart
+              a deep love for Linux, cloud infrastructure, and elegant
               automation.
-            </p>
-            <p className="mt-6 text-base/7 text-gray-600">
-              I have always wanted to connect people, so I was naturally drawn
-              to aviation. After a few years of flight training I took to the
-              skies as Flight Instructor, teaching people to fly small aircraft.
-              Aviation taught me to deal with stressful situations with calm and
-              precision. That same mindset now permeates my work in tech.
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600">
-              When the pandemic hit, I wanted to explore new things,a friend
-              gave me the idea of stepping into tech and they way in was through
-              Linux. I dove headfirst into the world of Linux and programming, I
-              studied a two years higher vocational education here in Lund,
-              Sweden. I never stop to learn new things, I have a curious and
-              driven mindset fueled by my discipline.
+              I’ve always been drawn to systems that connect people. That’s what
+              led me to aviation. After years of training, I took to the skies
+              as a flight instructor, teaching others to fly. From the cockpit,
+              I learned to stay calm under pressure, to act with precision when
+              every decision counts. That mindset never left me — it simply
+              shifted into code.
             </p>
+
+            <p className="mt-6 text-base/7 text-gray-600">
+              When the pandemic grounded aviation, a friend nudged me toward
+              tech. The doorway was Linux. My first Arch install took eight
+              hours — and sparked something permanent. I immersed myself in open
+              source, cloud platforms, and backend systems. I studied fullstack
+              development here in Lund, and I haven’t stopped learning since.
+            </p>
+
             <p className="mt-8 text-base/7 text-gray-600">
-              Outside of coding, I’m usually playing bass guitar, tweaking my
-              Linux setup, or exploring the skies from the ground through flight
-              simulators. I believe in lifelong learning, sharing knowledge, and
-              doing meaningful work that helps others grow.
+              Today, I focus on building and deploying software with intention
+              and care. My work is shaped by curiosity, consistency, and a deep
+              interest in meaningful systems. If my background resonates with
+              what you're looking for, I’d be happy to connect.
+            </p>
+
+            <p className="mt-8 text-base/7 text-gray-600">
+              Outside of code, I play bass guitar, tweak my Linux and Windows
+              setup, and explore the skies through flight simulators and real
+              aircraft. I believe in lifelong learning, shared knowledge, and
+              meaningful work that helps others grow.
             </p>
           </div>
 
