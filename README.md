@@ -190,14 +190,14 @@ You’ll be prompted to enter your Docker Hub username and password (or personal
 To build a Docker image based on your current project files and Dockerfile:
 
 ```bash
-docker build -t jksite-frontend .
+docker build -t nkv2-frontend .
 ```
 
 🧠 This command:
 
 ```md
 - Uses the `Dockerfile` in the current directory (`.`)
-- Tags the image as **`jksite-frontend`** locally.
+- Tags the image as **`nkv2-frontend`** locally.
 ```
 
 ---
@@ -211,13 +211,13 @@ Docker Hub images must follow this format:
 ```
 
 ```bash
-docker tag jksite-frontend <your-username>/juliakocevasv2-frontend:v1
+docker tag nkv2-frontend <your-username>/nkv2-frontend:v1
 ```
 
 **OR**
 
 ```bash
-docker tag jksite-frontend <your-username>/juliakocevasv2-frontend:latest
+docker tag nkv2-frontend <your-username>/nkv2-frontend:latest
 ```
 
 I am doing the latter, with **:latest** tag.
@@ -241,7 +241,7 @@ docker tag <local-name> <registry-path>/<repo-name>/<image-name>:<tag>
 #### 👉 Step 3: Push the Image to Docker Hub
 
 ```bash
-docker push <your-username>/juliakocevasv2-frontend:latest
+docker push <your-username>/nkv2-frontend:latest
 ```
 
 After pushing, you can verify and find your image at:
