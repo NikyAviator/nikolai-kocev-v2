@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 export default function UseDarkMode() {
   // 1. initial state
   const [enabled, setEnabled] = useState(() => {
-    localStorage.theme === 'dark' ||
+    return (
+      localStorage.theme === 'dark' ||
       (!('theme' in localStorage) &&
-        window.matchMedia('(prefer-color-scheme: dark)').matches);
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    );
   });
 
   // 2. side effect: keep DOM + storage in sync
