@@ -59,8 +59,9 @@ export default function AboutMeSec() {
             <p className="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
               Outside of code, I play bass guitar, tweak my Linux and Windows
               setup, and explore the skies through flight simulators and real
-              aircraft. I believe in lifelong learning, shared knowledge, and
-              meaningful work that helps others grow.
+              aircraft. I love to exercise and keep active, I daily do yoga and
+              I am always up for a tennis game. I believe in lifelong learning,
+              shared knowledge, and meaningful work that helps others grow.
             </p>
           </div>
 
