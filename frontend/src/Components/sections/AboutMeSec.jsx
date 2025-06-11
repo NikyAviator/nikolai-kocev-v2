@@ -14,10 +14,6 @@ export default function AboutMeSec() {
           <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl dark:text-white">
             About me
           </h1>
-          <p className="mt-6 text-xl/8 text-balance text-gray-700 dark:text-gray-300">
-            Hello fellow traveler, I am Nikolai Kocev, born and raised in Sweden
-            with roots from Bulgaria.
-          </p>
         </div>
 
         {/* Grid: two columns on lg, one column on smaller */}
@@ -25,11 +21,12 @@ export default function AboutMeSec() {
           {/* Left column: text */}
           <div className="lg:pr-8">
             <h2 className="text-2xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
-              My background
+              Hello fellow traveler, I am Nikolai Kocev, born and raised in
+              Sweden with roots from Bulgaria.
             </h2>
             <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
-              Hi, I’m Nikolai — a fullstack developer and DevOps enthusiast with
-              a deep love for Linux, cloud infrastructure, and smart automation.
+              A fullstack developer and DevOps enthusiast with a deep love for
+              Linux, cloud infrastructure, and smart automation.
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
