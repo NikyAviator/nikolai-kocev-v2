@@ -162,7 +162,17 @@ Start your server:
 npm run dev
 ```
 
-You should
+You should see a message:
+
+```arduino
+Server is running on port 5000
+```
+
+Visit `http://localhost:5000` in your browser and confirm it returns:
+
+```arduino
+Server is running, amazing!
+```
 
 ---
 
