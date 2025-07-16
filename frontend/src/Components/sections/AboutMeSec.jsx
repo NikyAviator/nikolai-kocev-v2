@@ -134,15 +134,15 @@ export default function AboutMeSec() {
                 <dt className="text-sm/6 text-gray-600 dark:text-gray-400">
                   Current book I am reading?
                 </dt>
-                <dd className="order-first text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                  <span>Dune - Chapterhouse</span>
+                <dd className="order-first text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  <span>The Wheel of Time - The Eye of the World</span>
                 </dd>
               </div>
               <div className="flex flex-col gap-y-2 max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4 dark:max-sm:border-gray-700">
                 <dt className="text-sm/6 text-gray-600 dark:text-gray-400">
                   Favorite way of exercise?
                 </dt>
-                <dd className="order-first text-6xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <dd className="order-first text-5xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>Yoga, outdoor gym & tennis.</span>
                 </dd>
               </div>
