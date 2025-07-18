@@ -18,6 +18,7 @@ The following will be a rough outline on the upcoming documentation and structur
 - [Frontend Setup](#frontend-setup)
 - [Scripts](#scripts)
 - [DevOps](#devops)
+- [Backend Setup](#backend-setup)
 
 ---
 
@@ -308,3 +309,7 @@ docker compose logs
 📜 Shows logs from all containers
 
 ---
+
+### Backend Setup
+
+I will begin by creating a Blog portion for my website. For this I will use: Nodejs, Express, MongoDB & GCP. I am still unsure how try-hard I will go with K8s, but I like Kubernetes, so maybe we can perform some magic tricks.
