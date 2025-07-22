@@ -3,6 +3,7 @@ import Header from './Components/Header.jsx';
 import HomePage from './Pages/HomePage.jsx';
 import Footer from './Components/Footer.jsx';
 import ScrollToTopButton from './Components/ui/ScrollToTopButton.jsx';
+import AuthPage from './Pages/AuthPage.jsx';
 
 import './styles.css';
 
@@ -15,6 +16,8 @@ function App() {
         <main className="relative flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<AuthPage mode="signin" />} />
+            <Route path="/signup" element={<AuthPage mode="signup" />} />
           </Routes>
           <ScrollToTopButton />
         </main>
