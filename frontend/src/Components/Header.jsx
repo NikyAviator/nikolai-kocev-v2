@@ -20,7 +20,7 @@ export default function Header() {
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   return (
-    <header className="bg-gray-900">
+    <header >
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"

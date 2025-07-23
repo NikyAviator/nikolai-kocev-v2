@@ -10,7 +10,8 @@ import './styles.css';
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex min-h-screen flex-col">
+      
+        <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900">
         <Header />
 
         <main className="relative flex-grow">

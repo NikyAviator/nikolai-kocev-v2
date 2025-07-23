@@ -5,7 +5,7 @@ export default function AuthPage({ mode = 'signin' }) {
   const isSignUp = mode === 'signup';
 
   return (
-    <div className="h-full bg-white dark:bg-gray-900">
+    <div className="h-full">
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         {/* Logo + heading */}
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
