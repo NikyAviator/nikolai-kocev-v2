@@ -29,6 +29,21 @@ export default function Header() {
         <Link to="/" className="-m-1.5 p-1.5 text-xl font-bold text-indigo-600">
           NikyAviator
         </Link>
+        {/* desktop auth links */}
+  <div className="hidden lg:flex lg:items-center lg:gap-4">
+    <Link
+     to="/login"
+      className="text-indigo-600 hover:text-indigo-500"
+   >
+     Sign In
+   </Link>
+   <Link
+     to="/signup"
+      className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
+   >
+     Sign Up
+   </Link>
+  </div>
 
         {/* mobile hamburger */}
         <button
