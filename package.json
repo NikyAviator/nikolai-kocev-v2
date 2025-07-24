@@ -1,0 +1,12 @@
+{
+  
+  "name": "nikolai-kocev-v2",
+  "scripts": {
+    "backend": "nodemon backend/app.js --watch backend",
+    "frontend": "cd frontend && npm run dev", 
+    "dev": "concurrently \"npm:backend\" \"npm:frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
