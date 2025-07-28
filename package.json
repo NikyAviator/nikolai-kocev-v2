@@ -5,7 +5,7 @@
   "scripts": {
   
     
-  "backend": "node backend/app.js",
+  "backend": "nodemon backend/app.js",
   
     
   "frontend": "cd frontend && npm run dev",
