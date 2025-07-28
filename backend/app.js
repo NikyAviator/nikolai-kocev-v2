@@ -15,8 +15,8 @@ app.use(express.json());
 // app.use('/api/posts', postsRouter);
 
 // 4) Health check endpoint
-app.get('/', (req,res) =>{
-    res.send('Hello my little gopher!');
+app.get('/api', (req,res) =>{
+    res.status(200).send('Hello my little gopher!');
 })
 
 

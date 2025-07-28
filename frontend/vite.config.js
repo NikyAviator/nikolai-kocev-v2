@@ -9,7 +9,7 @@ export default defineConfig({
   // Vite forwards requests to the backend API
   server: {
     proxy: {
-      'api' : 'http://localhost:3000',
+      '/api' : 'http://localhost:3000',
     }
   }
 });

@@ -14,11 +14,32 @@ The following will be a rough outline on the upcoming documentation and structur
 - **Google Cloud Platform (GCP)**
 
 ## Table of Contents
-
+- 
 - [Frontend Setup](#frontend-setup)
 - [Scripts](#scripts)
 - [DevOps](#devops)
 - [Backend Setup](#backend-setup)
+
+---
+
+### Running in Development
+
+Install all node_modules in the **root**, **frontend** & **backend** folder of the project with:
+
+```bash
+npm install
+```
+Then to run the project. Cd into the **root** folder of the project and:
+
+```bash
+npm run dev 
+```
+
+- Backend will run on http://localhost:3000/
+
+- Frontend (Vite) will run on http://localhost:5173/
+
+- any calls to /api/* on 5173 will be forwarded to our Express app (the backend) on 3000.
 
 ---
 
