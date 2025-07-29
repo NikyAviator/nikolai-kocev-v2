@@ -14,7 +14,7 @@ The following will be a rough outline on the upcoming documentation and structur
 - **Google Cloud Platform (GCP)**
 
 ## Table of Contents
-- 
+- [Running in Development](#running-in-development)
 - [Frontend Setup](#frontend-setup)
 - [Scripts](#scripts)
 - [DevOps](#devops)
