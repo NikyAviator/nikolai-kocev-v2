@@ -3,7 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const app = express();
-const port = process.env.PORT || 3000;
+
 
 //0) Global middleware
 app.use(morgan('dev')); // Logging middleware
@@ -26,7 +26,4 @@ app.get('/api', (req,res) =>{
 app.get('/api/blogs', (req,res) => {
 })
 
-app.listen(port, () =>{
-    console.log(`Server is running on http://localhost:${port}`);
-    console.log(`PPC`);  
-});
+module.exports = app;
