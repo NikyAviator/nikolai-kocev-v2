@@ -1,0 +1,8 @@
+import Blog from '../models/Blog.js';
+
+export const getAllBlogs = async (req, res) => {};
+
+export const updateBlog = async (req, res) => {};
+
+export const deleteBlog = async (req, res) => {};
+

@@ -4,7 +4,6 @@ const morgan = require('morgan');
 
 const app = express();
 
-
 //0) Global middleware
 app.use(morgan('dev')); // Logging middleware
 
@@ -21,9 +20,6 @@ app.use(express.json());
 // 4) Health check endpoint
 app.get('/api', (req,res) =>{
     res.status(200).json({message: 'Hello my little gopher!', app: 'nikolai-kocev-v2', version: '1.0.0'});
-})
-
-app.get('/api/blogs', (req,res) => {
 })
 
 module.exports = app;
