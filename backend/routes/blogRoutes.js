@@ -1,5 +1,5 @@
-const userController = require('../controllers/userController');
-const express = require('express');
+import userController from '../controllers/userController.js';
+import express from 'express';
 const router = express.Router();
 
 router.route('/login').post(userController.loginUser);

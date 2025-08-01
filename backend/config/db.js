@@ -1,12 +1,14 @@
+// backend/config/db.js
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-dotenv.config();
-export async function connectDB() {
+
+export default async function connectDB() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('Connected to MongoDB successfully');
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      // options are optional on Mongoose 8+
+    });
+    console.log(`MongoDB → ${conn.connection.host}`);
+  } catch (err) {
+    console.error('DB connection failed', err);
     process.exit(1);
   }
 }
