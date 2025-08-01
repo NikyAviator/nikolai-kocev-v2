@@ -6,4 +6,4 @@ router.route('/login').post(userController.loginUser);
 router.route('/register').post(userController.registerUser);
 router.route('/logout').post(userController.logoutUser);
 
-module.exports = router;
+export default router;
