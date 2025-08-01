@@ -1,14 +1,13 @@
 // backend/config/db.js
 import mongoose from 'mongoose';
 
-export default async function connectDB() {
+// Connect to MongoDB using Mongoose
+export const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
-      // options are optional on Mongoose 8+
-    });
-    console.log(`MongoDB → ${conn.connection.host}`);
-  } catch (err) {
-    console.error('DB connection failed', err);
-    process.exit(1);
+    const con = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB connected: ${con.connection.host}`);
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(1); // Exit process with failure
   }
-}
+};
