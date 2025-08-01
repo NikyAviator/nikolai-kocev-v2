@@ -1,25 +1,35 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const connectDB = require('./config/db');
 
 const app = express();
 
-//0) Global middleware
+//) Global middleware
 app.use(morgan('dev')); // Logging middleware
 
-// 1) Enable CORS for *ALL* origins (DEVELOPMENT ONLY)
+// ) Enable CORS for *ALL* origins (DEVELOPMENT ONLY)
 app.use(cors());
 
-// 2) Parse JSON bodies
+// ) Parse JSON bodies
 app.use(express.json());
 
-// 3) MAYBE ROUTER HERE?
-// import postsRouter from './routes/posts.js';
-// app.use('/api/posts', postsRouter);
+// Connect to the database
+app.use(connectDB());
 
-// 4) Health check endpoint
-app.get('/api', (req,res) =>{
-    res.status(200).json({message: 'Hello my little gopher!', app: 'nikolai-kocev-v2', version: '1.0.0'});
-})
+// )  ROUTER HERE
+const userRouter = require('./routes/userRoutes');
+const blogRouter = require('./routes/blogRoutes');
+app.use('/api/users', userRouter);
+app.use('/api/blogs', blogRouter);
+
+// ) Health check endpoint
+app.get('/api', (req, res) => {
+  res.status(200).json({
+    message: 'Hello my little gopher!',
+    app: 'nikolai-kocev-v2',
+    version: '1.0.0',
+  });
+});
 
 module.exports = app;
