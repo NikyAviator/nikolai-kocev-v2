@@ -1,9 +1,17 @@
-import userController from '../controllers/userController.js';
+// backend/routes/blogRoutes.js
+import * as blogController from '../controllers/blogController.js'; // ★ use * or named import
 import express from 'express';
 const router = express.Router();
 
-router.route('/login').post(userController.loginUser);
-router.route('/register').post(userController.registerUser);
-router.route('/logout').post(userController.logoutUser);
+router
+  .route('/')
+  .get(blogController.getAllBlogs)
+  .post(blogController.createBlog);
+
+router
+  .route('/:id')
+  .get(blogController.getBlogById)
+  .patch(blogController.updateBlog)
+  .delete(blogController.deleteBlog);
 
 export default router;

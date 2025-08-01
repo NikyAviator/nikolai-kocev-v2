@@ -1,16 +1,10 @@
-import blogController from '../controllers/blogController.js';
+// backend/routes/userRoutes.js
+import * as userController from '../controllers/userController.js';
 import express from 'express';
 const router = express.Router();
 
-router
-  .route('/')
-  .get(blogController.getAllBlogs)
-  .post(blogController.createBlog);
-
-router
-  .route('/:id')
-  .get(blogController.getBlogById)
-  .patch(blogController.updateBlog)
-  .delete(blogController.deleteBlog);
+router.post('/register', userController.registerUser);
+router.post('/login', userController.loginUser);
+router.post('/logout', userController.logoutUser);
 
 export default router;
