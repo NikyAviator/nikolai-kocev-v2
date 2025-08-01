@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const User = require('./User'); // Assuming User model is in the same directory
+import mongoose from 'mongoose';
+import User from './User';
 
 const blogSchema = new mongoose.Schema({
   title: { type: String, required: true },

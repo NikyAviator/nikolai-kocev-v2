@@ -1,32 +1,25 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-// Import routers
-const userRouter = require('./routes/userRoutes');
-const blogRouter = require('./routes/blogRoutes');
+// app.js
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+
+import userRouter from './routes/userRoutes.js';
+import blogRouter from './routes/blogRoutes.js';
 
 const app = express();
 
-//) Global middleware
-app.use(morgan('dev')); // Logging middleware
-
-// ) Enable CORS for *ALL* origins (DEVELOPMENT ONLY)
+// global middleware
+app.use(morgan('dev'));
 app.use(cors());
-
-// ) Parse JSON bodies
 app.use(express.json());
 
-// )  ROUTER HERE
+// routers
 app.use('/api/users', userRouter);
 app.use('/api/blogs', blogRouter);
 
-// ) Health check endpoint
-app.get('/api', (req, res) => {
-  res.status(200).json({
-    message: 'Hello my little gopher!',
-    app: 'nikolai-kocev-v2',
-    version: '1.0.0',
-  });
-});
+// health-check
+app.get('/api', (_req, res) =>
+  res.status(200).json({ message: 'Hello my little gopher!', status: 'OK' })
+);
 
-module.exports = app;
+export default app;

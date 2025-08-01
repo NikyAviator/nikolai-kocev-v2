@@ -1,4 +1,4 @@
-const Blog = require('../models/Blog.js');
+import Blog from '../models/Blog.js';
 
 export const getAllBlogs = async (req, res) => {};
 
