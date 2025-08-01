@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const connectDB = require('./config/db');
+// Import routers
+const userRouter = require('./routes/userRoutes');
+const blogRouter = require('./routes/blogRoutes');
 
 const app = express();
 
@@ -14,12 +16,7 @@ app.use(cors());
 // ) Parse JSON bodies
 app.use(express.json());
 
-// Connect to the database
-app.use(connectDB());
-
 // )  ROUTER HERE
-const userRouter = require('./routes/userRoutes');
-const blogRouter = require('./routes/blogRoutes');
 app.use('/api/users', userRouter);
 app.use('/api/blogs', blogRouter);
 
