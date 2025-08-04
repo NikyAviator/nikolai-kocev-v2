@@ -1,7 +1,4 @@
-
-
 export default function AuthPage({ mode = 'signin' }) {
- 
   const isSignUp = mode === 'signup';
 
   return (
@@ -16,8 +13,8 @@ export default function AuthPage({ mode = 'signin' }) {
           />
           <h2
             className={
-              `mt-10 text-center text-2xl/9 font-bold tracking-tight `
-              + `text-gray-900 dark:text-white`
+              `mt-10 text-center text-2xl/9 font-bold tracking-tight ` +
+              `text-gray-900 dark:text-white`
             }
           >
             {isSignUp ? 'Create an account' : 'Sign in to your account'}
@@ -43,11 +40,11 @@ export default function AuthPage({ mode = 'signin' }) {
                   required
                   autoComplete="email"
                   className={
-                    `block w-full rounded-md px-3 py-1.5 text-base `
-                    + `bg-white dark:bg-white/5 text-gray-900 dark:text-white `
-                    + `outline-1 -outline-offset-1 outline-gray-300 dark:outline-white/10 `
-                    + `placeholder:text-gray-400 dark:placeholder:text-gray-500 `
-                    + `focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600`
+                    `block w-full rounded-md px-3 py-1.5 text-base ` +
+                    `bg-white text-gray-900 dark:bg-white/5 dark:text-white` +
+                    `outline-1 -outline-offset-1 outline-gray-300 dark:outline-white/10` +
+                    `placeholder:text-gray-400 dark:placeholder:text-gray-500` +
+                    `focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600`
                   }
                 />
               </div>
@@ -79,11 +76,11 @@ export default function AuthPage({ mode = 'signin' }) {
                   required
                   autoComplete={isSignUp ? 'new-password' : 'current-password'}
                   className={
-                    `block w-full rounded-md px-3 py-1.5 text-base `
-                    + `bg-white dark:bg-white/5 text-gray-900 dark:text-white `
-                    + `outline-1 -outline-offset-1 outline-gray-300 dark:outline-white/10 `
-                    + `placeholder:text-gray-400 dark:placeholder:text-gray-500 `
-                    + `focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600`
+                    `block w-full rounded-md px-3 py-1.5 text-base ` +
+                    `bg-white text-gray-900 dark:bg-white/5 dark:text-white` +
+                    `outline-1 -outline-offset-1 outline-gray-300 dark:outline-white/10` +
+                    `placeholder:text-gray-400 dark:placeholder:text-gray-500` +
+                    `focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600`
                   }
                 />
               </div>
@@ -94,10 +91,10 @@ export default function AuthPage({ mode = 'signin' }) {
               <button
                 type="submit"
                 className={
-                  `flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold `
-                  + `bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-2 `
-                  + `focus-visible:outline-offset-2 focus-visible:outline-indigo-600 `
-                  + `text-white`
+                  `flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold ` +
+                  `bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-2` +
+                  `focus-visible:outline-offset-2 focus-visible:outline-indigo-600` +
+                  `text-white`
                 }
               >
                 {isSignUp ? 'Create account' : 'Sign in'}
@@ -106,13 +103,13 @@ export default function AuthPage({ mode = 'signin' }) {
           </form>
 
           {/* Footer link */}
-          <p className={
-            `mt-10 text-center text-sm/6 `
-            + `text-gray-500 dark:text-gray-400`
-          }>
-            {isSignUp
-              ? 'Already have an account? '
-              : "Not a member? "}
+          <p
+            className={
+              `mt-10 text-center text-sm/6 ` +
+              `text-gray-500 dark:text-gray-400`
+            }
+          >
+            {isSignUp ? 'Already have an account? ' : 'Not a member? '}
             <a
               href={isSignUp ? '/login' : '/signup'}
               className="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
