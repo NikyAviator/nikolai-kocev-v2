@@ -4,7 +4,16 @@
 
 _Welcome to my personal website!_
 
-### Technologies that are used:
+## Table of Contents
+
+- [My Tech Stack](#my-tech-stack)
+- [Running in Development](#running-in-development)
+- [Scripts](#scripts)
+- [DevOps](#devops)
+
+---
+
+### My Tech Stack
 
 **Front end:**
 
@@ -24,12 +33,6 @@ _Welcome to my personal website!_
 - Docker
 - Kubernetes (Not implemented yet)
 - GCP (Google Cloud Platform) (Not implemented yet)
-
-## Table of Contents
-
-- [Running in Development](#running-in-development)
-- [Scripts](#scripts)
-- [DevOps](#devops)
 
 ---
 
