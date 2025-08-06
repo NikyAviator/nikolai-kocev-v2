@@ -19,6 +19,7 @@ _Welcome to my personal website!_
 
 - React
 - Tailwind CSS
+- Vite (front end building tool)
 
 **Back end:**
 
