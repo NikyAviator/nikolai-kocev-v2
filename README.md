@@ -35,13 +35,13 @@ _Welcome to my personal website!_
 
 ### Running in Development
 
-Install all node_modules in the **root**, **frontend** & **backend** folder of the project with:
+Install the following node_modules in the **root**, **frontend** & **backend** -folder:
 
 ```bash
 npm install
 ```
 
-Then to run the project. Cd into the **root** folder of the project and:
+Then to **run** the project, in the root folder run:
 
 ```bash
 npm run dev
@@ -147,7 +147,7 @@ To build a Docker image based on your current project files and Dockerfile:
 docker build -t nkv2-frontend .
 ```
 
-🧠 This command:
+This command:
 
 ```md
 - Uses the `Dockerfile` in the current directory (`.`)
@@ -173,10 +173,6 @@ docker tag nkv2-frontend <your-username>/nkv2-frontend:v1
 ```bash
 docker tag nkv2-frontend <your-username>/nkv2-frontend:latest
 ```
-
-I am doing the latter, with **:latest** tag.
-
-📝 My Docker Hub repo name is **not** the same as my project repo name on GitHub.
 
 Side Note, **Tag** the image for **GCP**:
 
