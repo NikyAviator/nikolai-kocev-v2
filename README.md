@@ -1,24 +1,35 @@
 # nikolai-kocev-v2
 
-Let's do a beatiful Tailwind CSS personal website.
+**Hello!**
 
-The following will be a rough outline on the upcoming documentation and structure of the project.
+_Welcome to my personal website!_
 
-### Technologies that will be used:
+### Technologies that are used:
 
-- **Node.js**
-- **Express**
-- **React**
-- **Tailwind CSS**
-- **Docker**
-- **Google Cloud Platform (GCP)**
+**Front end:**
+
+- React
+- Tailwind CSS
+
+**Back end:**
+
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+
+**DevOps**
+
+- Bash
+- Docker
+- Kubernetes (Not implemented yet)
+- GCP (Google Cloud Platform) (Not implemented yet)
 
 ## Table of Contents
+
 - [Running in Development](#running-in-development)
-- [Frontend Setup](#frontend-setup)
 - [Scripts](#scripts)
 - [DevOps](#devops)
-- [Backend Setup](#backend-setup)
 
 ---
 
@@ -29,97 +40,18 @@ Install all node_modules in the **root**, **frontend** & **backend** folder of t
 ```bash
 npm install
 ```
+
 Then to run the project. Cd into the **root** folder of the project and:
 
 ```bash
-npm run dev 
+npm run dev
 ```
 
 - Backend will run on http://localhost:3000/
 
 - Frontend (Vite) will run on http://localhost:5173/
 
-- any calls to /api/* on 5173 will be forwarded to our Express app (the backend) on 3000.
-
----
-
-### Frontend Setup
-
-I created a new repo on my github.
-Inside the new repo I created a **frontend** folder. For now that will suffice, I might add a backend folder later, depending on the need for the project.
-
-Before we begin we need to check if we have Node.js installed.
-
-**What is Node.js?**
-
-Node.js is a runtime environment that allows you to execute JavaScript on the server-side. Unlike JavaScript running in the browser, Node.js provides a way to build scalable network applications using the same language you use for frontend development. It’s important to note that Node.js isn’t part of JavaScript—it’s a separate installation that brings server capabilities to JavaScript. You can download it from the official Node.js website.
-
-Verify the installation with:
-
-```bash
-node -v
-npm -v
-```
-
-#### Create the Vite React Project
-
-To create a React project with Vite (https://vite.dev/guide/).
-
-Cd into the frontend folder, open a terminal and type:
-
-```bash
-npm create vite@latest .
-```
-
-Options that I chose: **JavaScript** and **React**.
-
----
-
-#### Installing Dependencies
-
-We shall use:
-
-```
-Express (https://expressjs.com/) 🚅
-TailwindCSS (https://tailwindcss.com/)🌬️✈️
-```
-
-Install all dependencies (for this specific project) at once:
-
-```bash
-npm install express tailwindcss @tailwindcss/vite @headlessui/react @heroicons/react clsx @tailwindcss/typography prettier prettier-plugin-tailwindcss framer-motion react-router-dom
-```
-
-Please follow this guide: https://github.com/tailwindlabs/prettier-plugin-tailwindcss?tab=readme-ov-file
-
-For the best class order.
-
-```bash
-npm install -D prettier prettier-plugin-tailwindcss
-```
-
-I have no .prettier file right now!
-
-Configure the Vite plugin (**_vite.config.ts_**):
-
-```javascript
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-});
-```
-
-Import Tailwind CSS:
-
-Add an `@import` to your CSS file that imports Tailwinds CSS.
-
-```bash
-@import "tailwindcss";
-```
+- any calls to /api/\* on 5173 will be forwarded to our Express app (the backend) on 3000.
 
 ---
 
@@ -197,7 +129,7 @@ Here's a list of useful Docker commands (great for refreshing your memory):
 
 We use **Docker** to containerize our frontend project, which lets us build and run the website consistently across environments.
 
-#### 👉 Step 0: Log in to Docker Hub
+#### Step 0: Log in to Docker Hub
 
 ```bash
 docker login
@@ -207,7 +139,7 @@ You’ll be prompted to enter your Docker Hub username and password (or personal
 
 ---
 
-#### 👉 Step 1: Build the Image from Latest Source Code
+#### Step 1: Build the Image from Latest Source Code
 
 To build a Docker image based on your current project files and Dockerfile:
 
@@ -224,7 +156,7 @@ docker build -t nkv2-frontend .
 
 ---
 
-#### 👉 Step 2: Tag the Image
+#### Step 2: Tag the Image
 
 Docker Hub images must follow this format:
 
@@ -260,22 +192,22 @@ docker tag <local-name> <registry-path>/<repo-name>/<image-name>:<tag>
 
 ---
 
-1
-
-#### 👉 Step 3: Push the Image to Docker Hub
+#### Step 3: Push the Image to Docker Hub
 
 ```bash
 docker push <your-username>/nkv2-frontend:latest
 ```
 
 After pushing, you can verify and find your image at:
-👉 https://hub.docker.com/repositories
+https://hub.docker.com/repositories
 
 Side Note, **Push** the image to **GCP Artifact Registry**:
 
 ```bash
 docker push <region>-docker.pkg.dev/<project-id>/<repository-name>/<image-name>:<tag>
 ```
+
+---
 
 ### Docker Compose Integration
 
@@ -330,7 +262,3 @@ docker compose logs
 📜 Shows logs from all containers
 
 ---
-
-### Backend Setup
-
-I will begin by creating a Blog portion for my website. For this I will use: Nodejs, Express, MongoDB & GCP. I am still unsure how try-hard I will go with K8s, but I like Kubernetes, so maybe we can perform some magic tricks.
