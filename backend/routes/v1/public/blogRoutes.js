@@ -1,5 +1,5 @@
 // backend/routes/blogRoutes.js
-import * as blogController from '../controllers/blogController.js'; // ★ use * or named import
+import * as blogController from '../../../controllers/blogController.js'; // ★ use * or named import
 import express from 'express';
 const router = express.Router();
 

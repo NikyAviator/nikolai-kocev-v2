@@ -1,4 +1,4 @@
-// Shows list
+// Shows list of blog posts
 
 const BlogHome = () => {
   return <div>BlogHome</div>;

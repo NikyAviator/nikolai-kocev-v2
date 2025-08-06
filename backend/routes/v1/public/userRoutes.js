@@ -1,5 +1,5 @@
 // backend/routes/userRoutes.js
-import * as userController from '../controllers/userController.js';
+import * as userController from '../../../controllers/userController.js';
 import express from 'express';
 const router = express.Router();
 
