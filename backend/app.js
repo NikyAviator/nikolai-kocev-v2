@@ -20,8 +20,11 @@ app.use('/api/v1/blogs', blogRouterPublic);
 app.use('/api/v1/admin/blogs', blogRouterAdmin);
 
 // health-check
-app.get('/api/v1', (_req, res) =>
-  res.status(200).json({ message: 'Hello my little gopher!', status: 'OK' })
+app.get('/api/v1/health', (_req, res) =>
+  res.status(200).json({
+    message: 'Hello my little gopher. Everything is healthy!',
+    status: 'OK',
+  })
 );
 
 export default app;
