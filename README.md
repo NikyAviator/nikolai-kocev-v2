@@ -38,7 +38,7 @@ _Welcome to my personal website!_
 
 ### Running in Development
 
-Install the following node_modules in the **root**, **frontend** & **backend** -folder:
+**Install** the following node_modules in the **root**, **frontend** & **backend** -folder:
 
 ```bash
 npm install
@@ -54,7 +54,7 @@ npm run dev
 
 - Frontend (Vite) will run on http://localhost:5173/
 
-- any calls to /api/\* on 5173 will be forwarded to our Express app (the backend) on 3000.
+- any calls to /api/\* on **5173** from the front end will be forwarded the Express back end on port **3000**.
 
 ---
 
