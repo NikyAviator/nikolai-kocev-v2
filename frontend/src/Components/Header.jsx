@@ -30,14 +30,6 @@ export default function Header() {
           NikyAviator
         </Link>
         {/* desktop auth links */}
-        <div className="hidden lg:flex lg:items-end lg:gap-4">
-          <Link
-            to="/blog-choice"
-            className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
-          >
-            Blog
-          </Link>
-        </div>
 
         {/* mobile hamburger */}
         <button
@@ -60,6 +52,14 @@ export default function Header() {
             <MoonIcon className="size-5" />
           )}
         </button>
+        <div className="hidden lg:flex lg:items-end lg:gap-4">
+          <Link
+            to="/blog"
+            className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
+          >
+            Blog
+          </Link>
+        </div>
       </nav>
 
       {/* mobile dialog */}
