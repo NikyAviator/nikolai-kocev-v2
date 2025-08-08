@@ -262,3 +262,13 @@ docker compose logs
 📜 Shows logs from all containers
 
 ---
+
+### jsonwebtoken
+
+To sign a token, you will need to have 3 pieces of information:
+
+1. The token secret
+2. The piece of data to hash in the token
+3. The token expire time
+
+The token secret is a long random string used to encrypt and decrypt the data.
