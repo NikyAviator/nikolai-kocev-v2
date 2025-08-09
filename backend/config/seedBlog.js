@@ -79,4 +79,4 @@ await Blog.insertMany([
 
 console.log('Seeded!');
 
-process.exit();
+process.exit(0); // Exit process with success

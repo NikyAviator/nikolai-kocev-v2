@@ -69,6 +69,8 @@ tree -I 'node_modules|.git|dist' -a -L 10
 
 **Command Breakdown:**
 
+To check with what we are cooking with in this project (or any for that matter):
+
 - `tree`
 
 Lists directory contents in a tree-like format.
@@ -88,6 +90,24 @@ Shows all files, including hidden ones (those starting with a dot, e.g. .env, .g
 - `-L 10`
 
 Limits the output to 10 levels deep. Adjust this number if you want more or fewer nested levels.
+
+---
+
+### To populate db with admin and three Blogs - TODO
+
+Add
+
+```json
+"scripts": {
+  "seed": "node -r dotenv/config backend/scripts/seedBlog.js"
+}
+```
+
+Run once:
+
+```bash
+npm run seed
+```
 
 ---
 
