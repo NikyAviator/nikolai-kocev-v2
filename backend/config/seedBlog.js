@@ -23,7 +23,7 @@ const connectToDB = async () => {
 connectToDB();
 
 // Seed the admin
-const admin = await User.findByIdAndUpdate({
+const admin = await User.create({
   name: 'Niky Kocev',
   email: 'testemail@gmail.com',
   password: 'testpassword',
