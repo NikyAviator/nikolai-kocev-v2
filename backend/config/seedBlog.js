@@ -7,11 +7,23 @@ import User from '../models/User.js';
 import Blog from '../models/Blog.js';
 // Maybe use bcrypt as a standalone function?
 
-await mongoose.connect(process.env.MONGO_URI);
+const connectToDB = async () => {
+  try {
+    const RESET = process.argv.includes('--reset');
+    if (RESET) {
+      console.log('Resetting the database...');
+      await mongoose.connection.dropDatabase(); // Drop the database if --reset is passed
+    }
+    await mongoose.connect(process.env.MONGO_URI);
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    process.exit(1); // Exit process with failure
+  }
+};
+connectToDB();
 
-await mongoose.connection.db.dropDatabase();
-
-const admin = await User.create({
+// Seed the admin
+const admin = await User.findByIdAndUpdate({
   name: 'Niky Kocev',
   email: 'testemail@gmail.com',
   password: 'testpassword',
@@ -20,6 +32,7 @@ const admin = await User.create({
 
 console.log('Admin user created:', admin);
 
+// Seed the blog posts
 await Blog.insertMany([
   {
     title: 'How to use search engine optimization to drive sales',
@@ -78,5 +91,6 @@ await Blog.insertMany([
 ]);
 
 console.log('Seeded!');
+await mongoose.disconnect(); // Disconnect from MongoDB
 
 process.exit(0); // Exit process with success

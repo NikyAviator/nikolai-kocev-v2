@@ -3,7 +3,9 @@
   "scripts": {
     "backend": "cd backend && nodemon server.js",
     "frontend": "cd frontend && npm run dev",
-    "dev": "concurrently \"npm:backend\" \"npm:frontend\""
+    "dev": "concurrently \"npm:backend\" \"npm:frontend\"",
+    "seed": "node backend/config/seedBlog.js",
+    "seed:reset": "node backend/config/seedBlog.js --reset"
   },
   "devDependencies": {
     "concurrently": "^9.2.0",
