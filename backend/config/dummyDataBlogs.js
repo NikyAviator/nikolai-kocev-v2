@@ -32,16 +32,16 @@ const cards = [
   },
 ];
 
-const blogs = cards.map((c) => ({
-  title: c.title,
-  slug: slugify(c.title), // REQUIRED by schema
-  excerpt: c.description, // REQUIRED by schema
-  content: c.description, // REQUIRED by schema (use real content later)
-  coverImg: c.imageUrl, // map -> coverImg
-  category: c.category.title, // map object -> string
-  author: admin._id, // ObjectId ref to User (not an embedded object)
-  published: true,
-  tags: [c.category.title.toLowerCase()],
-}));
-
-export default blogs;
+// Build posts given an authorId (ObjectId)
+export const buildBlogs = (authorId) =>
+  cards.map((c) => ({
+    title: c.title,
+    slug: slugify(c.title),
+    excerpt: c.description,
+    content: c.description, // replace with real content later
+    coverImg: c.imageUrl,
+    category: c.category, // <- string, matches your schema
+    author: authorId, // <- ObjectId, NOT the User model
+    published: true,
+    tags: [c.category.toLowerCase()],
+  }));

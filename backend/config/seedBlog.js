@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import User from '../models/User.js';
 import Blog from '../models/Blog.js';
-import blogs from './dummyDataBlogs.js';
+import { buildBlogs } from './dummyDataBlogs.js';
 // Load backend/ .env file no matter where the script is run from
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, '../.env') });
@@ -64,10 +64,12 @@ try {
     throw e;
   }
 }
-
+// Sends the admins _id to the buildBlogs function
+const blogs = buildBlogs(admin._id);
 // Seed the blog posts
 try {
-  await Blog.deleteMany({}); // optional: clear existing posts without dropping DB
+  // optional: clear existing posts without dropping DB
+  await Blog.deleteMany({});
   await Blog.insertMany(blogs);
   console.log('📝 Blog posts seeded:', docs.length);
 } catch (error) {
