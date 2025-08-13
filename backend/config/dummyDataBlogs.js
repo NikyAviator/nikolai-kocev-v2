@@ -12,7 +12,7 @@ const cards = [
       'Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.',
     imageUrl:
       'https://images.unsplash.com/photo-1547586696-ea22b4d4235d?auto=format&fit=crop&w=3270&q=80',
-    category: { title: 'Sales', href: '#' },
+    category: 'Sales',
   },
   {
     title: 'Improve your customer experience',
@@ -20,7 +20,7 @@ const cards = [
       'Cupiditate maiores ullam eveniet adipisci in doloribus nulla minus...',
     imageUrl:
       'https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=3270&q=80',
-    category: { title: 'Business', href: '#' },
+    category: 'Business',
   },
   {
     title: 'Boost your conversion rate',
@@ -28,7 +28,7 @@ const cards = [
       'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo...',
     imageUrl:
       'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?auto=format&fit=crop&w=3603&q=80',
-    category: { title: 'Marketing', href: '#' },
+    category: 'Marketing',
   },
 ];
 

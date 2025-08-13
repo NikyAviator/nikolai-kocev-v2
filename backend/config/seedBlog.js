@@ -40,7 +40,7 @@ try {
     await mongoose.connection.db.dropDatabase();
     console.log('🧹 Database dropped. Exiting without reseeding. 😶‍🌫️');
     await mongoose.disconnect();
-    process.exit(0);
+    process.exit(0); // Exit with success
   }
 } catch (error) {
   console.error('❌ Error during initial setup:', error.message);
