@@ -7,7 +7,7 @@ const blogSchema = new mongoose.Schema(
     excerpt: { type: String, required: true },
     content: { type: String, required: true },
     coverImg: { type: String }, // URL to the cover image (maybe use a var and pull pics online)
-    category: { type: String },
+    category: [{ type: String }, { href: String }], // Category and href for the blog post
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
