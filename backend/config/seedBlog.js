@@ -48,15 +48,26 @@ try {
   process.exit(1);
 }
 
+let admin;
+
 // Seed the admin
 try {
-  const admin = await User.create({
-    name: 'Niky Kocev',
-    email: 'testemail@gmail.com',
-    password: 'testpassword', // TODO: hash in real code
-    role: 'admin',
-  });
-  console.log('Admin user created:', admin.name);
+  // --- ensure admin exists ---
+  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+  admin = await User.findOne({ email: ADMIN_EMAIL });
+  if (!admin) {
+    admin = await User.create({
+      name: 'Niky Kocev',
+      email: 'testemail@gmail.com',
+      password: ADMIN_PASSWORD, // TODO: hash in real code
+      role: 'admin',
+    });
+    console.log('👑 Admin created:', admin.email);
+  } else {
+    console.log('👑 Admin already exists:', admin.email);
+  }
 } catch (e) {
   if (e.code === 11000) {
     console.log('Admin user already exists, skipping.');
