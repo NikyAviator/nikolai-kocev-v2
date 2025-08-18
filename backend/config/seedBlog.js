@@ -47,47 +47,45 @@ try {
   await mongoose.disconnect();
   process.exit(1);
 }
-
+// --- Seed the admin user ---
+// --- ensure admin exists ---
 let admin;
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 // Seed the admin
 try {
-  // --- ensure admin exists ---
-  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+  admin = await User.findOneAndUpdate(
+    { email: ADMIN_EMAIL },
+    {
+      $setOnInsert: {
+        name: 'Admin User',
+        email: ADMIN_EMAIL,
+        password: ADMIN_PASSWORD, // Ensure this is hashed in the User model
+        role: 'admin', // Ensure your User model supports roles
+      },
+    },
+    { upsert: true, new: true } // upsert creates if not exists, new returns the updated document
+  );
 
-  admin = await User.findOne({ email: ADMIN_EMAIL });
-  if (!admin) {
-    admin = await User.create({
-      name: 'Niky Kocev',
-      email: 'testemail@gmail.com',
-      password: ADMIN_PASSWORD, // TODO: hash in real code
-      role: 'admin',
-    });
-    console.log('👑 Admin created:', admin.email);
-  } else {
-    console.log('👑 Admin already exists:', admin.email);
-  }
+  console.log('👑 Admin created:', admin.email);
 } catch (e) {
-  if (e.code === 11000) {
-    console.log('Admin user already exists, skipping.');
-  } else {
-    throw e;
-  }
+  console.error('❌ Error creating admin user:', e.message);
+  await mongoose.disconnect(); // Disconnect from MongoDB
+  process.exit(1); // Exit with error
 }
 // Sends the admins _id to the buildBlogs function
 const blogs = buildBlogs(admin._id);
 // Seed the blog posts
 try {
-  // optional: clear existing posts without dropping DB
   await Blog.deleteMany({});
-  await Blog.insertMany(blogs);
+  const docs = await Blog.insertMany(blogs);
   console.log('📝 Blog posts seeded:', docs.length);
 } catch (error) {
   console.error('❌ Error seeding blog posts:', error.message);
-  process.exit(1); // Exit with error
+  process.exit(1);
 } finally {
-  await mongoose.disconnect(); // Disconnect from MongoDB
+  await mongoose.disconnect();
   console.log('✅ Disconnected from MongoDB');
-  process.exit(0); // Exit process with success
+  process.exit(0);
 }
