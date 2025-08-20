@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Hashes the password before saving
+// This will run on:
+// User.create()
+// doc.save()
+
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
@@ -22,17 +27,30 @@ userSchema.pre('save', async function (next) {
   }
 });
 
+// Pre hook that hashes the password before updating
+// will run on:
+// User.findOneAndUpdate()
+// User. findByIdAndUpdate() å deras alias
+// User. findOneAndReplace()
+
 userSchema.pre('findOneAndUpdate', async function (next) {
   try {
-    const update = this.getUpdate();
-    if (
-      update.password &&
-      typeof update.password === 'string' &&
-      update.password.length > 0
-    ) {
-      update.password = await hashPassword(update.password);
-      this.setUpdate(update);
+    const update = this.getUpdate() || {};
+
+    // look for password in the update object
+    const targets = [update, update.$set, update.$setOnInsert].filter(Boolean);
+
+    for (const target of targets) {
+      const targetPassword = target.password;
+      if (typeof targetPassword === 'string' && targetPassword.length > 0) {
+        const looksLikeHashed = /^\$2[aby]\$\d{2}\$/.test(targetPassword);
+        if (!looksLikeHashed) {
+          target.password = await hashPassword(targetPassword);
+        }
+      }
     }
+
+    this.setUpdate(update);
     next();
   } catch (error) {
     next(error);
