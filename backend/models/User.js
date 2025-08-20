@@ -1,6 +1,6 @@
 // Read about timestamps in Mongoose: https://mongoosejs.com/docs/timestamps.html
 import mongoose from 'mongoose';
-import { hashPassword, comparePassword } from '../config/bcrypt';
+import { hashPassword, comparePassword } from '../config/bcrypt.js';
 
 const userSchema = new mongoose.Schema(
   {

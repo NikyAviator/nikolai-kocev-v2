@@ -41,6 +41,7 @@ export function hashPasswordMiddleware(field = 'password') {
       ) {
         req.body[field] = await hashPassword(req.body[field]);
       }
+      next();
     } catch (error) {
       next(error);
     }

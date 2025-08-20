@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import User from '../models/User.js';
 import Blog from '../models/Blog.js';
 import { buildBlogs } from './dummyDataBlogs.js';
+import { hashPassword } from './bcrypt.js';
 // Load backend/ .env file no matter where the script is run from
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.join(__dirname, '../.env') });
@@ -53,6 +54,8 @@ let admin;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
+const hashedPassword = await hashPassword(ADMIN_PASSWORD);
+
 // Seed the admin
 try {
   admin = await User.findOneAndUpdate(
@@ -61,8 +64,8 @@ try {
       $setOnInsert: {
         name: 'Admin User',
         email: ADMIN_EMAIL,
-        password: ADMIN_PASSWORD, // Ensure this is hashed in the User model
-        role: 'admin', // Ensure your User model supports roles
+        password: hashedPassword,
+        role: 'admin',
       },
     },
     { upsert: true, new: true } // upsert creates if not exists, new returns the updated document
