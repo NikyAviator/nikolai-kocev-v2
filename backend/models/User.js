@@ -22,4 +22,21 @@ userSchema.pre('save', async function (next) {
   }
 });
 
+userSchema.pre('findOneAndUpdate', async function (next) {
+  try {
+    const update = this.getUpdate();
+    if (
+      update.password &&
+      typeof update.password === 'string' &&
+      update.password.length > 0
+    ) {
+      update.password = await hashPassword(update.password);
+      this.setUpdate(update);
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 export default mongoose.model('User', userSchema);
