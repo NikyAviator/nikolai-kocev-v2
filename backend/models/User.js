@@ -4,9 +4,16 @@ import { hashPassword, comparePassword } from '../config/bcrypt.js';
 
 const userSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }, // <- hash later, maybe works now?
+    name: { type: String, required: [true, 'A User must have a name!'] },
+    email: {
+      type: String,
+      required: [true, 'A User must have an email!'],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, 'A User must have a password!'],
+    },
     role: { type: String, enum: ['author', 'admin'], default: 'author' },
   },
   { timestamps: true }
