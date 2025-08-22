@@ -30,6 +30,14 @@ export const getAllBlogs = async (req, res) => {
   }
 };
 
-export const getBlogById = (req, res) => res.send(`one-blog ${req.params.id}`);
+export const getBlogById = async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    res.status(200).json({ status: 'success', data: { blog } });
+  } catch (error) {
+    console.error('Error fetching blog by ID:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
 export const updateBlog = (req, res) => res.send(`update ${req.params.id}`);
 export const deleteBlog = (req, res) => res.send(`delete ${req.params.id}`);
