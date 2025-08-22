@@ -1,6 +1,22 @@
 // blogController.js
+import Blog from '../models/Blog.js';
+export const createBlog = async (req, res) => {
+  try {
+    const newBlog = await Blog.create({
+      title: req.body.title,
+      slug: req.body.slug,
+      excerpt: req.body.excerpt,
+      content: req.body.content,
+      coverImg: req.body.coverImg,
+      category: req.body.category,
+    });
+  } catch (error) {
+    console.error('Error creating blog:', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 export const getAllBlogs = (req, res) => res.send('all-blogs');
 export const getBlogById = (req, res) => res.send(`one-blog ${req.params.id}`);
-export const createBlog = (req, res) => res.send('create-blog');
 export const updateBlog = (req, res) => res.send(`update ${req.params.id}`);
 export const deleteBlog = (req, res) => res.send(`delete ${req.params.id}`);
