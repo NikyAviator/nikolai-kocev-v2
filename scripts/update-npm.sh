@@ -2,7 +2,7 @@
 # Run `npm update` in root, backend, and frontend
 
 # Run shellcheck on it in POSIX mode (-s sh): 
-# shellcheck -s sh bad_script.sh
+# Shellcheck -s sh bad_script.sh
 
 # Unofficial Bash Strict Mode
 set -euo pipefail
