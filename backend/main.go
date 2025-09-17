@@ -9,7 +9,7 @@ func main() {
 
 	server.GET("/health", getHealth)
 
-	server.Run(":8080") // localhost:8080
+	server.Run(":5000") // localhost:8080
 
 }
 

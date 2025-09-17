@@ -50,11 +50,11 @@ Then to **run** the project, in the root folder run:
 npm run dev
 ```
 
-- Backend will run on http://localhost:3000/
+- Backend will run on http://localhost:5000/
 
 - Frontend (Vite) will run on http://localhost:5173/
 
-- any calls to /api/\* on **5173** from the front end will be forwarded the Express back end on port **3000**.
+- any calls to /api/\* on **5173** from the front end will be forwarded the Express back end on port **5000**.
 
 ---
 
