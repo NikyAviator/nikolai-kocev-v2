@@ -7,9 +7,11 @@ import (
 func main() {
 	server := gin.Default()
 
-	server.GET("/health", getHealth)
+	api := server.Group("/api")
 
-	server.Run(":5000") // localhost:8080
+	api.GET("/health", getHealth)
+
+	server.Run(":5000") // localhost:5000
 
 }
 
