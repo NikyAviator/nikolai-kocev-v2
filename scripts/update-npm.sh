@@ -12,7 +12,7 @@ IFS=$'\n\t'
 # Fix path
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-for dir in "$ROOT" "$ROOT/backend" "$ROOT/frontend"; do
+for dir in "$ROOT" "$ROOT/frontend"; do
     if [[ -f "$dir/package.json" ]]; then
         echo "Updating npm packages in $dir"
        ( cd "$dir" && npm update )
@@ -21,4 +21,4 @@ for dir in "$ROOT" "$ROOT/backend" "$ROOT/frontend"; do
     fi
 done
 
-echo "npm packages updated in all three directories." 
+echo "npm packages updated in all two directories."

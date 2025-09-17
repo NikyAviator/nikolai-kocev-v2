@@ -7,6 +7,12 @@ import (
 func main() {
 	server := gin.Default()
 
+	server.GET("/health", getHealth)
+
 	server.Run(":8080") // localhost:8080
 
+}
+
+func getHealth(c *gin.Context) {
+	c.JSON(200, gin.H{"message": "Hello, my little gopher. Everything is OK!"})
 }

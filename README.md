@@ -23,10 +23,9 @@ _Welcome to my personal website!_
 
 **Back end:**
 
-- Node.js
-- Express
+- Go
+- Gin
 - MongoDB
-- Mongoose
 
 **DevOps**
 
