@@ -1,4 +1,4 @@
-module github.com/nikyaviator/nikolai-kocev-v2/backend_GO
+module github.com/nikyaviator/nikolai-kocev-v2/backend
 
 go 1.24.6
 
