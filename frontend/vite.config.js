@@ -6,10 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
 
-  // Vite forwards requests to the backend API
+  // Vite forwards requests to the GO backend API
   server: {
     proxy: {
-      '/api' : 'http://localhost:3000',
-    }
-  }
+      '/api': 'http://localhost:5000',
+    },
+  },
 });
