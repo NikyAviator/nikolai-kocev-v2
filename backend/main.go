@@ -9,9 +9,11 @@ func main() {
 	server := gin.Default()
 
 	api := server.Group("/api")
-
+	// GET
 	api.GET("/health", getHealth)
 	api.GET("/blogs", getBlogs)
+	// POST
+	api.POST("/blogs", createBlog)
 
 	server.Run(":5000") // localhost:5000
 
@@ -24,4 +26,14 @@ func getHealth(c *gin.Context) {
 func getBlogs(c *gin.Context) {
 	blogs := models.GetAllBlogs()
 	c.JSON(200, blogs)
+}
+
+func createBlog(c *gin.Context) {
+	var blog models.Blog
+	err := c.ShouldBindJSON(&blog)
+
+	if err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
 }
