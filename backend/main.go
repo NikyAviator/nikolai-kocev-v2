@@ -36,4 +36,9 @@ func createBlog(c *gin.Context) {
 		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
+
+	// blog.ID = 1
+	// blog.Save()
+	// context.JSON(201, gin.H{"message": "Blog created successfully!"})
+
 }
