@@ -14,7 +14,7 @@ type Blog struct {
 	Content   string             `bson:"content"        json:"content" binding:"required"`
 	CoverImg  string             `bson:"coverImg,omitempty" json:"coverImg,omitempty"`
 	Category  string             `bson:"category"       json:"category" binding:"required"`
-	AuthorID  primitive.ObjectID `bson:"author"         json:"author"`
+	AuthorID  primitive.ObjectID `bson:"author,omitempty"         json:"author,omitempty"`
 	Published bool               `bson:"published"      json:"published"`
 	Tags      []string           `bson:"tags,omitempty" json:"tags,omitempty"`
 	CreatedAt time.Time          `bson:"createdAt"      json:"createdAt"`
