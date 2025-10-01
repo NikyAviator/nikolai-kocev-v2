@@ -20,7 +20,7 @@ func GenerateToken(email string, userId int64) (string, error) {
 
 }
 
-func VerifyToken(token string) (blogId int64, err error) {
+func VerifyToken(token string) (userId int64, err error) {
 	parsedToken, err := jwt.Parse(token, func(token *jwt.Token) (any, error) {
 		_, ok := token.Method.(*jwt.SigningMethodHMAC)
 
@@ -52,7 +52,7 @@ func VerifyToken(token string) (blogId int64, err error) {
 	if !ok {
 		return 0, errors.New("userId claim is not a number")
 	}
-	blogId = int64(claimUserId)
+	userId = int64(claimUserId)
 
-	return blogId, nil
+	return userId, nil
 }
