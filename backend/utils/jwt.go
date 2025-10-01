@@ -20,34 +20,39 @@ func GenerateToken(email string, userId int64) (string, error) {
 
 }
 
-func VerifyToken(token string) error {
+func VerifyToken(token string) (blogId int64, err error) {
 	parsedToken, err := jwt.Parse(token, func(token *jwt.Token) (any, error) {
 		_, ok := token.Method.(*jwt.SigningMethodHMAC)
 
 		if !ok {
 			return nil, errors.New("unexpected signing method")
 		}
-		return secretKey, nil
+		return []byte(secretKey), nil
 	})
 
 	if err != nil {
-		return errors.New("could not parse token")
+		return 0, errors.New("could not parse token")
 	}
 
 	tokenIsValid := parsedToken.Valid
 
 	if !tokenIsValid {
-		return errors.New("token is not valid")
+		return 0, errors.New("token is not valid")
 	}
 	// Extract claims if needed in the future
-	// claims, ok := parsedToken.Claims.(jwt.MapClaims)
+	claims, ok := parsedToken.Claims.(jwt.MapClaims)
 
-	// if !ok {
-	// 	return errors.New("Invalid token claims")
-	// }
+	if !ok {
+		return 0, errors.New("invalid token claims")
+	}
 
+	// Get from BLOG model AuthorID
 	// email := claims["email"].(string)
-	// userId := claims["userId"].(int64)
+	claimUserId, ok := claims["userId"].(float64)
+	if !ok {
+		return 0, errors.New("userId claim is not a number")
+	}
+	blogId = int64(claimUserId)
 
-	return nil
+	return blogId, nil
 }
