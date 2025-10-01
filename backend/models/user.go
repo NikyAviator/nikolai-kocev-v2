@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nikyaviator/nikolai-kocev-v2/backend/models"
+	// Removed import to avoid cycle
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -34,7 +34,7 @@ func GetAllUsers() []User {
 }
 
 func login(c *gin.Context) {
-	var user models.User
+	var user User
 
 	err := c.ShouldBindJSON(&user)
 
@@ -61,7 +61,7 @@ func login(c *gin.Context) {
 
 }
 
-func (u User) ValidateCredentials() error {
+func (u *User) ValidateCredentials() error {
 	// Need to validate credentials
 	// Need to get the password from DB and compare with the provided one
 	// 1) Query from MongoDB

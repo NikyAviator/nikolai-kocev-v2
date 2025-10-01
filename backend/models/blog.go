@@ -23,8 +23,8 @@ type Blog struct {
 
 var blogs = []Blog{}
 
-func (b Blog) Save() {
-	blogs = append(blogs, b)
+func (b *Blog) Save() {
+	blogs = append(blogs, *b)
 
 }
 

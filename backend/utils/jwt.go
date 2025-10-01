@@ -46,7 +46,7 @@ func VerifyToken(token string) (userId int64, err error) {
 		return 0, errors.New("invalid token claims")
 	}
 
-	// Get from BLOG model AuthorID
+	// Get from USER model ID
 	// email := claims["email"].(string)
 	claimUserId, ok := claims["userId"].(float64)
 
