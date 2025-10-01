@@ -49,9 +49,11 @@ func VerifyToken(token string) (userId int64, err error) {
 	// Get from BLOG model AuthorID
 	// email := claims["email"].(string)
 	claimUserId, ok := claims["userId"].(float64)
+
 	if !ok {
 		return 0, errors.New("userId claim is not a number")
 	}
+
 	userId = int64(claimUserId)
 
 	return userId, nil
