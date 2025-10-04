@@ -9,7 +9,7 @@ import (
 
 const secretKey = "some-secret-key" // Replace later with env variable
 
-func GenerateToken(email string, userId int64) (string, error) {
+func GenerateToken(email string, userId string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"email":  email,
 		"userId": userId,

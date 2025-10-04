@@ -10,6 +10,7 @@ import (
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/v2/mongo"
 )
 
 type User struct {
@@ -32,7 +33,7 @@ func GetAllUsers() []User {
 	return users
 }
 
-func login(c *gin.Context) {
+func login(c *gin.Context, db *mongo.Database) {
 	var user User
 
 	err := c.ShouldBindJSON(&user)
@@ -42,14 +43,14 @@ func login(c *gin.Context) {
 		return
 	}
 
-	err = user.ValidateCredentials()
+	err = user.ValidateCredentials(db)
 
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"message": "invalid credentials"})
 		return
 	}
 
-	token, err := utils.GenerateToken(user.Email, user.ID)
+	token, err := utils.GenerateToken(user.Email, user.ID.Hex())
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "could not generate token"})
@@ -60,7 +61,7 @@ func login(c *gin.Context) {
 
 }
 
-func (u *User) ValidateCredentials() error {
+func (u *User) ValidateCredentials(db *mongo.Database) error {
 	// Need to validate credentials
 	// Need to get the password from DB and compare with the provided one
 	// 1) Query from MongoDB
