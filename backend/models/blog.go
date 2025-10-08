@@ -6,28 +6,30 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+type Category struct {
+	Title string `bson:"title" json:"title"`
+	Href  string `bson:"href"  json:"href"`
+}
+
+type Author struct {
+	Name     string `bson:"name"     json:"name"`
+	Role     string `bson:"role"     json:"role"`
+	Href     string `bson:"href"     json:"href"`
+	ImageURL string `bson:"imageUrl" json:"imageUrl"`
+}
+
 type Blog struct {
-	ID        primitive.ObjectID `bson:"_id,omitempty"  json:"id"`
-	Title     string             `bson:"title"          json:"title" binding:"required"`
-	Slug      string             `bson:"slug"           json:"slug" binding:"required"`
-	Excerpt   string             `bson:"excerpt"        json:"excerpt" binding:"required"`
-	Content   string             `bson:"content"        json:"content" binding:"required"`
-	CoverImg  string             `bson:"coverImg,omitempty" json:"coverImg,omitempty"`
-	Category  string             `bson:"category"       json:"category" binding:"required"`
-	AuthorID  primitive.ObjectID `bson:"author,omitempty"         json:"author,omitempty"`
-	Published bool               `bson:"published"      json:"published"`
-	Tags      []string           `bson:"tags,omitempty" json:"tags,omitempty"`
-	CreatedAt time.Time          `bson:"createdAt"      json:"createdAt"`
-	UpdatedAt time.Time          `bson:"updatedAt"      json:"updatedAt"`
-}
+	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
+	Title       string             `bson:"title"        json:"title"`
+	Slug        string             `bson:"slug"         json:"slug"`
+	Excerpt     string             `bson:"excerpt"      json:"excerpt"`
+	ContentMD   string             `bson:"contentMd"    json:"contentMd"`
+	ImageURL    string             `bson:"imageUrl"     json:"imageUrl"`
+	Category    Category           `bson:"category"     json:"category"`
+	Author      Author             `bson:"author"       json:"author"`
+	PublishedAt time.Time          `bson:"publishedAt"  json:"publishedAt"`
+	Tags        []string           `bson:"tags,omitempty" json:"tags,omitempty"`
 
-var blogs = []Blog{}
-
-func (b *Blog) Save() {
-	blogs = append(blogs, *b)
-
-}
-
-func GetAllBlogs() []Blog {
-	return blogs
+	CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
+	UpdatedAt time.Time `bson:"updatedAt" json:"updatedAt"`
 }

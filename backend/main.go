@@ -1,47 +1,47 @@
 package main
 
 import (
+	"context"
+	"log"
+	"os"
+	"time"
+
 	"github.com/gin-gonic/gin"
-	"github.com/nikyaviator/nikolai-kocev-v2/backend/middlewares"
-	"github.com/nikyaviator/nikolai-kocev-v2/backend/models"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/db"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/routes"
 )
 
 func main() {
-	server := gin.Default()
+	uri := getenv("MONGO_URI", "mongodb://localhost:27017")
+	dbName := getenv("MONGO_DB", "nikysite")
+	port := getenv("PORT", "5000")
 
-	api := server.Group("/api")
-	// GET
-	api.GET("/health", getHealth)
-	api.GET("/blogs", getBlogs)
-	// POST
-	api.POST("/blogs", middlewares.Authenticate, createBlog)
+	// connect DB
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
-	server.Run(":5000") // localhost:5000
-
-}
-
-func getHealth(c *gin.Context) {
-	c.JSON(200, gin.H{"message": "Hello, my little gopher. Everything is OK!"})
-}
-
-func getBlogs(c *gin.Context) {
-	blogs := models.GetAllBlogs()
-	c.JSON(200, blogs)
-}
-
-func createBlog(c *gin.Context) {
-
-	var blog models.Blog
-	err := c.ShouldBindJSON(&blog)
-
+	client, store, err := db.Connect(ctx, uri, dbName)
 	if err != nil {
-		c.JSON(400, gin.H{"error": err.Error()})
-		return
+		log.Fatalf("mongo: %v", err)
+	}
+	defer client.Disconnect(context.Background())
+
+	// routes
+	r := gin.Default()
+	api := r.Group("/api")
+	{
+		api.GET("/health", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
+		api.GET("/blogs", routes.ListBlogs(store))
+		api.POST("/seed", routes.SeedBlogs(store)) // dev-only
 	}
 
-	userId := c.GetInt64("userId")
-	blog.ID = userId
-	blog.Save()
-	c.JSON(201, gin.H{"message": "Blog created successfully!"})
+	log.Printf("listening on :%s", port)
+	log.Fatal(r.Run(":" + port))
+}
 
+func getenv(k, d string) string {
+	if v := os.Getenv(k); v != "" {
+		return v
+	}
+	return d
 }
