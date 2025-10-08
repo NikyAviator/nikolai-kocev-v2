@@ -12,9 +12,9 @@ import (
 )
 
 func main() {
-	uri := getenv("MONGO_URI", "mongodb://localhost:27017")
-	dbName := getenv("MONGO_DB", "nikysite")
-	port := getenv("PORT", "5000")
+	uri := os.Getenv("MONGO_URI")
+	dbName := os.Getenv("MONGO_DB")
+	port := os.Getenv("PORT")
 
 	// connect DB
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
