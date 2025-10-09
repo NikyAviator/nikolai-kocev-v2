@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/db"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/routes"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -14,37 +15,33 @@ import (
 )
 
 func main() {
-	uri := os.Getenv("MONGODB_URI")       // mongodb://localhost:27017/
-	port := os.Getenv("PORT")             // 5000
-	dbName := os.Getenv("MONGODB_DBNAME") // nkv2
+	// 1) Load .env (optional in prod; essential in local dev)
+	_ = godotenv.Load(".env")
 
-	// docs is just a string with a link to the docs
-	docs := "www.mongodb.com/docs/drivers/go/current/"
-	if uri == "" {
-		log.Fatal("Set your 'MONGODB_URI' environment variable. " +
-			"See: " + docs +
-			"usage-examples/#environment-variable")
-	}
+	// 2) Read env with fallbacks so local dev "just works"
+	uri := getenv("MONGODB_URI", "mongodb://localhost:27017/")
+	dbName := getenv("MONGODB_DBNAME", "nkv2")
+	port := getenv("PORT", "5000")
 
-	// Create context with timeout - BETTER APPROACH
+	// 3) Connect to Mongo with a bounded context
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 	if err != nil {
-		panic(err)
+		log.Fatalf("mongo connect: %v", err)
 	}
-	defer func() {
-		if err := client.Disconnect(ctx); err != nil {
-			panic(err)
-		}
-	}()
+	defer client.Disconnect(context.Background())
 
-	// Create database reference (store)
-	mongoDB := client.Database(dbName)
-	store := db.NewStore(mongoDB) // Wrap mongoDB in your *db.Store type
+	database := client.Database(dbName)
 
-	// routes
+	// 4) Build our typed Store (collections + indexes)
+	store, err := db.NewStore(database)
+	if err != nil {
+		log.Fatalf("db store/init: %v", err)
+	}
+
+	// 5) HTTP wiring
 	r := gin.Default()
 	api := r.Group("/api")
 	{
@@ -55,4 +52,12 @@ func main() {
 
 	log.Printf("listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
+}
+
+// getenv reads an environment variable or returns the provided default.
+func getenv(key, def string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return def
 }
