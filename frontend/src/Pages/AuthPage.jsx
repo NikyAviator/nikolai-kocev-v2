@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 export default function AuthPage({ mode = 'signin' }) {
   const isSignUp = mode === 'signup';
 

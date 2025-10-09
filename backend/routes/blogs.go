@@ -20,15 +20,15 @@ func ListBlogs(store *db.Store) gin.HandlerFunc {
 		ctx, cancel := context.WithTimeout(c.Request.Context(), 5*time.Second)
 		defer cancel()
 
-		cur, err := store.Blogs.Find(ctx, bson.M{}, options.Find().SetSort(bson.D{{Key: "publishedAt", Value: -1}}))
+		cursor, err := store.Blogs.Find(ctx, bson.M{}, options.Find().SetSort(bson.D{{Key: "publishedAt", Value: -1}}))
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "query failed"})
 			return
 		}
-		defer cur.Close(ctx)
+		defer cursor.Close(ctx)
 
 		var out []models.Blog
-		if err := cur.All(ctx, &out); err != nil {
+		if err := cursor.All(ctx, &out); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "decode failed"})
 			return
 		}
@@ -40,7 +40,7 @@ func ListBlogs(store *db.Store) gin.HandlerFunc {
 func SeedBlogs(store *db.Store) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		now := time.Now()
-		docs := []interface{}{
+		docs := []any{
 			models.Blog{
 				ID:        primitive.NewObjectID(),
 				Title:     "Boost your conversion rate",
