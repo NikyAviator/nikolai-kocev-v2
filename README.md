@@ -94,23 +94,9 @@ Limits the output to 10 levels deep. Adjust this number if you want more or fewe
 
 ### To populate db with admin and three Blogs - TODO
 
-Add to the root of the repo:
+## TODO()
 
-```json
-{
-  "scripts": {
-    "seed": "node backend/config/seedBlog.js",
-    "seed:reset": "node backend/config/seedBlog.js --reset"
-  }
-}
-```
-
-Run from the repo root:
-
-```bash
-npm run seed          # append-only
-npm run seed:reset    # drops DB
-```
+This will be done with Go, I am working on the implementation as we speak.
 
 ---
 
