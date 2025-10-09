@@ -37,7 +37,7 @@ require (
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.3.0 // indirect
 	go.mongodb.org/mongo-driver v1.17.4
-	go.mongodb.org/mongo-driver/v2 v2.3.0
+	go.mongodb.org/mongo-driver/v2 v2.3.1
 	golang.org/x/arch v0.21.0 // indirect
 	golang.org/x/crypto v0.42.0
 	golang.org/x/net v0.44.0 // indirect
