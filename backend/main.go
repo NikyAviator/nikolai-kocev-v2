@@ -29,7 +29,7 @@ func main() {
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 	if err != nil {
-		log.Fatalf("mongo connect: %v", err)
+		panic(err)
 	}
 	defer client.Disconnect(context.Background())
 
@@ -38,7 +38,7 @@ func main() {
 	// 4) Build our typed Store (collections + indexes)
 	store, err := db.NewStore(database)
 	if err != nil {
-		log.Fatalf("db store/init: %v", err)
+		panic(err)
 	}
 
 	// 5) HTTP wiring
