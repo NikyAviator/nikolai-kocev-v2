@@ -23,7 +23,7 @@ func main() {
 	dbName := getenv("MONGODB_DBNAME", "nkv2")
 	port := getenv("PORT", "5000")
 
-	// 3) Connect to Mongo with a bounded context
+	// 3) Connect to Mongo with a bounded 10 second context
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
