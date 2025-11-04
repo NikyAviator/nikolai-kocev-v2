@@ -11,8 +11,8 @@ import (
 
 // Config holds minimal connection configuration.
 type Config struct {
-	URI         string        // e.g. mongodb+srv://user:pass@beachbuddy0.xxxxx.mongodb.net/?retryWrites=true&w=majority&appName=BeachBuddy0
-	DBName      string        // e.g. "BeachBuddy"
+	URI         string
+	DBName      string
 	ConnTimeout time.Duration // default 10s if zero
 }
 
