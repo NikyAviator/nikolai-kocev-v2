@@ -1,32 +1,56 @@
 package main
 
 import (
+	"context"
+	"fmt"
 	"log"
-	"os"
+	"net/http"
+	"time"
 
-	"github.com/joho/godotenv"
+	"github.com/gin-gonic/gin"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/env"
+	bbmongo "github.com/nikyaviator/nikolai-kocev-v2/backend/shared/mongo"
 )
 
 func main() {
-	// Load environment variables from .env file
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatalf("error loading .env file")
+	fmt.Printf("STARTING blog-service/cmd/main.go")
+
+	// Load envs from kbctl secret (if available)
+	// MONGODB_URI, MONGODB_DB
+	cfg := bbmongo.Config{
+		URI:         env.GetString("MONGODB_URI", ""),
+		DBName:      env.GetString("MONGODB_DB", ""),
+		ConnTimeout: 10 * time.Second,
 	}
+	_, db, closeFn, err := bbmongo.ConnectMongoDB(context.Background(), cfg)
+	if err != nil {
+		log.Fatalf("mongo connect failed: %v", err)
+	}
+	defer func() {
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		if err := closeFn(ctx); err != nil {
+			log.Printf("mongo disconnect error: %v", err)
+		}
+	}()
 
-	mongodbURI := os.Getenv("MONGODB_URI")
-	port := os.Getenv("PORT")
-	jwtSecret := os.Getenv("JWT_SECRET")
-	mongodbName := os.Getenv("MONGODB_NAME")
+	// ---- Gin wiring ----
+	r := gin.Default()
 
-	log.Println("MongoDB URI:", mongodbURI)
-	log.Println("Port:", port)
-	log.Println("JWT Secret:", jwtSecret)
-	log.Println("MongoDB Name:", mongodbName)
+	// Health endpoint (verifies DB by listing collections quickly)
+	r.GET("/healthz", func(c *gin.Context) {
+		ctx, cancel := context.WithTimeout(c.Request.Context(), 2*time.Second)
+		defer cancel()
+		_, err := db.ListCollectionNames(ctx, struct{}{})
+		if err != nil {
+			c.JSON(http.StatusServiceUnavailable, gin.H{"status": "degraded", "error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"status": "ok"})
+	})
 
-	log.Println("Environment variables loaded successfully")
-	log.Println("Now starting MongoDB instance")
-	log.Println("PPC")
-	// Here you would add the code to start your MongoDB instance or connect to it
-
+	log.Println("blog-service listening on :5000")
+	if err := r.Run(":5000"); err != nil {
+		log.Fatal(err)
+	}
 }
