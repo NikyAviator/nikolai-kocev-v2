@@ -1,6 +1,7 @@
 package domain
 
 import (
+	"context"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -8,7 +9,7 @@ import (
 
 // Maybe add A Bool for Published? Check if it correct syntax
 
-type Blog struct {
+type BlogModel struct {
 	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Title       string             `bson:"title"        json:"title"`
 	Slug        string             `bson:"slug"         json:"slug"`
@@ -35,4 +36,9 @@ type Author struct {
 	Role     string `bson:"role"     json:"role"`
 	Href     string `bson:"href"     json:"href"`
 	ImageURL string `bson:"imageUrl" json:"imageUrl"`
+}
+
+type BlogRepository interface {
+	// Define repository methods here
+	CreateBlog(ctx context.Context, blog *BlogModel) (*BlogModel, error)
 }
