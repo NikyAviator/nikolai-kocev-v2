@@ -15,11 +15,10 @@ import (
 func main() {
 	fmt.Printf("STARTING blog-service/cmd/main.go")
 
-	// Load envs from kbctl secret (if available)
-	// MONGODB_URI, MONGODB_DB
+	// 1) Connect to MongoDB
 	cfg := bbmongo.Config{
-		URI:         env.GetString("MONGODB_URI", ""),
-		DBName:      env.GetString("MONGODB_DB", ""),
+		URI:         env.GetString("MONGODB_URI", "mongodb://localhost:27017"),
+		DBName:      env.GetString("MONGODB_DB", "nkv2"),
 		ConnTimeout: 10 * time.Second,
 	}
 	_, db, closeFn, err := bbmongo.ConnectMongoDB(context.Background(), cfg)
