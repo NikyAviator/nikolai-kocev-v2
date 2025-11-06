@@ -9,12 +9,14 @@ import (
 )
 
 type mongoRepository struct {
-	db *mongo.Database
+	coll *mongo.Collection
 }
 
 func NewMongoRepository(db *mongo.Database) *mongoRepository {
-	return &mongoRepository{db: db}
+	return &mongoRepository{coll: db.Collection("blogs")}
 }
+
+// Call
 
 // Implement repository methods here
 func (r *mongoRepository) CreateBlog(ctx context.Context, blog *domain.BlogModel) (*domain.BlogModel, error) {
