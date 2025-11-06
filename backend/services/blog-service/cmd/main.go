@@ -16,7 +16,7 @@ func main() {
 	fmt.Printf("STARTING blog-service/cmd/main.go")
 
 	// 1) Connect to MongoDB
-	cfg := bbmongo.Config{
+	cfg := bbmongo.MongoConfig{
 		URI:         env.GetString("MONGODB_URI", "mongodb://localhost:27017"),
 		DBName:      env.GetString("MONGODB_DB", "nkv2"),
 		ConnTimeout: 10 * time.Second,
@@ -25,6 +25,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("mongo connect failed: %v", err)
 	}
+	// Ensure disconnection on exit
 	defer func() {
 		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer cancel()

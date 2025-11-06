@@ -10,7 +10,7 @@ import (
 )
 
 // Config holds minimal connection configuration.
-type MongoConfigConfig struct {
+type MongoConfig struct {
 	URI         string
 	DBName      string
 	ConnTimeout time.Duration // default 10s if zero
@@ -18,7 +18,7 @@ type MongoConfigConfig struct {
 
 // Connect opens a MongoDB connection, verifies it with Ping, and returns
 // the client, a database handle, and a cleanup function you should call on shutdown.
-func ConnectMongoDB(parentCtx context.Context, cfg MongoConfigConfig) (*mongodrv.Client, *mongodrv.Database, func(context.Context) error, error) {
+func ConnectMongoDB(parentCtx context.Context, cfg MongoConfig) (*mongodrv.Client, *mongodrv.Database, func(context.Context) error, error) {
 	if cfg.URI == "" {
 		return nil, nil, nil, errors.New("mongo: Config.URI is empty")
 	}
@@ -37,6 +37,7 @@ func ConnectMongoDB(parentCtx context.Context, cfg MongoConfigConfig) (*mongodrv
 	ctx, cancel := context.WithTimeout(parentCtx, cfg.ConnTimeout)
 	defer cancel()
 
+	// Connect and Ping
 	client, err := mongodrv.Connect(ctx, opts)
 	if err != nil {
 		return nil, nil, nil, err
@@ -45,12 +46,14 @@ func ConnectMongoDB(parentCtx context.Context, cfg MongoConfigConfig) (*mongodrv
 		_ = client.Disconnect(context.Background())
 		return nil, nil, nil, err
 	}
-
+	// Creates a handle to the database
 	db := client.Database(cfg.DBName)
 
+	// Cleanup function to close the connection
 	closeFn := func(ctx context.Context) error {
 		return client.Disconnect(ctx)
 	}
 
+	// returns the client, database handle, and cleanup function, error
 	return client, db, closeFn, nil
 }
