@@ -3,27 +3,41 @@ package domain
 import (
 	"context"
 	"time"
-
-	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-// Maybe add A Bool for Published? Check if it correct syntax
+type CreateBlogInput struct {
+	Title     string `json:"title"       binding:"required"`
+	Slug      string `json:"slug"        binding:"required"`
+	Excerpt   string `json:"excerpt"     binding:"required"`
+	ContentMD string `json:"contentMd"   binding:"required"`
+	ImageURL  string `json:"imageUrl"`
+	Category  struct {
+		Title string `json:"title"`
+		Href  string `json:"href"`
+	} `json:"category"`
+	Author struct {
+		Name     string `json:"name"`
+		Role     string `json:"role"`
+		Href     string `json:"href"`
+		ImageURL string `json:"imageUrl"`
+	} `json:"author"`
+	Tags []string `json:"tags"`
+}
 
-type BlogModel struct {
-	ID          primitive.ObjectID `bson:"_id,omitempty" json:"id"`
-	Title       string             `bson:"title"        json:"title"`
-	Slug        string             `bson:"slug"         json:"slug"`
-	Excerpt     string             `bson:"excerpt"      json:"excerpt"`
-	ContentMD   string             `bson:"contentMd"    json:"contentMd"`
-	ImageURL    string             `bson:"imageUrl"     json:"imageUrl"`
-	Category    Category           `bson:"category"     json:"category"`
-	Author      Author             `bson:"author"       json:"author"`
-	PublishedAt time.Time          `bson:"publishedAt"  json:"publishedAt"`
-	// Published   bool               `bson:"published,false"    json:"published"`
-	Tags []string `bson:"tags,omitempty" json:"tags,omitempty"`
-
-	CreatedAt time.Time `bson:"createdAt" json:"createdAt"`
-	UpdatedAt time.Time `bson:"updatedAt" json:"updatedAt"`
+// Persisted model (what we store in Mongo)
+type Blog struct {
+	ID          string    `bson:"_id,omitempty"   json:"id"`
+	Title       string    `bson:"title"           json:"title"`
+	Slug        string    `bson:"slug"            json:"slug"`
+	Excerpt     string    `bson:"excerpt"         json:"excerpt"`
+	ContentMD   string    `bson:"contentMd"       json:"contentMd"`
+	ImageURL    string    `bson:"imageUrl"        json:"imageUrl"`
+	Category    Category  `bson:"category"        json:"category"`
+	Author      Author    `bson:"author"          json:"author"`
+	PublishedAt time.Time `bson:"publishedAt"     json:"publishedAt"`
+	Tags        []string  `bson:"tags,omitempty"  json:"tags,omitempty"`
+	CreatedAt   time.Time `bson:"createdAt"       json:"createdAt"`
+	UpdatedAt   time.Time `bson:"updatedAt"       json:"updatedAt"`
 }
 
 type Category struct {
@@ -40,5 +54,5 @@ type Author struct {
 
 type BlogRepository interface {
 	// Define repository methods here
-	CreateBlog(ctx context.Context, blog *BlogModel) (*BlogModel, error)
+	CreateBlog(ctx context.Context, blog *Blog) (*Blog, error)
 }

@@ -2,37 +2,48 @@ package service
 
 import (
 	"context"
+	"errors"
+	"strings"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
 )
 
-type service struct {
-	repo domain.BlogRepository
+type BlogService interface {
+	CreateBlog(ctx context.Context, in domain.CreateBlogInput) (domain.Blog, error)
 }
 
-func NewService(repo domain.BlogRepository) *service {
-	return &service{
-		repo: repo,
-	}
+type blogService struct {
+	repo repository.BlogRepository
 }
 
-// Implement service methods here
-func (s *service) CreateBlog(ctx context.Context, blog *domain.BlogModel) (*domain.BlogModel, error) {
-	newBlog := &domain.BlogModel{
-		ID:          primitive.NewObjectID(),
-		Title:       blog.Title,
-		Slug:        blog.Slug,
-		Excerpt:     blog.Excerpt,
-		ContentMD:   blog.ContentMD,
-		ImageURL:    blog.ImageURL,
-		Category:    blog.Category,
-		Author:      blog.Author,
-		PublishedAt: blog.PublishedAt,
-		Tags:        blog.Tags,
-		CreatedAt:   blog.CreatedAt,
-		UpdatedAt:   blog.UpdatedAt,
+func NewBlogService(r repository.BlogRepository) BlogService {
+	return &blogService{repo: r}
+}
+
+func (s *blogService) CreateBlog(ctx context.Context, in domain.CreateBlogInput) (domain.Blog, error) {
+	if strings.TrimSpace(in.Title) == "" || strings.TrimSpace(in.Slug) == "" ||
+		strings.TrimSpace(in.Excerpt) == "" || strings.TrimSpace(in.ContentMD) == "" {
+		return domain.Blog{}, errors.New("missing required fields")
 	}
 
-	return s.repo.CreateBlog(ctx, newBlog)
+	b := domain.Blog{
+		Title:     in.Title,
+		Slug:      in.Slug,
+		Excerpt:   in.Excerpt,
+		ContentMD: in.ContentMD,
+		ImageURL:  in.ImageURL,
+		Category: domain.Category{
+			Title: in.Category.Title,
+			Href:  in.Category.Href,
+		},
+		Author: domain.Author{
+			Name:     in.Author.Name,
+			Role:     in.Author.Role,
+			Href:     in.Author.Href,
+			ImageURL: in.Author.ImageURL,
+		},
+		Tags: in.Tags,
+	}
+	return s.repo.Create(ctx, b)
 }
