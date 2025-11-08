@@ -43,7 +43,7 @@ func main() {
 	r := gin.Default()
 	api := r.Group("/api")
 	{
-		api.GET("/health", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
+		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
 		api.POST("/blogs", createBlogHandler(svc))
 	}
 
