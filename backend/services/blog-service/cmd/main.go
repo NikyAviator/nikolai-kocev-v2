@@ -8,9 +8,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	// shared helpers (env + mongo)
-
-	// blog layers
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
