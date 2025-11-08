@@ -33,7 +33,7 @@ func (r *MongoBlogRepository) Create(ctx context.Context, b domain.Blog) (domain
 	if err != nil {
 		return domain.Blog{}, err
 	}
-
+	// Set the generated ID
 	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
 		b.ID = oid.Hex()
 	}
