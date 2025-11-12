@@ -42,13 +42,14 @@ func main() {
 	{
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
 		api.POST("/blogs", createBlogHandler(svc))
-		api.DELETE("/blogs/:id", deleteBlogHandler(svc)) // Example for future expansion
+		api.DELETE("/blogs/:id", deleteBlogHandler(svc))
 	}
 
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
 }
 
+// 5) Handlers
 // CreateBlogHandler handles the creation of a new blog post.
 func createBlogHandler(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
