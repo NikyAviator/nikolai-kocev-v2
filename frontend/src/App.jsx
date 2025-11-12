@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900">
         <Header />
-        <main className="relative flex-grow">
+        <main className="relative grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/blog" element={<BlogHome />} />
