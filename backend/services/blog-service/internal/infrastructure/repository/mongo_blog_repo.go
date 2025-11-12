@@ -11,6 +11,7 @@ import (
 
 type BlogRepository interface {
 	Create(ctx context.Context, b domain.Blog) (domain.Blog, error)
+	Delete(ctx context.Context, id string) error
 }
 
 type MongoBlogRepository struct {
@@ -38,4 +39,13 @@ func (r *MongoBlogRepository) Create(ctx context.Context, b domain.Blog) (domain
 		b.ID = oid.Hex()
 	}
 	return b, nil
+}
+
+func (r *MongoBlogRepository) Delete(ctx context.Context, id string) error {
+	oid, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return err
+	}
+	_, err = r.coll.DeleteOne(ctx, primitive.M{"_id": oid})
+	return err
 }

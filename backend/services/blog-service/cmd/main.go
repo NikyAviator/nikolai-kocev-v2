@@ -42,12 +42,14 @@ func main() {
 	{
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
 		api.POST("/blogs", createBlogHandler(svc))
+		api.DELETE("/blogs/:id", deleteBlogHandler(svc)) // Example for future expansion
 	}
 
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
 }
 
+// CreateBlogHandler handles the creation of a new blog post.
 func createBlogHandler(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var in domain.CreateBlogInput
@@ -62,5 +64,23 @@ func createBlogHandler(svc service.BlogService) gin.HandlerFunc {
 			return
 		}
 		c.JSON(http.StatusCreated, created)
+	}
+}
+
+// DeleteBlogHandler handles the deletion of a blog post by ID.
+func deleteBlogHandler(svc service.BlogService) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		id := c.Param("id")
+		if id == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "missing blog id"})
+			return
+		}
+
+		err := svc.DeleteBlog(c.Request.Context(), id)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		c.Status(http.StatusNoContent)
 	}
 }

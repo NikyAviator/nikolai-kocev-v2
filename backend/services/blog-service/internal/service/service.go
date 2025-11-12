@@ -11,6 +11,7 @@ import (
 
 type BlogService interface {
 	CreateBlog(ctx context.Context, in domain.CreateBlogInput) (domain.Blog, error)
+	DeleteBlog(ctx context.Context, id string) error
 }
 
 type blogService struct {
@@ -46,4 +47,8 @@ func (s *blogService) CreateBlog(ctx context.Context, in domain.CreateBlogInput)
 		Tags: in.Tags,
 	}
 	return s.repo.Create(ctx, b)
+}
+
+func (s *blogService) DeleteBlog(ctx context.Context, id string) error {
+	return s.repo.Delete(ctx, id)
 }
