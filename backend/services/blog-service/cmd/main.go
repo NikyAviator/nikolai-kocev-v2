@@ -39,6 +39,7 @@ func main() {
 
 	// 4) HTTP
 	r := gin.Default()
+	// ADD USE CORS LATER
 	api := r.Group("/api")
 	{
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
