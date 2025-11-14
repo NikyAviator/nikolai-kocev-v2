@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"context"
 	"time"
 )
 
@@ -50,9 +49,4 @@ type Author struct {
 	Role     string `bson:"role"     json:"role"`
 	Href     string `bson:"href"     json:"href"`
 	ImageURL string `bson:"imageUrl" json:"imageUrl"`
-}
-
-type BlogRepository interface {
-	// Define repository methods here
-	CreateBlog(ctx context.Context, blog *Blog) (*Blog, error)
 }
