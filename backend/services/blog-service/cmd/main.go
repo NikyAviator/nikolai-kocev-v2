@@ -43,6 +43,7 @@ func main() {
 	{
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
 		api.POST("/blogs", createBlogHandler(svc))
+		// api.GET("/blogs", getBlogsHandler(svc))
 		api.DELETE("/blogs/:id", deleteBlogHandler(svc))
 		// Destructive endpoint (guarded)
 		api.DELETE("/blogs", deleteAllBlogsHandler(svc, allowDestructive))
@@ -71,6 +72,13 @@ func createBlogHandler(svc service.BlogService) gin.HandlerFunc {
 		c.JSON(http.StatusCreated, created)
 	}
 }
+
+// GetBlogsHandler handles fetching all blog posts.
+// func getBlogsHandler(svc service.BlogService) gin.HandlerFunc{
+// 	return func(c *gin.Context) {
+
+// 	}
+// }
 
 // DeleteBlogHandler handles the deletion of a blog post by ID.
 func deleteBlogHandler(svc service.BlogService) gin.HandlerFunc {
