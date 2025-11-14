@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -12,6 +13,7 @@ import (
 type BlogRepository interface {
 	Create(ctx context.Context, b domain.Blog) (domain.Blog, error)
 	Delete(ctx context.Context, id string) error
+	DeleteAll(ctx context.Context) (int64, error)
 }
 
 type MongoBlogRepository struct {
@@ -48,4 +50,12 @@ func (r *MongoBlogRepository) Delete(ctx context.Context, id string) error {
 	}
 	_, err = r.coll.DeleteOne(ctx, primitive.M{"_id": oid})
 	return err
+}
+
+func (r *MongoBlogRepository) DeleteAll(ctx context.Context) (int64, error) {
+	res, err := r.coll.DeleteMany(ctx, bson.D{})
+	if err != nil {
+		return 0, err
+	}
+	return res.DeletedCount, nil
 }
