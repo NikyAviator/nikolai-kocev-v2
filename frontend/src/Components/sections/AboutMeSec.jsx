@@ -135,7 +135,7 @@ export default function AboutMeSec() {
                   Current book I am reading?
                 </dt>
                 <dd className="order-first text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                  <span>The Wheel of Time - The Great Hunt (Book 2)</span>
+                  <span>The Children of Húrin (J.R.R. Tolkien)</span>
                 </dd>
               </div>
               <div className="flex flex-col gap-y-2 max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4 dark:max-sm:border-gray-700">
