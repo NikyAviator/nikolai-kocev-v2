@@ -48,7 +48,7 @@ func main() {
 		api.DELETE("/blogs/:id", deleteBlogHandler(svc))
 		// Destructive endpoint (guarded)
 		api.DELETE("/blogs", deleteAllBlogsHandler(svc, allowDestructive))
-
+		api.GET("/blogs", listBlogsHandler(svc))
 	}
 
 	log.Printf("blog-service listening on :%s", port)
@@ -115,4 +115,15 @@ func deleteAllBlogsHandler(svc service.BlogService, allowDestructive bool) gin.H
 		c.JSON(http.StatusOK, gin.H{"deleted": n})
 	}
 
+}
+
+func listBlogsHandler(svc service.BlogService) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		blogs, err := svc.ListBlogs(c.Request.Context())
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, blogs)
+	}
 }

@@ -8,12 +8,14 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 type BlogRepository interface {
 	Create(ctx context.Context, b domain.Blog) (domain.Blog, error)
 	Delete(ctx context.Context, id string) error
 	DeleteAll(ctx context.Context) (int64, error)
+	List(ctx context.Context) ([]domain.Blog, error)
 }
 
 type MongoBlogRepository struct {
@@ -58,4 +60,22 @@ func (r *MongoBlogRepository) DeleteAll(ctx context.Context) (int64, error) {
 		return 0, err
 	}
 	return res.DeletedCount, nil
+}
+
+// Loads all blogs into memory; suitable for small datasets.
+// For bigger datasets, consider pagination.
+func (r *MongoBlogRepository) List(ctx context.Context) ([]domain.Blog, error) {
+	cursor, err := r.coll.Find(ctx, bson.M{}, options.Find().SetSort(bson.D{{Key: "publishedAt", Value: -1}}))
+
+	if err != nil {
+		return nil, err
+	}
+	defer cursor.Close(ctx)
+
+	var blogs []domain.Blog
+
+	if err := cursor.All(ctx, &blogs); err != nil {
+		return nil, err
+	}
+	return blogs, nil
 }
