@@ -19,6 +19,7 @@ k8s_yaml([
     'infra/development/K8s/frontend-service.yaml',
     'infra/development/K8s/backend-deployment.yaml',
     'infra/development/K8s/backend-service.yaml',
+    'infra/development/K8s/ingress.yaml',
 
 ])
 
