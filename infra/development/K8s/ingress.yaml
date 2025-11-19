@@ -6,8 +6,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: nkv2.local
-      http:
+    - http:
         paths:
           - path: /api
             pathType: Prefix
