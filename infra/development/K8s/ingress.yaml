@@ -5,7 +5,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - http:
+    - host: nkv2.local
+      http:
         paths:
           - path: /api
             pathType: Prefix
