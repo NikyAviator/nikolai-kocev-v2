@@ -15,7 +15,7 @@ function App() {
         <main className="relative grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/blogs" element={<BlogHome />} />
+            <Route path="/api/blogs" element={<BlogHome />} />
           </Routes>
           <ScrollToTopButton />
         </main>

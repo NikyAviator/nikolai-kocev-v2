@@ -54,7 +54,7 @@ export default function Header() {
         </button>
         <div className="hidden lg:flex lg:items-end lg:gap-4">
           <Link
-            to="/blogs"
+            to="/api/blogs"
             className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
           >
             Blog
