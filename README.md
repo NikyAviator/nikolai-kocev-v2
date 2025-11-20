@@ -33,9 +33,7 @@
 
 ### Running in Development
 
-## **TODO INSTALL ALL DEPS Node & GO Bash Script on fresh git clone**
-
----
+To run either the frontend or backend individually, follow these steps:
 
 To run **frontend**, cd into frontend and:
 
@@ -58,7 +56,6 @@ docker run --rm -p 5000:5000 blog-service
 ```
 
 - Backend (GO) will run on http://localhost:5000/
-- any calls to /api/\* on **5173** from the front end will be forwarded to the GO backend at port **5000**.
 
 To create a **Secret** (dev only, and path added to .gitignore):
 
@@ -75,6 +72,12 @@ To update later:
 kubectl delete secret blog-service-env
 kubectl create secret generic blog-service-env \
   --from-env-file=infra/development/secrets/blog-service.env
+```
+
+To enable ingress addons in minikube:
+
+```bash
+minikube addons enable ingress
 ```
 
 ---
