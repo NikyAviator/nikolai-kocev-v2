@@ -49,6 +49,7 @@ func main() {
 		// Destructive endpoint (guarded)
 		api.DELETE("/blogs", deleteAllBlogsHandler(svc, allowDestructive))
 		api.GET("/blogs", listBlogsHandler(svc))
+		api.GET("/blogs/:slug", getBlogBySlug(svc))
 	}
 
 	log.Printf("blog-service listening on :%s", port)
@@ -125,5 +126,22 @@ func listBlogsHandler(svc service.BlogService) gin.HandlerFunc {
 			return
 		}
 		c.JSON(http.StatusOK, blogs)
+	}
+}
+
+func getBlogBySlug(svc service.BlogService) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		slug := c.Param("slug")
+		if slug == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "missing blog slug"})
+			return
+		}
+
+		blog, err := svc.ListBlogBySlug(c.Request.Context(), slug)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusOK, blog)
 	}
 }

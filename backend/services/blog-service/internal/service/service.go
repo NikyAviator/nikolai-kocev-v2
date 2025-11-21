@@ -14,6 +14,7 @@ type BlogService interface {
 	DeleteBlog(ctx context.Context, id string) error
 	DeleteAllBlogs(ctx context.Context) (int64, error)
 	ListBlogs(ctx context.Context) ([]domain.Blog, error)
+	ListBlogBySlug(ctx context.Context, slug string) (domain.Blog, error)
 }
 
 type blogService struct {
@@ -61,4 +62,8 @@ func (s *blogService) DeleteAllBlogs(ctx context.Context) (int64, error) {
 
 func (s *blogService) ListBlogs(ctx context.Context) ([]domain.Blog, error) {
 	return s.repo.List(ctx)
+}
+
+func (s *blogService) ListBlogBySlug(ctx context.Context, slug string) (domain.Blog, error) {
+	return s.repo.GetBySlug(ctx, slug)
 }

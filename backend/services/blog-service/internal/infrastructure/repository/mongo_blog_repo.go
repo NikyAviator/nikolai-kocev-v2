@@ -16,6 +16,7 @@ type BlogRepository interface {
 	Delete(ctx context.Context, id string) error
 	DeleteAll(ctx context.Context) (int64, error)
 	List(ctx context.Context) ([]domain.Blog, error)
+	GetBySlug(ctx context.Context, slug string) (domain.Blog, error)
 }
 
 type MongoBlogRepository struct {
@@ -24,6 +25,15 @@ type MongoBlogRepository struct {
 
 func NewMongoBlogRepository(db *mongo.Database) *MongoBlogRepository {
 	return &MongoBlogRepository{coll: db.Collection("blogs")}
+}
+
+func (r *MongoBlogRepository) EnsureIndexes(ctx context.Context) error {
+	models := []mongo.IndexModel{
+		{Keys: bson.D{{Key: "slug", Value: 1}}, Options: options.Index().SetUnique(true)},
+		{Keys: bson.D{{Key: "publishedAt", Value: -1}}},
+	}
+	_, err := r.coll.Indexes().CreateMany(ctx, models)
+	return err
 }
 
 func (r *MongoBlogRepository) Create(ctx context.Context, b domain.Blog) (domain.Blog, error) {
@@ -78,4 +88,13 @@ func (r *MongoBlogRepository) List(ctx context.Context) ([]domain.Blog, error) {
 		return nil, err
 	}
 	return blogs, nil
+}
+
+func (r *MongoBlogRepository) GetBySlug(ctx context.Context, slug string) (domain.Blog, error) {
+	var blog domain.Blog
+	err := r.coll.FindOne(ctx, bson.M{"slug": slug}).Decode(&blog)
+	if err != nil {
+		return domain.Blog{}, err
+	}
+	return blog, err
 }
