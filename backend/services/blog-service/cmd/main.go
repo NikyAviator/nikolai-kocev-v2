@@ -35,6 +35,10 @@ func main() {
 
 	// 3) DI: repo -> service
 	repo := repository.NewMongoBlogRepository(db)
+	// Ensure indexes on startup
+	if err := repo.EnsureIndexes(context.Background()); err != nil {
+		log.Fatal("ensure indexes:", err)
+	}
 	svc := service.NewBlogService(repo)
 
 	// 4) HTTP
