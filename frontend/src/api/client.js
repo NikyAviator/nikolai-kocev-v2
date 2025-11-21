@@ -13,3 +13,9 @@ export default async function getBlogs() {
     return [];
   }
 }
+
+export async function getBlogBySlug(slug) {
+  const res = await fetch(`/api/blogs/${slug}`);
+  if (!res.ok) throw new Error('Failed to fetch blog');
+  return res.json();
+}
