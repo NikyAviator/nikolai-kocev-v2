@@ -39,7 +39,7 @@ func main() {
 
 	// 4) HTTP
 	r := gin.Default()
-	// ADD USE CORS LATER
+	// ADD USE CORS LATER (maybe not needed in K8s with ingress)
 	api := r.Group("/api")
 	{
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
