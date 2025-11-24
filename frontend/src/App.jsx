@@ -4,6 +4,7 @@ import HomePage from './Pages/HomePage.jsx';
 import Footer from './Components/Footer.jsx';
 import ScrollToTopButton from './Components/ui/ScrollToTopButton.jsx';
 import BlogHome from './Pages/BlogHome.jsx';
+import RenderOneBlog from './Pages/RenderOneBlog.jsx';
 
 import './styles.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/blogs" element={<BlogHome />} />
+            <Route path="/blogs/:slug" element={<RenderOneBlog />} />
           </Routes>
           <ScrollToTopButton />
         </main>
