@@ -18,7 +18,7 @@ echo "Updating Go deps (patch) in: $BACKEND"
   # Patch-level upgrades for all modules used by this module
   go get -u=patch ./...
   # Clean up go.mod/go.sum and prune unused deps
-  # go mod tidy
+  go mod tidy
   # (Optional) quick compile check
   go build ./...
 )
