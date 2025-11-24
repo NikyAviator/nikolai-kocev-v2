@@ -15,7 +15,17 @@ export default async function getBlogs() {
 }
 
 export async function getBlogBySlug(slug) {
-  const res = await fetch(`/api/blogs/${slug}`);
-  if (!res.ok) throw new Error('Failed to fetch blog');
-  return res.json();
+  try {
+    const res = await fetch(`/api/blogs/${encodeURIComponent(slug)}`, {
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) {
+      throw new Error('Failed to fetch blog post');
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    return null;
+  }
 }
