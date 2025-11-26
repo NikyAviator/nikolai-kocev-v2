@@ -1,6 +1,6 @@
 // src/Pages/RenderOneBlog.jsx
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getBlogBySlug } from '../api/client';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -30,9 +30,6 @@ export default function RenderOneBlog() {
     return (
       <div className="p-8 text-center">
         <p className="text-red-600">{err}</p>
-        <Link to="/blogs" className="text-blue-600 underline">
-          Back to blogs
-        </Link>
       </div>
     );
   }
@@ -40,10 +37,6 @@ export default function RenderOneBlog() {
 
   return (
     <article className="prose prose-neutral mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <Link to="/blogs" className="text-sm text-blue-600 underline">
-        &larr; All blogs
-      </Link>
-
       <h1 className="mb-2">{blog.title}</h1>
 
       <p className="text-sm text-gray-500">
@@ -62,12 +55,6 @@ export default function RenderOneBlog() {
       <ReactMarkdown remarkPlugins={[remarkGfm]}>
         {blog.contentMd || ''}
       </ReactMarkdown>
-
-      {Array.isArray(blog.tags) && blog.tags.length > 0 && (
-        <p className="mt-6 text-sm text-gray-600">
-          Tags: {blog.tags.join(', ')}
-        </p>
-      )}
     </article>
   );
 }

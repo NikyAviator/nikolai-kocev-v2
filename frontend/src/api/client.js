@@ -1,4 +1,4 @@
-export default async function getBlogs() {
+export async function getBlogs() {
   try {
     const res = await fetch('/api/blogs', {
       headers: { Accept: 'application/json' },
