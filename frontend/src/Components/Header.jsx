@@ -57,7 +57,7 @@ export default function Header() {
             to="/blogs"
             className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
           >
-            Blog
+            Blogs
           </Link>
         </div>
       </nav>
