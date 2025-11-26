@@ -12,7 +12,6 @@ type CreateBlogInput struct {
 	ImageURL  string `json:"imageUrl"`
 	Category  struct {
 		Title string `json:"title"`
-		Href  string `json:"href"`
 	} `json:"category"`
 	Tags []string `json:"tags"`
 }
@@ -34,5 +33,4 @@ type Blog struct {
 
 type Category struct {
 	Title string `bson:"title" json:"title"`
-	Href  string `bson:"href"  json:"href"`
 }

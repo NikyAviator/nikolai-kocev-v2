@@ -39,7 +39,6 @@ func (s *blogService) CreateBlog(ctx context.Context, in domain.CreateBlogInput)
 		ImageURL:  in.ImageURL,
 		Category: domain.Category{
 			Title: in.Category.Title,
-			Href:  in.Category.Href,
 		},
 		Tags: in.Tags,
 	}
