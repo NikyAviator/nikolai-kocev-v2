@@ -104,23 +104,6 @@ export default function BlogHome() {
                     {post.excerpt}
                   </p>
                 </div>
-
-                <div className="relative mt-8 flex items-center gap-x-4 justify-self-end">
-                  <img
-                    alt={post.author?.name || ''}
-                    src={post.author?.imageUrl}
-                    className="size-10 rounded-full bg-gray-100"
-                  />
-                  <div className="text-sm/6">
-                    <p className="font-semibold text-gray-900">
-                      <a href={post.author?.href || '#'}>
-                        <span className="absolute inset-0" />
-                        {post.author?.name}
-                      </a>
-                    </p>
-                    <p className="text-gray-600">{post.author?.role}</p>
-                  </div>
-                </div>
               </div>
             </article>
           ))}

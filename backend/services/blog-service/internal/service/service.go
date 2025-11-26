@@ -41,12 +41,6 @@ func (s *blogService) CreateBlog(ctx context.Context, in domain.CreateBlogInput)
 			Title: in.Category.Title,
 			Href:  in.Category.Href,
 		},
-		Author: domain.Author{
-			Name:     in.Author.Name,
-			Role:     in.Author.Role,
-			Href:     in.Author.Href,
-			ImageURL: in.Author.ImageURL,
-		},
 		Tags: in.Tags,
 	}
 	return s.repo.Create(ctx, b)
