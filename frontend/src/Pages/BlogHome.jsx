@@ -94,12 +94,12 @@ export default function BlogHome() {
                   </div>
 
                   <div className="group relative grow">
-                    <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                      <Link to={`/blogs/${post.slug}`}>
-                        <span className="absolute inset-0" />
+                    <Link to={`/blogs/${post.slug}`} className="group">
+                      <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
                         {post.title}
-                      </Link>
-                    </h3>
+                      </h3>
+                    </Link>
+
                     <p className="mt-5 line-clamp-3 text-sm/6 text-gray-600">
                       {post.excerpt}
                     </p>
