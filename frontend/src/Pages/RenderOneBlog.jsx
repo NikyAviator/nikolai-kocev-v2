@@ -1,89 +1,72 @@
+// src/Pages/RenderOneBlog.jsx
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { getBlogBySlug } from '../api/client';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import client from '../api/client';
 
 export default function RenderOneBlog() {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState(null);
+  const [err, setErr] = useState('');
 
   useEffect(() => {
-    let abort = false;
     (async () => {
       try {
-        const res = await client.get(`/api/blogs/${slug}`);
-        if (!abort) {
-          setBlog(res.data);
-          setLoading(false);
-        }
+        const data = await getBlogBySlug(slug);
+        setBlog(data);
       } catch (e) {
-        if (!abort) {
-          console.error('Error fetching blog:', e);
-          setErr('Failed to load blog');
-          setLoading(false);
-        }
+        setErr('Not found');
+        console.error(e);
+      } finally {
+        setLoading(false);
       }
     })();
-    return () => {
-      abort = true;
-    };
   }, [slug]);
 
-  if (loading) return <div className="p-8 text-gray-500">Loading…</div>;
-  if (err) return <div className="p-8 text-red-600">{err}</div>;
-  if (!blog) return <div className="p-8">Not found</div>;
-
-  return (
-    <article className="mx-auto max-w-3xl p-6">
-      <div className="mb-4">
-        <Link to="/blogs" className="text-sm text-blue-600 hover:underline">
-          &larr; Back to all blogs
+  if (loading) return <div className="p-8 text-center">Loading…</div>;
+  if (err) {
+    return (
+      <div className="p-8 text-center">
+        <p className="text-red-600">{err}</p>
+        <Link to="/blogs" className="text-blue-600 underline">
+          Back to blogs
         </Link>
       </div>
+    );
+  }
+  if (!blog) return null;
 
-      <h1 className="mt-2 text-3xl font-bold text-gray-900">{blog.title}</h1>
+  return (
+    <article className="prose prose-neutral mx-auto px-4 py-12 sm:px-6 lg:px-8">
+      <Link to="/blogs" className="text-sm text-blue-600 underline">
+        &larr; All blogs
+      </Link>
 
-      <div className="mt-3 flex items-center gap-3 text-sm text-gray-500">
-        {blog.category?.title && (
-          <span className="rounded-full bg-gray-100 px-3 py-1">
-            {blog.category.title}
-          </span>
-        )}
-        {blog.publishedAt && (
-          <time className="text-gray-500">
-            {new Date(blog.publishedAt).toLocaleDateString()}
-          </time>
-        )}
-      </div>
+      <h1 className="mb-2">{blog.title}</h1>
+
+      <p className="text-sm text-gray-500">
+        {new Date(blog.publishedAt).toLocaleString()}{' '}
+        {blog.category?.title ? `• ${blog.category.title}` : ''}
+      </p>
 
       {blog.imageUrl && (
         <img
           src={blog.imageUrl}
           alt={blog.title}
-          className="mt-6 w-full rounded-2xl object-cover"
+          className="my-6 w-full rounded-xl"
         />
       )}
 
-      <div className="prose prose-neutral mt-8 max-w-none">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {blog.contentMd || ''}
-        </ReactMarkdown>
-      </div>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {blog.contentMd || ''}
+      </ReactMarkdown>
 
       {Array.isArray(blog.tags) && blog.tags.length > 0 && (
-        <div className="mt-8 flex flex-wrap gap-2">
-          {blog.tags.map((t) => (
-            <span
-              key={t}
-              className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+        <p className="mt-6 text-sm text-gray-600">
+          Tags: {blog.tags.join(', ')}
+        </p>
       )}
     </article>
   );
