@@ -1,0 +1,35 @@
+package service
+
+import (
+	"context"
+	"errors"
+	"strings"
+
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
+)
+
+type UserService interface {
+	CreateUser(ctx context.Context, in domain.User) (domain.User, error)
+}
+
+type userService struct {
+	userRepo repository.UserRepository
+}
+
+func NewUserService(r repository.UserRepository) UserService {
+	return &userService{userRepo: r}
+}
+
+func (s *userService) CreateUser(ctx context.Context, in domain.User) (domain.User, error) {
+
+	if strings.TrimSpace(in.AdminEmail) == "" || strings.TrimSpace(in.Password) == "" {
+		return domain.User{}, errors.New("missing required fields")
+	}
+
+	user := domain.User{
+		AdminEmail: in.AdminEmail,
+		Password:   in.Password,
+	}
+	return s.userRepo.Create(ctx, user)
+}
