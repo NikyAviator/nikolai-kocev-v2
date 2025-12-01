@@ -33,27 +33,35 @@ func main() {
 	}
 	defer func() { _ = closeMongo(context.Background()) }()
 
-	// 3) DI: repo -> service
-	repo := repository.NewMongoBlogRepository(db)
+	// 3) DI: repos -> services
+	blogRepo := repository.NewMongoBlogRepository(db)
+	userRepo := repository.NewMongoUserRepository(db)
 	// Ensure indexes on startup
-	if err := repo.EnsureIndexes(context.Background()); err != nil {
-		log.Fatal("ensure indexes:", err)
+	if err := blogRepo.EnsureIndexes(context.Background()); err != nil {
+		log.Fatal("ensure blog indexes:", err)
 	}
-	svc := service.NewBlogService(repo)
-
+	if err := userRepo.EnsureIndexes(context.Background()); err != nil {
+		log.Fatal("ensure user indexes:", err)
+	}
+	blogSvc := service.NewBlogService(blogRepo)
+	userSvc := service.NewUserService(userRepo)
 	// 4) HTTP
 	r := gin.Default()
 	// ADD USE CORS LATER (maybe not needed in K8s with ingress)
 	api := r.Group("/api")
 	{
+		// Health check of pod not server, right now?
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(200, gin.H{"ok": true}) })
-		api.POST("/blogs", createBlogHandler(svc))
-		// api.GET("/blogs", getBlogsHandler(svc))
-		api.DELETE("/blogs/:id", deleteBlogHandler(svc))
-		// Destructive endpoint (guarded)
-		api.DELETE("/blogs", deleteAllBlogsHandler(svc, allowDestructive))
-		api.GET("/blogs", listBlogsHandler(svc))
-		api.GET("/blogs/:slug", getBlogBySlug(svc))
+		// Blogs endpoints
+		// Public endpoints
+		api.GET("/blogs", listBlogsHandler(blogSvc))
+		api.GET("/blogs/:slug", getBlogBySlug(blogSvc))
+		// Protected & Destructive endpoint (guarded)
+		api.POST("/blogs", createBlogHandler(blogSvc))
+		api.DELETE("/blogs/:id", deleteBlogHandler(blogSvc))
+		api.DELETE("/blogs", deleteAllBlogsHandler(blogSvc, allowDestructive))
+		// Users endpoints
+		api.POST("/users", createUserHandler(userSvc))
 	}
 
 	log.Printf("blog-service listening on :%s", port)
@@ -147,5 +155,22 @@ func getBlogBySlug(svc service.BlogService) gin.HandlerFunc {
 			return
 		}
 		c.JSON(http.StatusOK, blog)
+	}
+}
+
+func createUserHandler(svc service.UserService) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var in domain.User
+		if err := c.ShouldBindJSON(&in); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
+			return
+		}
+
+		created, err := svc.CreateUser(c.Request.Context(), in)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		c.JSON(http.StatusCreated, created)
 	}
 }
