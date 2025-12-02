@@ -2,17 +2,19 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/env"
-	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/mongo"
+	sharedmongo "github.com/nikyaviator/nikolai-kocev-v2/backend/shared/mongo"
 )
 
 func main() {
@@ -21,13 +23,13 @@ func main() {
 	dbName := env.GetString("MONGODB_DBNAME", "nkv2")
 	port := env.GetString("PORT", "5000")                       // blog service port
 	allowDestructive := env.GetBool("ALLOW_DESTRUCTIVE", false) // guard: default false
-
 	// 2) Connect Mongo (returns client, db, and a cleanup function)
-	_, db, closeMongo, err := mongo.ConnectMongoDB(context.Background(), mongo.MongoConfig{
+	_, db, closeMongo, err := sharedmongo.ConnectMongoDB(context.Background(), sharedmongo.MongoConfig{
 		URI:         mongoURI,
 		DBName:      dbName,
 		ConnTimeout: 10 * time.Second,
 	})
+
 	if err != nil {
 		log.Fatal("mongo connect:", err)
 	}
@@ -185,6 +187,10 @@ func deleteOneUserHandler(svc service.UserService) gin.HandlerFunc {
 		}
 
 		err := svc.DeleteUser(c.Request.Context(), id)
+		if errors.Is(err, mongo.ErrNoDocuments) {
+			c.JSON(http.StatusNotFound, gin.H{"error": "user not found"})
+			return
+		}
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
