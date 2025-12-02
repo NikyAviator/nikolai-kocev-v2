@@ -36,5 +36,9 @@ func (s *userService) CreateUser(ctx context.Context, in domain.User) (domain.Us
 }
 
 func (s *userService) DeleteUser(ctx context.Context, id string) error {
+
+	if strings.TrimSpace(id) == "" {
+		return errors.New("missing user id")
+	}
 	return s.userRepo.Delete(ctx, id)
 }
