@@ -24,13 +24,15 @@ func NewUserService(r repository.UserRepository) UserService {
 
 func (s *userService) CreateUser(ctx context.Context, in domain.User) (domain.User, error) {
 
-	if strings.TrimSpace(in.AdminEmail) == "" || strings.TrimSpace(in.Password) == "" {
+	if strings.TrimSpace(in.AdminEmail) == "" || strings.TrimSpace(in.PasswordHash) == "" {
 		return domain.User{}, errors.New("missing required fields")
 	}
 
 	user := domain.User{
-		AdminEmail: in.AdminEmail,
-		Password:   in.Password,
+		AdminEmail:   in.AdminEmail,
+		PasswordHash: in.PasswordHash,
+		CreatedAt:    in.CreatedAt,
+		UpdatedAt:    in.UpdatedAt,
 	}
 	return s.userRepo.Create(ctx, user)
 }
