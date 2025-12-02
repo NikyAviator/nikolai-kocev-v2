@@ -31,8 +31,6 @@ func (s *userService) CreateUser(ctx context.Context, in domain.User) (domain.Us
 	user := domain.User{
 		AdminEmail:   in.AdminEmail,
 		PasswordHash: in.PasswordHash,
-		CreatedAt:    in.CreatedAt,
-		UpdatedAt:    in.UpdatedAt,
 	}
 	return s.userRepo.Create(ctx, user)
 }

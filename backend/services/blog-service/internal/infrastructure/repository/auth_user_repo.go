@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"time"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"go.mongodb.org/mongo-driver/bson"
@@ -32,11 +33,20 @@ func (r *MongoUserRepository) EnsureIndexes(ctx context.Context) error {
 }
 
 func (r *MongoUserRepository) Create(ctx context.Context, u domain.User) (domain.User, error) {
-	_, err := r.coll.InsertOne(ctx, u)
+	now := time.Now()
+	u.CreatedAt = now
+	u.UpdatedAt = now
+	// Let Mongo generate ObjectID; we’ll return it as hex string
+	res, err := r.coll.InsertOne(ctx, u)
 	if err != nil {
 		return domain.User{}, err
 	}
+	// Set the generated ID
+	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
+		u.ID = oid.Hex()
+	}
 	return u, nil
+
 }
 func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
 	oid, err := primitive.ObjectIDFromHex(id)
