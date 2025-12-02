@@ -11,6 +11,7 @@ import (
 
 type UserService interface {
 	CreateUser(ctx context.Context, in domain.User) (domain.User, error)
+	DeleteUser(ctx context.Context, id string) error
 }
 
 type userService struct {
@@ -32,4 +33,8 @@ func (s *userService) CreateUser(ctx context.Context, in domain.User) (domain.Us
 		Password:   in.Password,
 	}
 	return s.userRepo.Create(ctx, user)
+}
+
+func (s *userService) DeleteUser(ctx context.Context, id string) error {
+	return s.userRepo.Delete(ctx, id)
 }

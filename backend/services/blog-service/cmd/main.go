@@ -62,6 +62,7 @@ func main() {
 		api.DELETE("/blogs", deleteAllBlogsHandler(blogSvc, allowDestructive))
 		// Users endpoints
 		api.POST("/users", createUserHandler(userSvc))
+		api.DELETE("/users/:id", deleteOneUserHandler(userSvc))
 	}
 
 	log.Printf("blog-service listening on :%s", port)
@@ -172,5 +173,22 @@ func createUserHandler(svc service.UserService) gin.HandlerFunc {
 			return
 		}
 		c.JSON(http.StatusCreated, created)
+	}
+}
+
+func deleteOneUserHandler(svc service.UserService) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		id := c.Param("id")
+		if id == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "missing user id"})
+			return
+		}
+
+		err := svc.DeleteUser(c.Request.Context(), id)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		c.Status(http.StatusNoContent)
 	}
 }

@@ -11,6 +11,7 @@ import (
 
 type UserRepository interface {
 	Create(ctx context.Context, u domain.User) (domain.User, error)
+	Delete(ctx context.Context, id string) error
 }
 
 type MongoUserRepository struct {
@@ -35,4 +36,8 @@ func (r *MongoUserRepository) Create(ctx context.Context, u domain.User) (domain
 		return domain.User{}, err
 	}
 	return u, nil
+}
+func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
+	_, err := r.coll.DeleteOne(ctx, bson.M{"_id": id})
+	return err
 }
