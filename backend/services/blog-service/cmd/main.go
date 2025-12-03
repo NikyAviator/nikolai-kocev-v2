@@ -65,13 +65,15 @@ func main() {
 		// Users endpoints
 		api.POST("/users", createUserHandler(userSvc))
 		api.DELETE("/users/:id", deleteOneUserHandler(userSvc))
+		// Authentication /login
+		// api.POST("/login", loginHandler(authSvc))
 	}
 
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
 }
 
-// 5) Handlers
+// 5) Handlers/Controllers
 // CreateBlogHandler handles the creation of a new blog post.
 func createBlogHandler(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
