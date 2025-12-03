@@ -42,7 +42,8 @@ func (s *blogService) CreateBlog(ctx context.Context, in domain.CreateBlogInput)
 		},
 		Tags: in.Tags,
 	}
-	return s.repo.Create(ctx, b)
+	err := s.repo.Create(ctx, &b)
+	return b, err
 }
 
 func (s *blogService) DeleteBlog(ctx context.Context, id string) error {
@@ -58,5 +59,9 @@ func (s *blogService) ListBlogs(ctx context.Context) ([]domain.Blog, error) {
 }
 
 func (s *blogService) ListBlogBySlug(ctx context.Context, slug string) (domain.Blog, error) {
-	return s.repo.GetBySlug(ctx, slug)
+	b, err := s.repo.GetBySlug(ctx, slug)
+	if err != nil {
+		return domain.Blog{}, err
+	}
+	return *b, nil // return value to controllers/JSON
 }

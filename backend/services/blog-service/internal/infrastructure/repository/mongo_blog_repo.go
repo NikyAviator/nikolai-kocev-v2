@@ -12,11 +12,11 @@ import (
 )
 
 type BlogRepository interface {
-	Create(ctx context.Context, b domain.Blog) (domain.Blog, error)
+	Create(ctx context.Context, b *domain.Blog) error // Pointers for mutations
 	Delete(ctx context.Context, id string) error
 	DeleteAll(ctx context.Context) (int64, error)
 	List(ctx context.Context) ([]domain.Blog, error)
-	GetBySlug(ctx context.Context, slug string) (domain.Blog, error)
+	GetBySlug(ctx context.Context, slug string) (*domain.Blog, error) // Pointers for mutations
 }
 
 type MongoBlogRepository struct {
@@ -36,7 +36,7 @@ func (r *MongoBlogRepository) EnsureIndexes(ctx context.Context) error {
 	return err
 }
 
-func (r *MongoBlogRepository) Create(ctx context.Context, b domain.Blog) (domain.Blog, error) {
+func (r *MongoBlogRepository) Create(ctx context.Context, b *domain.Blog) error {
 	now := time.Now()
 	b.CreatedAt = now
 	b.UpdatedAt = now
@@ -46,13 +46,13 @@ func (r *MongoBlogRepository) Create(ctx context.Context, b domain.Blog) (domain
 	// Let Mongo generate ObjectID; we’ll return it as hex string
 	res, err := r.coll.InsertOne(ctx, b)
 	if err != nil {
-		return domain.Blog{}, err
+		return err
 	}
 	// Set the generated ID
 	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
 		b.ID = oid.Hex()
 	}
-	return b, nil
+	return nil
 }
 
 func (r *MongoBlogRepository) Delete(ctx context.Context, id string) error {
@@ -90,11 +90,11 @@ func (r *MongoBlogRepository) List(ctx context.Context) ([]domain.Blog, error) {
 	return blogs, nil
 }
 
-func (r *MongoBlogRepository) GetBySlug(ctx context.Context, slug string) (domain.Blog, error) {
+func (r *MongoBlogRepository) GetBySlug(ctx context.Context, slug string) (*domain.Blog, error) {
 	var blog domain.Blog
 	err := r.coll.FindOne(ctx, bson.M{"slug": slug}).Decode(&blog)
 	if err != nil {
-		return domain.Blog{}, err
+		return nil, err
 	}
-	return blog, err
+	return &blog, nil
 }
