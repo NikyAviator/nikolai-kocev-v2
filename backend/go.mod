@@ -45,6 +45,6 @@ require (
 require (
 	github.com/gin-gonic/gin v1.11.0
 	go.mongodb.org/mongo-driver v1.17.6
-	golang.org/x/crypto v0.45.0 // indirect
+	golang.org/x/crypto v0.45.0
 	golang.org/x/text v0.31.0 // indirect
 )
