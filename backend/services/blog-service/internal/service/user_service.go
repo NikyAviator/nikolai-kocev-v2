@@ -7,6 +7,7 @@ import (
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 )
 
 type UserService interface {
@@ -28,9 +29,15 @@ func (s *userService) CreateUser(ctx context.Context, in domain.User) (domain.Us
 		return domain.User{}, errors.New("missing required fields")
 	}
 
+	// Hash the password before storing
+	hashedPassword, err := utils.HashPassword(in.PasswordHash)
+	if err != nil {
+		return domain.User{}, err
+	}
+
 	user := domain.User{
 		AdminEmail:   in.AdminEmail,
-		PasswordHash: in.PasswordHash,
+		PasswordHash: hashedPassword,
 	}
 	return s.userRepo.Create(ctx, user)
 }
