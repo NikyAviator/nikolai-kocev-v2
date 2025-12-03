@@ -12,7 +12,7 @@ import (
 )
 
 type UserRepository interface {
-	Create(ctx context.Context, u domain.User) (domain.User, error)
+	Create(ctx context.Context, u *domain.User) error
 	Delete(ctx context.Context, id string) error
 }
 
@@ -32,20 +32,20 @@ func (r *MongoUserRepository) EnsureIndexes(ctx context.Context) error {
 	return err
 }
 
-func (r *MongoUserRepository) Create(ctx context.Context, u domain.User) (domain.User, error) {
+func (r *MongoUserRepository) Create(ctx context.Context, u *domain.User) error {
 	now := time.Now()
 	u.CreatedAt = now
 	u.UpdatedAt = now
-	// Let Mongo generate ObjectID; we’ll return it as hex string
+
 	res, err := r.coll.InsertOne(ctx, u)
 	if err != nil {
-		return domain.User{}, err
+		return err
 	}
 	// Set the generated ID
 	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
 		u.ID = oid.Hex()
 	}
-	return u, nil
+	return nil
 
 }
 func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {

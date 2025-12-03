@@ -14,7 +14,7 @@ import (
 // CreateUserController creates a new user.
 func CreateUserController(svc service.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var in domain.User
+		var in domain.CreateUserInput
 		if err := c.ShouldBindJSON(&in); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
 			return
