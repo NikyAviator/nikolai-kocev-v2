@@ -51,13 +51,13 @@ func (s *userService) CreateUser(ctx context.Context, in domain.CreateUserInput)
 	}
 
 	// Prepare public user data to return
-	publicUser := domain.UserPublic{
+	userPublic := domain.UserPublic{
 		ID:        newUser.ID,
 		Email:     newUser.AdminEmail,
 		CreatedAt: newUser.CreatedAt,
 	}
 
-	return publicUser, nil
+	return userPublic, nil
 
 }
 
