@@ -30,6 +30,6 @@ func Register(r *gin.Engine, blogSvc service.BlogService, userSvc service.UserSe
 		api.DELETE("/users/:id", controllers.DeleteOneUserController(userSvc))
 
 		// // Auth (future)
-		// api.POST("/login", controllers.LoginController(authSvc))
+		api.POST("/login", controllers.LoginController(userSvc))
 	}
 }

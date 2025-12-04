@@ -48,3 +48,16 @@ func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 		c.Status(http.StatusNoContent)
 	}
 }
+
+func LoginController(svc service.UserService) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var userInput domain.CreateUserInput
+		if err := c.ShouldBindJSON(&userInput); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
+			return
+		}
+
+		// Placeholder response for future implementation
+		c.JSON(http.StatusOK, gin.H{"message": "login functionality not yet implemented"})
+	}
+}
