@@ -63,6 +63,6 @@ func LoginController(svc service.UserService) gin.HandlerFunc {
 		}
 
 		// Placeholder response for future implementation
-		c.JSON(http.StatusOK, gin.H{"message": "credentials valid"})
+		c.JSON(http.StatusOK, gin.H{"message": "credentials valid, Login successful"})
 	}
 }
