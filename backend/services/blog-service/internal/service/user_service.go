@@ -71,12 +71,13 @@ func (s *userService) DeleteUser(ctx context.Context, id string) error {
 }
 
 func (s *userService) LoginUser(ctx context.Context, userInput domain.CreateUserInput) error {
+	// Here we do business logic for user login
 	if strings.TrimSpace(userInput.Email) == "" || strings.TrimSpace(userInput.Password) == "" {
 		return errors.New("email and password are required")
 	}
 	_, err := s.userRepo.ValidateCredentials(ctx, userInput.Email, userInput.Password)
 	if err != nil {
-		return err
+		return errors.New("invalid email or password")
 	}
 
 	// Consider returning user info or token instead of just nil
