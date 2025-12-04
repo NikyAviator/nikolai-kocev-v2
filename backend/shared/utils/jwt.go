@@ -8,9 +8,9 @@ import (
 
 const secretKey = "will-be-changed-in-production"
 
-func GenerateToken(emailAdmin, userId string) (string, error) {
+func GenerateToken(adminEmail, userId string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"emailAdmin": emailAdmin,
+		"adminEmail": adminEmail,
 		"userId":     userId,
 		"exp":        time.Now().Add(time.Hour * 1).Unix(),
 	})
