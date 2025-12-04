@@ -56,6 +56,11 @@ func LoginController(svc service.UserService) gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
 			return
 		}
+		err := svc.LoginUser(c.Request.Context(), userInput)
+		if err != nil {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+			return
+		}
 
 		// Placeholder response for future implementation
 		c.JSON(http.StatusOK, gin.H{"message": "login functionality not yet implemented"})

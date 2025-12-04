@@ -14,6 +14,7 @@ import (
 type UserService interface {
 	CreateUser(ctx context.Context, in domain.CreateUserInput) (domain.UserPublic, error)
 	DeleteUser(ctx context.Context, id string) error
+	LoginUser(ctx context.Context, in domain.CreateUserInput) error
 }
 
 type userService struct {
@@ -67,4 +68,18 @@ func (s *userService) DeleteUser(ctx context.Context, id string) error {
 		return errors.New("missing user id")
 	}
 	return s.userRepo.Delete(ctx, id)
+}
+
+func (s *userService) LoginUser(ctx context.Context, userInput domain.CreateUserInput) error {
+	if strings.TrimSpace(userInput.Email) == "" || strings.TrimSpace(userInput.Password) == "" {
+		return errors.New("email and password are required")
+	}
+	_, err := s.userRepo.ValidateCredentials(ctx, userInput.Email, userInput.Password)
+	if err != nil {
+		return err
+	}
+
+	// Consider returning user info or token instead of just nil
+	return nil
+
 }

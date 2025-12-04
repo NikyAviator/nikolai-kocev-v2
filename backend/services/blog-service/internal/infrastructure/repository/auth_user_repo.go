@@ -2,9 +2,11 @@ package repository
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -14,6 +16,7 @@ import (
 type UserRepository interface {
 	Create(ctx context.Context, u *domain.User) error
 	Delete(ctx context.Context, id string) error
+	ValidateCredentials(ctx context.Context, email, password string) (domain.User, error)
 }
 
 type MongoUserRepository struct {
@@ -61,4 +64,21 @@ func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
 		return mongo.ErrNoDocuments
 	}
 	return nil
+}
+
+func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, password string) (domain.User, error) {
+	// Here we just fetch the user by email and compare passwords
+	var user domain.User
+	err := r.coll.FindOne(ctx, bson.M{"adminEmail": email}).Decode(&user)
+	if err != nil {
+		return domain.User{}, err
+	}
+
+	// Here you would typically compare the hashed password
+	// For simplicity, we assume a utility function `CheckPasswordHash`
+	if !utils.CheckPasswordHash(password, user.PasswordHash) {
+		return domain.User{}, errors.New("invalid credentials")
+	}
+
+	return user, nil
 }
