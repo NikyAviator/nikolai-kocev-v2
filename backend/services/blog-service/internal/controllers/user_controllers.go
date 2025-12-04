@@ -9,6 +9,7 @@ import (
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 )
 
 // CreateUserController creates a new user.
@@ -51,18 +52,24 @@ func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 
 func LoginController(svc service.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var userInput domain.CreateUserInput
-		if err := c.ShouldBindJSON(&userInput); err != nil {
+		var user domain.User
+		if err := c.ShouldBindJSON(&user); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
 			return
 		}
-		err := svc.LoginUser(c.Request.Context(), userInput)
+		err := svc.LoginUser(c.Request.Context(), user)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 			return
 		}
 
+		token, err := utils.GenerateToken(user.AdminEmail, user.ID)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
+			return
+		}
+
 		// Placeholder response for future implementation
-		c.JSON(http.StatusOK, gin.H{"message": "credentials valid, Login successful"})
+		c.JSON(http.StatusOK, gin.H{"message": "credentials valid, Login successful", "token": token})
 	}
 }
