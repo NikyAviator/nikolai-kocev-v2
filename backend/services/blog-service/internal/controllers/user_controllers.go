@@ -64,7 +64,7 @@ func LoginController(svc service.UserService) gin.HandlerFunc {
 			return
 		}
 
-		// FIXA TOKEN
+		// FIXA TOKEN - så UserId finns i DB och skicka med den? - INTE KOPPLAD TILL NÅGOT ÄNNU
 		token, err := utils.GenerateToken(loginReq.Email, loginReq.UserId)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
