@@ -52,18 +52,18 @@ func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 
 func LoginController(svc service.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var user domain.User
-		if err := c.ShouldBindJSON(&user); err != nil {
+		var loginReq domain.LoginRequest
+		if err := c.ShouldBindJSON(&loginReq); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
 			return
 		}
-		err := svc.LoginUser(c.Request.Context(), user)
+		err := svc.LoginUser(c.Request.Context(), loginReq)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 			return
 		}
 
-		token, err := utils.GenerateToken(user.AdminEmail, user.ID)
+		token, err := utils.GenerateToken(loginReq.Email, loginReq.Email)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
 			return
