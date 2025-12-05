@@ -16,20 +16,20 @@ func Register(r *gin.Engine, blogSvc service.BlogService, userSvc service.UserSe
 		// Health
 		api.GET("/healthz", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"ok": true}) })
 
-		// Blogs (public)
-		api.GET("/blogs", controllers.ListBlogsController(blogSvc))
-		api.GET("/blogs/:slug", controllers.GetBlogBySlugController(blogSvc))
+		// Blogs (PUBLIC)
+		api.GET("/blogs", controllers.ListBlogsController(blogSvc))           // PUBLIC
+		api.GET("/blogs/:slug", controllers.GetBlogBySlugController(blogSvc)) // PUBLIC
 
-		// Blogs (protected/destructive – auth can be added later via middleware)
-		api.POST("/blogs", controllers.CreateBlogController(blogSvc))
-		api.DELETE("/blogs/:id", controllers.DeleteBlogController(blogSvc))
-		api.DELETE("/blogs", controllers.DeleteAllBlogsController(blogSvc, allowDestructive))
+		// Blogs (PRIVATE)
+		api.POST("/blogs", controllers.CreateBlogController(blogSvc))                         // NOT PROTECTED YET
+		api.DELETE("/blogs/:id", controllers.DeleteBlogController(blogSvc))                   // NOT PROTECTED YET
+		api.DELETE("/blogs", controllers.DeleteAllBlogsController(blogSvc, allowDestructive)) // NOT PROTECTED YET
 
 		// Users
-		api.POST("/users", controllers.CreateUserController(userSvc))
-		api.DELETE("/users/:id", controllers.DeleteOneUserController(userSvc))
+		api.POST("/users", controllers.CreateUserController(userSvc))          // NOT PROTECTED YET
+		api.DELETE("/users/:id", controllers.DeleteOneUserController(userSvc)) // NOT PROTECTED YET
 
 		// // Auth (future)
-		api.POST("/login", controllers.LoginController(userSvc))
+		api.POST("/login", controllers.LoginController(userSvc)) // PUBLIC
 	}
 }

@@ -12,6 +12,13 @@ import (
 // CreateBlogController handles the creation of a new blog post.
 func CreateBlogController(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		token := c.Request.Header.Get("Authorization")
+
+		if token == "" {
+			c.JSON(http.StatusUnauthorized, gin.H{"error": "missing authorization token"})
+			return
+		}
+
 		var in domain.CreateBlogInput
 		if err := c.ShouldBindJSON(&in); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
