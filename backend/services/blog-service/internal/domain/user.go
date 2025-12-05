@@ -24,4 +24,5 @@ type CreateUserInput struct {
 type LoginRequest struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
+	UserId   string `json:"userId"` // Authentication purpose, should match the ID of the user trying to log in
 }

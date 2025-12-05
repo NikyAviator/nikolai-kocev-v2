@@ -9,7 +9,10 @@ import (
 
 const secretKey = "will-be-changed-in-production"
 
+// Unsure on which email and how to think here.
 func GenerateToken(adminEmail, userId string) (string, error) {
+
+	// starts at 0 for userId? when created?
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"adminEmail": adminEmail,
 		"userId":     userId,

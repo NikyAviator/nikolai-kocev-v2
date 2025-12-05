@@ -50,6 +50,7 @@ func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 	}
 }
 
+// HÄR FIXA ANDRA PARAMETERN FÖR USERID som andra parameter
 func LoginController(svc service.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var loginReq domain.LoginRequest
@@ -63,7 +64,8 @@ func LoginController(svc service.UserService) gin.HandlerFunc {
 			return
 		}
 
-		token, err := utils.GenerateToken(loginReq.Email, loginReq.Email)
+		// FIXA TOKEN
+		token, err := utils.GenerateToken(loginReq.Email, loginReq.UserId)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
 			return
