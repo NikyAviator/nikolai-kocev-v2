@@ -7,28 +7,11 @@ import (
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
-	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 )
 
 // CreateBlogController handles the creation of a new blog post.
 func CreateBlogController(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
-
-		// Get token from Header
-		token := c.Request.Header.Get("Authorization")
-
-		// Check if token is empty
-		if token == "" {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "missing authorization token"})
-			return
-		}
-
-		// Verify token
-		err := utils.VerifyToken(token)
-		if err != nil {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid authorization token"})
-			return
-		}
 
 		var in domain.CreateBlogInput
 		if err := c.ShouldBindJSON(&in); err != nil {
