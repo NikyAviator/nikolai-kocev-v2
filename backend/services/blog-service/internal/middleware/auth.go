@@ -24,5 +24,7 @@ func Authenticate(c *gin.Context) {
 		return
 	}
 
+	// Do I even need to pass the token further?
+	c.Set("authToken", token)
 	c.Next()
 }
