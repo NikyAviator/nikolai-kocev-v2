@@ -10,7 +10,6 @@ import (
 
 var secretKey = env.GetString("SECRET_KEY", "defaultsecretkey")
 
-// Unsure on which email and how to think here.
 func GenerateToken(email, userId string) (string, error) {
 
 	// starts at 0 for userId? when created?
