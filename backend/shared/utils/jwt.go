@@ -10,13 +10,13 @@ import (
 const secretKey = "will-be-changed-in-production"
 
 // Unsure on which email and how to think here.
-func GenerateToken(adminEmail, userId string) (string, error) {
+func GenerateToken(email, userId string) (string, error) {
 
 	// starts at 0 for userId? when created?
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"adminEmail": adminEmail,
-		"userId":     userId,
-		"exp":        time.Now().Add(time.Hour * 1).Unix(),
+		"email":  email,
+		"userId": userId,
+		"exp":    time.Now().Add(time.Hour * 1).Unix(),
 	})
 
 	return token.SignedString([]byte(secretKey))
@@ -45,7 +45,7 @@ func VerifyToken(token string) error {
 		return errors.New("invalid token claims")
 	}
 	// You can extract claims if needed
-	// adminEmail := claims["adminEmail"].(string)
+	// email := claims["email"].(string)
 	// userId := claims["userId"].(string)
 
 	return nil

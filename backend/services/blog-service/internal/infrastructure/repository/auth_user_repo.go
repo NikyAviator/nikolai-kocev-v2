@@ -29,7 +29,7 @@ func NewMongoUserRepository(db *mongo.Database) *MongoUserRepository {
 
 func (r *MongoUserRepository) EnsureIndexes(ctx context.Context) error {
 	models := []mongo.IndexModel{
-		{Keys: bson.D{{Key: "adminEmail", Value: 1}}, Options: options.Index().SetUnique(true)},
+		{Keys: bson.D{{Key: "email", Value: 1}}, Options: options.Index().SetUnique(true)},
 	}
 	_, err := r.coll.Indexes().CreateMany(ctx, models)
 	return err
@@ -69,7 +69,7 @@ func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
 func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, password string) (domain.User, error) {
 	// Here we just fetch the user by email and compare passwords
 	var user domain.User
-	err := r.coll.FindOne(ctx, bson.M{"adminEmail": email}).Decode(&user)
+	err := r.coll.FindOne(ctx, bson.M{"email": email}).Decode(&user)
 	if err != nil {
 		return domain.User{}, err
 	}

@@ -39,7 +39,7 @@ func (s *userService) CreateUser(ctx context.Context, in domain.CreateUserInput)
 
 	// Merge input into domain.User
 	newUser := &domain.User{
-		AdminEmail:   in.Email,
+		Email:        in.Email,
 		PasswordHash: hashedPassword,
 		CreatedAt:    time.Now(),
 		UpdatedAt:    time.Now(),
@@ -54,7 +54,7 @@ func (s *userService) CreateUser(ctx context.Context, in domain.CreateUserInput)
 	// Prepare public user data to return
 	userPublic := domain.UserPublic{
 		ID:        newUser.ID,
-		Email:     newUser.AdminEmail,
+		Email:     newUser.Email,
 		CreatedAt: newUser.CreatedAt,
 	}
 
