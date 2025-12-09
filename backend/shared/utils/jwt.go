@@ -5,9 +5,10 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/env"
 )
 
-const secretKey = "will-be-changed-in-production"
+var secretKey = env.GetString("SECRET_KEY", "defaultsecretkey")
 
 // Unsure on which email and how to think here.
 func GenerateToken(email, userId string) (string, error) {
