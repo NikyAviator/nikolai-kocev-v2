@@ -52,8 +52,11 @@ func main() {
 
 	// HTTP
 	r := gin.Default()
-	v1.Register(r, blogSvc, userSvc, allowDestructive, registrationOpen, authenticationMiddleware)
-
+	v1.Register(r, blogSvc, userSvc, v1.Options{
+		AllowDestructive: allowDestructive,
+		RegistrationOpen: registrationOpen,
+		AuthMiddleware:   authenticationMiddleware,
+	})
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
 }
