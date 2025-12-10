@@ -1,35 +1,49 @@
 package v1
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/controllers"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
 )
 
-// Register wires versioned routes under /api.
-func Register(r *gin.Engine, blogSvc service.BlogService, userSvc service.UserService, allowDestructive bool) {
+// internal/routes/v1/routes.go
+func Register(
+	r *gin.Engine,
+	blogSvc *service.BlogService,
+	userSvc *service.UserService,
+	allowDestructive bool,
+	registrationOpen bool, // <— new flag
+	authenticationMiddleware gin.HandlerFunc,
+) {
+
+	bc := controllers.NewBlogController(blogSvc)
+	uc := controllers.NewUserController(userSvc)
+
 	api := r.Group("/api")
-	{
-		// Health
-		api.GET("/healthz", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"ok": true}) })
 
-		// Blogs (PUBLIC)
-		api.GET("/blogs", controllers.ListBlogsController(blogSvc))           // PUBLIC
-		api.GET("/blogs/:slug", controllers.GetBlogBySlugController(blogSvc)) // PUBLIC
+	// Public
+	api.GET("/healthz", bc.Healthz)
+	api.GET("/blogs", bc.ListBlogs)
+	api.GET("/blogs/:slug", bc.GetBySlug)
+	api.POST("/login", uc.Login)
 
-		// Blogs (PRIVATE)
-		api.POST("/blogs", controllers.CreateBlogController(blogSvc))                         // NOT PROTECTED YET
-		api.DELETE("/blogs/:id", controllers.DeleteBlogController(blogSvc))                   // NOT PROTECTED YET
-		api.DELETE("/blogs", controllers.DeleteAllBlogsController(blogSvc, allowDestructive)) // NOT PROTECTED YET
-
-		// Users
-		api.POST("/users", controllers.CreateUserController(userSvc))          // NOT PROTECTED YET
-		api.DELETE("/users/:id", controllers.DeleteOneUserController(userSvc)) // NOT PROTECTED YET
-
-		// // Auth (future)
-		api.POST("/login", controllers.LoginController(userSvc)) // PUBLIC
+	if registrationOpen {
+		api.POST("/users", uc.CreateUser) // only while open
 	}
+
+	// Private
+	priv := api.Group("")
+	priv.Use(authenticationMiddleware)
+
+	priv.POST("/blogs", bc.CreateBlog)
+	priv.PATCH("/blogs/:id", bc.UpdateBlog)
+	priv.DELETE("/blogs/:id", bc.DeleteBlog)
+
+	if allowDestructive {
+		priv.DELETE("/blogs", bc.DeleteAllBlogs)
+	}
+
+	// Example user management
+	// priv.DELETE("/users/:id", uc.DeleteUser)
 }

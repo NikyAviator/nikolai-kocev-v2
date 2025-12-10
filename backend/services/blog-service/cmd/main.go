@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/middleware"
 	v1 "github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/routes/v1"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/env"
@@ -20,6 +21,8 @@ func main() {
 	dbName := env.GetString("MONGODB_DBNAME", "nkv2")
 	port := env.GetString("PORT", "5000")
 	allowDestructive := env.GetBool("ALLOW_DESTRUCTIVE", false)
+	registrationOpen := env.GetBool("REGISTRATION_OPEN", false)
+	authenticationMiddleware := middleware.Authenticate(c * gin.Context)
 
 	// Mongo connect
 	_, db, closeMongo, err := sharedmongo.ConnectMongoDB(context.Background(), sharedmongo.MongoConfig{
@@ -49,7 +52,7 @@ func main() {
 
 	// HTTP
 	r := gin.Default()
-	v1.Register(r, blogSvc, userSvc, allowDestructive)
+	v1.Register(r, blogSvc, userSvc, allowDestructive, registrationOpen, authenticationMiddleware)
 
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
