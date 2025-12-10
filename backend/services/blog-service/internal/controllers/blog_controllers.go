@@ -44,12 +44,8 @@ func DeleteBlogController(svc service.BlogService) gin.HandlerFunc {
 }
 
 // DeleteAllBlogsController deletes all blogs (guarded by allowDestructive).
-func DeleteAllBlogsController(svc service.BlogService, allowDestructive bool) gin.HandlerFunc {
+func DeleteAllBlogsController(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if !allowDestructive {
-			c.JSON(http.StatusForbidden, gin.H{"error": "destructive operations are not allowed"})
-			return
-		}
 		n, err := svc.DeleteAllBlogs(c.Request.Context())
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

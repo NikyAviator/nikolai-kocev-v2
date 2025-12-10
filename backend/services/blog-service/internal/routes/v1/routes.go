@@ -48,7 +48,7 @@ func Register(
 	// admin.PUT("/blogs/:id", controllers.UpdateBlogController(blogSvc)) Future path
 	admin.DELETE("/blogs/:id", controllers.DeleteBlogController(blogSvc))
 	if opts.AllowDestructive {
-		admin.DELETE("/blogs", controllers.DeleteAllBlogsController(blogSvc, opts.AllowDestructive))
+		admin.DELETE("/blogs", controllers.DeleteAllBlogsController(blogSvc))
 	}
 
 	// User management (example)
