@@ -16,25 +16,24 @@ func Register(
 	registrationOpen bool,
 	authenticationMiddleware gin.HandlerFunc,
 ) {
-	bc := controllers.NewBlogController(blogSvc)
-	uc := controllers.NewUserController(userSvc)
+	bc := // how do I route these controllers? TO ALL OF THEM?
 
 	api := r.Group("/api")
 
 	// Public
-	api.GET("/healthz", bc.Healthz)
-	api.GET("/blogs", bc.ListBlogs)
-	api.GET("/blogs/:slug", bc.GetBySlug)
+	api.GET("/healthz", blogController.Healthz)
+	api.GET("/blogs", blogController.ListBlogs)
+	api.GET("/blogs/:slug", blogController.GetBySlug)
 	api.POST("/login", uc.Login)
 
 	// Optional: registration window
 	if registrationOpen {
-		api.POST("/users", uc.CreateUser)
+		api.POST("/users", userController.CreateUser)
 	}
 
 	// Private group
 	priv := api.Group("")
-	priv.Use(middleware.Authenticate())
+	priv.Use(authenticationMiddleware)
 
 	priv.POST("/blogs", bc.CreateBlog)
 	priv.PATCH("/blogs/:id", bc.UpdateBlog)
