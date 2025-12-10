@@ -22,7 +22,7 @@ func main() {
 	port := env.GetString("PORT", "5000")
 	allowDestructive := env.GetBool("ALLOW_DESTRUCTIVE", false)
 	registrationOpen := env.GetBool("REGISTRATION_OPEN", false)
-	authenticationMiddleware := middleware.Authenticate(c * gin.Context)
+	authenticationMiddleware := middleware.Authenticate() // this is not a config, has to be moved
 
 	// Mongo connect
 	_, db, closeMongo, err := sharedmongo.ConnectMongoDB(context.Background(), sharedmongo.MongoConfig{

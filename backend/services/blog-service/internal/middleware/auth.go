@@ -2,29 +2,32 @@ package middleware
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 )
 
-func Authenticate(c *gin.Context) {
-	// Get token from Header
-	token := c.Request.Header.Get("Authorization")
+func Authenticate() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		authHeader := c.GetHeader("Authorization")
+		if !strings.HasPrefix(authHeader, "Bearer ") {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing or invalid Authorization header"})
+			return
+		}
+		if authHeader == "" {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing Authorization header"})
+			return
+		}
 
-	// Check if token is empty
-	if token == "" {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing authorization token"})
-		return
+		claims, err := utils.VerifyToken(authHeader)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid or expired token"})
+			return
+		}
+
+		// Stash claims for handlers/downstream middleware.
+		c.Set("claims", claims)
+		c.Next()
 	}
-
-	// Verify token (returns err for now, but userId and email can be extracted later)
-	err := utils.VerifyToken(token)
-	if err != nil {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid authorization token"})
-		return
-	}
-
-	// Do I even need to pass the token further?
-	c.Set("authToken", token)
-	c.Next()
 }

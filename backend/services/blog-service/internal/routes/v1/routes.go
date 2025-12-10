@@ -4,19 +4,18 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/controllers"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/middleware"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
 )
 
-// internal/routes/v1/routes.go
 func Register(
 	r *gin.Engine,
 	blogSvc *service.BlogService,
 	userSvc *service.UserService,
 	allowDestructive bool,
-	registrationOpen bool, // <— new flag
+	registrationOpen bool,
 	authenticationMiddleware gin.HandlerFunc,
 ) {
-
 	bc := controllers.NewBlogController(blogSvc)
 	uc := controllers.NewUserController(userSvc)
 
@@ -28,13 +27,14 @@ func Register(
 	api.GET("/blogs/:slug", bc.GetBySlug)
 	api.POST("/login", uc.Login)
 
+	// Optional: registration window
 	if registrationOpen {
-		api.POST("/users", uc.CreateUser) // only while open
+		api.POST("/users", uc.CreateUser)
 	}
 
-	// Private
+	// Private group
 	priv := api.Group("")
-	priv.Use(authenticationMiddleware)
+	priv.Use(middleware.Authenticate())
 
 	priv.POST("/blogs", bc.CreateBlog)
 	priv.PATCH("/blogs/:id", bc.UpdateBlog)
@@ -43,7 +43,4 @@ func Register(
 	if allowDestructive {
 		priv.DELETE("/blogs", bc.DeleteAllBlogs)
 	}
-
-	// Example user management
-	// priv.DELETE("/users/:id", uc.DeleteUser)
 }
