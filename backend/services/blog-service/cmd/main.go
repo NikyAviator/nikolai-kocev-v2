@@ -16,13 +16,12 @@ import (
 )
 
 func main() {
-	// Config
+	// DB Config (loads from env)
 	mongoURI := env.GetString("MONGODB_URI", "mongodb://localhost:27017")
 	dbName := env.GetString("MONGODB_DBNAME", "nkv2")
 	port := env.GetString("PORT", "5000")
 	allowDestructive := env.GetBool("ALLOW_DESTRUCTIVE", false)
 	registrationOpen := env.GetBool("REGISTRATION_OPEN", false)
-	authenticationMiddleware := middleware.Authenticate() // this is not a config, has to be moved
 
 	// Mongo connect
 	_, db, closeMongo, err := sharedmongo.ConnectMongoDB(context.Background(), sharedmongo.MongoConfig{
@@ -35,7 +34,7 @@ func main() {
 	}
 	defer func() { _ = closeMongo(context.Background()) }()
 
-	// DI: repos -> services
+	// DI: repo layers
 	blogRepo := repository.NewMongoBlogRepository(db)
 	userRepo := repository.NewMongoUserRepository(db)
 
@@ -47,10 +46,14 @@ func main() {
 		log.Fatal("ensure user indexes:", err)
 	}
 
+	// DI: services layers
 	blogSvc := service.NewBlogService(blogRepo)
 	userSvc := service.NewUserService(userRepo)
 
-	// HTTP
+	// Middleware
+	authenticationMiddleware := middleware.Authenticate()
+
+	// HTTP & Options
 	r := gin.Default()
 	v1.Register(r, blogSvc, userSvc, v1.Options{
 		AllowDestructive: allowDestructive,
