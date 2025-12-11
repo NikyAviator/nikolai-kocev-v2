@@ -3,7 +3,6 @@ package repository
 import (
 	"context"
 	"errors"
-	"time"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
@@ -36,9 +35,10 @@ func (r *MongoUserRepository) EnsureIndexes(ctx context.Context) error {
 }
 
 func (r *MongoUserRepository) Create(ctx context.Context, u *domain.User) error {
-	now := time.Now()
-	u.CreatedAt = now
-	u.UpdatedAt = now
+	// Figure out where we insert date, createdAt, updatedAt. In service or repo (this layer)?
+	// now := time.Now()
+	// u.CreatedAt = now
+	// u.UpdatedAt = now
 
 	res, err := r.coll.InsertOne(ctx, u)
 	if err != nil {

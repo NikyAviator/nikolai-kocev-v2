@@ -26,8 +26,14 @@ func Authenticate() gin.HandlerFunc {
 			return
 		}
 
+		// Extract user information from claims if needed
+		email := claims["email"].(string)
+		userId := claims["userId"].(string)
+
 		// Stash claims for handlers/downstream middleware.
-		c.Set("claims", claims)
+		// c.Set("claims", claims)
+		c.Set("userId", userId)
+		c.Set("email", email)
 		c.Next()
 	}
 }
