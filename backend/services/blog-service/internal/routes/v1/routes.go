@@ -14,6 +14,7 @@ type Options struct {
 	AllowDestructive bool
 	RegistrationOpen bool
 	AuthMiddleware   gin.HandlerFunc
+	AdminEmail       string
 }
 
 func Register(

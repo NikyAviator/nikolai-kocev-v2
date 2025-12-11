@@ -32,11 +32,13 @@ func CreateUserController(svc service.UserService) gin.HandlerFunc {
 // DeleteOneUserController deletes a user by ID.
 func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		// target id
 		id := c.Param("id")
 		if id == "" {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "missing user id"})
 			return
 		}
+
 		err := svc.DeleteUser(c.Request.Context(), id)
 		if errors.Is(err, mongo.ErrNoDocuments) {
 			c.JSON(http.StatusNotFound, gin.H{"error": "user not found"})

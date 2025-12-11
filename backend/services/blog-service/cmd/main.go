@@ -20,6 +20,7 @@ func main() {
 	mongoURI := env.GetString("MONGODB_URI", "mongodb://localhost:27017")
 	dbName := env.GetString("MONGODB_DBNAME", "nkv2")
 	port := env.GetString("PORT", "5000")
+	adminEmail := env.GetString("ADMIN_EMAIL", "")
 	allowDestructive := env.GetBool("ALLOW_DESTRUCTIVE", false)
 	registrationOpen := env.GetBool("REGISTRATION_OPEN", false)
 
@@ -59,6 +60,7 @@ func main() {
 		AllowDestructive: allowDestructive,
 		RegistrationOpen: registrationOpen,
 		AuthMiddleware:   authenticationMiddleware,
+		AdminEmail:       adminEmail,
 	})
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
