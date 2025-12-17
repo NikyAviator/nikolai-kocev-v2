@@ -39,6 +39,8 @@ func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 			return
 		}
 
+		// Extract admin email from claims set by auth middleware
+
 		err := svc.DeleteUser(c.Request.Context(), id)
 		if errors.Is(err, mongo.ErrNoDocuments) {
 			c.JSON(http.StatusNotFound, gin.H{"error": "user not found"})
