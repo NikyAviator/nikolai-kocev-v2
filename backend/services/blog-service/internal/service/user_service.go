@@ -71,16 +71,21 @@ func (s *userService) DeleteUser(ctx context.Context, id string) error {
 }
 
 func (s *userService) LoginUser(ctx context.Context, loginReq domain.LoginRequest) (string, error) {
-	// Here we do business logic for user login
 	if strings.TrimSpace(loginReq.Email) == "" || strings.TrimSpace(loginReq.Password) == "" {
 		return "", errors.New("email and password are required")
 	}
+
+	// Validate credentials -> returns the DB user ID (your repo already does this)
 	userID, err := s.userRepo.ValidateCredentials(ctx, loginReq.Email, loginReq.Password)
 	if err != nil {
 		return "", errors.New("invalid email or password")
 	}
 
-	// Consider returning user info or token instead of just nil
-	return userID, nil
-
+	// Issue JWT (uses your existing helper)
+	// Keep email from the request for now; if you later want canonical case, return email from repo too.
+	token, err := utils.GenerateToken(loginReq.Email, userID) // uses SECRET_KEY and 1h exp
+	if err != nil {
+		return "", err
+	}
+	return token, nil
 }

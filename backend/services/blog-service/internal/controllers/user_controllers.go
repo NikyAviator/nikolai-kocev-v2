@@ -1,15 +1,16 @@
 package controllers
 
 import (
+	"context"
 	"errors"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/mongo"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
-	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 )
 
 // CreateUserController creates a new user.
@@ -54,29 +55,22 @@ func DeleteOneUserController(svc service.UserService) gin.HandlerFunc {
 	}
 }
 
-// HÄR FIXA ANDRA PARAMETERN FÖR USERID som andra parameter
-func LoginController(svc service.UserService) gin.HandlerFunc {
+func LoginController(userSvc service.UserService) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var loginReq domain.LoginRequest
-		if err := c.ShouldBindJSON(&loginReq); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
+		var req domain.LoginRequest
+		if err := c.ShouldBindJSON(&req); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid body"})
 			return
 		}
-		// _ = userID
-		_, err := svc.LoginUser(c.Request.Context(), loginReq)
+		// 5s timeout for the call
+		ctx, cancel := context.WithTimeout(c.Request.Context(), 5*time.Second)
+		defer cancel()
+
+		token, err := userSvc.LoginUser(ctx, req)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 			return
 		}
-
-		// FIXA TOKEN - så UserId finns i DB och skicka med den? - INTE KOPPLAD TILL NÅGOT ÄNNU
-		token, err := utils.GenerateToken(loginReq.Email, loginReq.UserId)
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
-			return
-		}
-
-		// Placeholder response for future implementation
-		c.JSON(http.StatusOK, gin.H{"message": "credentials valid, Login successful", "token": token})
+		c.JSON(http.StatusOK, gin.H{"token": token})
 	}
 }
