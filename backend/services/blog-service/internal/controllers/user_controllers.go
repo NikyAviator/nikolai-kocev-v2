@@ -62,7 +62,8 @@ func LoginController(svc service.UserService) gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid payload"})
 			return
 		}
-		err := svc.LoginUser(c.Request.Context(), loginReq)
+		// _ = userID
+		_, err := svc.LoginUser(c.Request.Context(), loginReq)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 			return

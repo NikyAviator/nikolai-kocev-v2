@@ -15,7 +15,7 @@ import (
 type UserRepository interface {
 	Create(ctx context.Context, u *domain.User) error
 	Delete(ctx context.Context, id string) error
-	ValidateCredentials(ctx context.Context, email, password string) (domain.User, error)
+	ValidateCredentials(ctx context.Context, email, password string) (string /* userID */, error)
 }
 
 type MongoUserRepository struct {
@@ -66,19 +66,21 @@ func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
 	return nil
 }
 
-func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, password string) (domain.User, error) {
-	// Here we just fetch the user by email and compare passwords
-	var user domain.User
-	err := r.coll.FindOne(ctx, bson.M{"email": email}).Decode(&user)
+func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, password string) (string, error) {
+	// Find user by email
+	var doc struct {
+		ID           primitive.ObjectID `bson:"_id"`
+		Email        string             `bson:"email"`
+		PasswordHash string             `bson:"passwordHash"`
+	}
+	err := r.coll.FindOne(ctx, bson.M{"email": email}).Decode(&doc)
 	if err != nil {
-		return domain.User{}, err
+		return "", err
 	}
 
-	// Here you would typically compare the hashed password
-	// For simplicity, we assume a utility function `CheckPasswordHash`
-	if !utils.CheckPasswordHash(password, user.PasswordHash) {
-		return domain.User{}, errors.New("invalid credentials")
+	if !utils.CheckPasswordHash(password, doc.PasswordHash) {
+		return "", errors.New("invalid credentials")
 	}
 
-	return user, nil
+	return doc.ID.Hex(), nil
 }
