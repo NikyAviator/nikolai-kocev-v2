@@ -75,15 +75,15 @@ func (s *userService) LoginUser(ctx context.Context, loginReq domain.LoginReques
 		return "", errors.New("email and password are required")
 	}
 
-	// Validate credentials -> returns the DB user ID (your repo already does this)
+	// Validate credentials -> returns the DB user ID
 	userID, err := s.userRepo.ValidateCredentials(ctx, loginReq.Email, loginReq.Password)
 	if err != nil {
 		return "", errors.New("invalid email or password")
 	}
 
-	// Issue JWT (uses your existing helper)
+	// Issue JWT token
 	// Keep email from the request for now; if you later want canonical case, return email from repo too.
-	token, err := utils.GenerateToken(loginReq.Email, userID) // uses SECRET_KEY and 1h exp
+	token, err := utils.GenerateToken(loginReq.Email, userID)
 	if err != nil {
 		return "", err
 	}

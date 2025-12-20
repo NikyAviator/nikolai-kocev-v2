@@ -16,6 +16,8 @@ type UserRepository interface {
 	Create(ctx context.Context, u *domain.User) error
 	Delete(ctx context.Context, id string) error
 	ValidateCredentials(ctx context.Context, email, password string) (string /* userID */, error)
+	FindByID(ctx context.Context, id primitive.ObjectID) (*domain.User, error)
+	FindByEmail(ctx context.Context, email string) (*domain.User, error)
 }
 
 type MongoUserRepository struct {
@@ -83,4 +85,22 @@ func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, pa
 	}
 
 	return doc.ID.Hex(), nil
+}
+
+func (r *MongoUserRepository) FindByID(ctx context.Context, id primitive.ObjectID) (*domain.User, error) {
+	var usr domain.User
+	err := r.coll.FindOne(ctx, bson.M{"_id": id}).Decode(&usr)
+	if err != nil {
+		return nil, err
+	}
+	return &usr, nil
+}
+
+func (r *MongoUserRepository) FindByEmail(ctx context.Context, email string) (*domain.User, error) {
+	var usr domain.User
+	err := r.coll.FindOne(ctx, bson.M{"email": email}).Decode(&usr)
+	if err != nil {
+		return nil, err
+	}
+	return &usr, nil
 }
