@@ -3,18 +3,20 @@ package v1
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/controllers"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/middleware"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
 )
 
 type Options struct {
 	AllowDestructive bool
 	RegistrationOpen bool
-
-	AdminEmail string
+	MW               middleware.Set
+	AdminEmail       string
 }
 
 func Register(
@@ -42,8 +44,11 @@ func Register(
 
 	// Protected/admin routes
 	admin := api.Group("/admin")
-	admin.Use(mw.AuthenticateJWT()) // verifies token & sets claims
-	admin.Use(mw.RequireAdmin(userRepo))
+	admin.Use(
+		opts.MW.Timeout(10*time.Second),
+		opts.MW.Authn,
+		opts.MW.AdminOnly,
+	)
 
 	// Blog management
 	admin.POST("/blogs", controllers.CreateBlogController(blogSvc))

@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/infrastructure/repository"
+	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/middleware"
 	v1 "github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/routes/v1"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/service"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/env"
@@ -51,15 +52,15 @@ func main() {
 	userSvc := service.NewUserService(userRepo)
 
 	// // Middleware
-	// authenticationMiddleware := middleware.Authenticate()
+	mws := middleware.NewSet(userSvc, adminEmail)
 
 	// HTTP & Options
 	r := gin.Default()
 	v1.Register(r, blogSvc, userSvc, v1.Options{
 		AllowDestructive: allowDestructive,
 		RegistrationOpen: registrationOpen,
-		//AuthMiddleware:   authenticationMiddleware,
-		AdminEmail: adminEmail,
+		MW:               mws,
+		AdminEmail:       adminEmail,
 	})
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))
