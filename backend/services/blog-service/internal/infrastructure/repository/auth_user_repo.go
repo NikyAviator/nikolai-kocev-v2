@@ -87,6 +87,7 @@ func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, pa
 	return doc.ID.Hex(), nil
 }
 
+// These two are for claims.go middleware
 func (r *MongoUserRepository) FindByID(ctx context.Context, id primitive.ObjectID) (*domain.User, error) {
 	var usr domain.User
 	err := r.coll.FindOne(ctx, bson.M{"_id": id}).Decode(&usr)
