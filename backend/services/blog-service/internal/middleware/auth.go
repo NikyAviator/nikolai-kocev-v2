@@ -8,32 +8,31 @@ import (
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 )
 
-func Authenticate() gin.HandlerFunc {
+// AuthenticateJWT verifies the Bearer token and sets claims, email and userId into context.
+func AuthenticateJWT() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		authHeader := c.GetHeader("Authorization")
-		if !strings.HasPrefix(authHeader, "Bearer ") {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing or invalid Authorization header"})
+		h := c.GetHeader("Authorization")
+		if !strings.HasPrefix(h, "Bearer ") {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing bearer token"})
 			return
 		}
-		if authHeader == "" {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing Authorization header"})
-			return
-		}
-
-		claims, err := utils.VerifyToken(authHeader)
+		raw := strings.TrimPrefix(h, "Bearer ")
+		claims, err := utils.VerifyToken(raw) // returns jwt.MapClaims
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid or expired token"})
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
 			return
 		}
 
-		// Extract user information from claims if needed
-		email := claims["email"].(string)
-		userId := claims["userId"].(string)
+		c.Set("claims", claims)
 
-		// Stash claims for handlers/downstream middleware.
-		// c.Set("claims", claims)
-		c.Set("userId", userId)
-		c.Set("email", email)
+		if v, ok := claims["email"].(string); ok {
+			c.Set("email", v)
+		}
+
+		if v, ok := claims["userId"].(string); ok {
+			c.Set("userId", v)
+		}
+
 		c.Next()
 	}
 }

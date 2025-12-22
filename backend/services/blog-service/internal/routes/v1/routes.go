@@ -13,8 +13,8 @@ import (
 type Options struct {
 	AllowDestructive bool
 	RegistrationOpen bool
-	AuthMiddleware   gin.HandlerFunc
-	AdminEmail       string
+
+	AdminEmail string
 }
 
 func Register(
@@ -42,7 +42,8 @@ func Register(
 
 	// Protected/admin routes
 	admin := api.Group("/admin")
-	admin.Use(opts.AuthMiddleware)
+	admin.Use(mw.AuthenticateJWT()) // verifies token & sets claims
+	admin.Use(mw.RequireAdmin(userRepo))
 
 	// Blog management
 	admin.POST("/blogs", controllers.CreateBlogController(blogSvc))
