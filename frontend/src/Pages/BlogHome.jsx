@@ -30,7 +30,7 @@ export default function BlogHome() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
-            From the blog
+            From the Blog
           </h2>
         </div>
 
