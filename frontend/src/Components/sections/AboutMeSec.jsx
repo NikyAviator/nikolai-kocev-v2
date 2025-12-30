@@ -50,7 +50,7 @@ export default function AboutMeSec() {
               Today, I focus on building and deploying software with intention
               and care. My work is shaped by curiosity, consistency, and a deep
               interest in meaningful systems. If my background resonates with
-              what you're looking for, I’d be happy to connect.
+              what you are looking for, I’d be happy to connect.
             </p>
 
             <p className="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
