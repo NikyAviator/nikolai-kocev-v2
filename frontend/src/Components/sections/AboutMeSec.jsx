@@ -30,12 +30,12 @@ export default function AboutMeSec() {
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
-              I’ve always been drawn to systems that connect people. That’s what
-              led me to aviation. After years of training, I took to the skies
-              as a flight instructor, teaching others to fly. From the cockpit,
-              I learned to stay calm under pressure, to act with precision when
-              every decision counts. That mindset never left me — it simply
-              shifted into code.
+              I have always been drawn to systems that connect people. That is
+              what led me to aviation. After years of training, I took to the
+              skies as a flight instructor, teaching others to fly. From the
+              cockpit, I learned to stay calm under pressure, to act with
+              precision when every decision counts. That mindset never left me —
+              it simply shifted into code.
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
@@ -43,14 +43,14 @@ export default function AboutMeSec() {
               tech. The doorway was Linux. My first Arch install took eight
               hours — and sparked something permanent. I immersed myself in open
               source, cloud platforms, and backend systems. I studied fullstack
-              development here in Lund, and I haven’t stopped learning since.
+              development here in Lund, and I have not stopped learning since.
             </p>
 
             <p className="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
               Today, I focus on building and deploying software with intention
               and care. My work is shaped by curiosity, consistency, and a deep
               interest in meaningful systems. If my background resonates with
-              what you are looking for, I’d be happy to connect.
+              what you are looking for, I would be happy to connect.
             </p>
 
             <p className="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
