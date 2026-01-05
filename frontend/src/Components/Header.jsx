@@ -92,7 +92,7 @@ export default function Header() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="absolute left-1/2 -translate-x-1/2 rounded-md p-2 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 dark:text-indigo-400"
+              className="absolute left-1/2 -translate-x-1/2 rounded-md p-2.5 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 dark:text-indigo-400"
             >
               {dark ? (
                 <SunIcon className="size-5" />
