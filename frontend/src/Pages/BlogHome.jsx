@@ -26,10 +26,10 @@ export default function BlogHome() {
   if (err) return <div className="p-8 text-center text-red-600">{err}</div>;
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-24 sm:py-32 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-600 sm:text-5xl dark:text-gray-400">
             From the Blog
           </h2>
         </div>
