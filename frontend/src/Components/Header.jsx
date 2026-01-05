@@ -66,13 +66,27 @@ export default function Header() {
       <Dialog open={mobileOpen} onClose={closeMobile} className="lg:hidden">
         <div className="fixed inset-0 bg-black/40" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full max-w-sm overflow-y-auto bg-white px-6 py-6 sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900">
-          <div className="flex items-center justify-between">
+          {/* top row: brand (left), theme toggle (center), close (right) */}
+          <div className="relative flex items-center justify-between">
             <Link
               to="/"
               className="-m-1.5 p-1.5 text-xl font-bold text-indigo-600"
             >
               NikyAviator
             </Link>
+
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="absolute left-1/2 -translate-x-1/2 rounded-md p-2 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 dark:text-indigo-400"
+            >
+              {dark ? (
+                <SunIcon className="size-5" />
+              ) : (
+                <MoonIcon className="size-5" />
+              )}
+            </button>
+
             <button
               onClick={closeMobile}
               className="-m-2.5 rounded-md p-2.5 text-indigo-600"
@@ -82,22 +96,15 @@ export default function Header() {
             </button>
           </div>
 
-          {/* theme toggle inside drawer */}
-          <div className="mt-6">
-            <button
-              onClick={() => {
-                toggleTheme();
-                closeMobile();
-              }}
-              className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-semibold text-indigo-600 hover:bg-gray-100 dark:text-indigo-300 dark:hover:bg-gray-800/40"
+          {/* right-aligned Blogs button */}
+          <div className="mt-6 flex justify-end">
+            <Link
+              to="/blogs"
+              onClick={closeMobile}
+              className="inline-block rounded-md bg-indigo-600 px-3 py-3 text-white hover:bg-indigo-500"
             >
-              {dark ? (
-                <SunIcon className="size-5" />
-              ) : (
-                <MoonIcon className="size-5" />
-              )}
-              {dark ? 'Light mode' : 'Dark mode'}
-            </button>
+              Blogs
+            </Link>
           </div>
         </DialogPanel>
       </Dialog>
