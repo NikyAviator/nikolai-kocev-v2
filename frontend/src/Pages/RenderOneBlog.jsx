@@ -54,7 +54,7 @@ export default function RenderOneBlog() {
       </div>
 
       {/* Title */}
-      <h1 className="mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+      <h1 className="text-dark mb-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
         {blog.title}
       </h1>
 
