@@ -32,6 +32,19 @@ export default function Header() {
         {/* desktop auth links */}
 
         {/* mobile hamburger */}
+        {/* mobile theme toggle (visible on <lg) */}
+        <button
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+          className="rounded-md p-2 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 lg:hidden dark:text-indigo-400"
+        >
+          {dark ? (
+            <SunIcon className="size-5" />
+          ) : (
+            <MoonIcon className="size-5" />
+          )}
+        </button>
+
         <button
           onClick={() => setMobileOpen(true)}
           className="-m-2.5 rounded-md p-2.5 text-indigo-600 lg:hidden"
@@ -71,6 +84,7 @@ export default function Header() {
             <Link
               to="/"
               className="-m-1.5 p-1.5 text-xl font-bold text-indigo-600"
+              onClick={closeMobile}
             >
               NikyAviator
             </Link>
