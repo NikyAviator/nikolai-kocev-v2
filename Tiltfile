@@ -8,7 +8,7 @@ docker_build(
 docker_build(
     ref='backend-image',
     context='backend',
-    dockerfile='infra/development/Docker/blog-service.Dockerfile',
+    dockerfile='infra/development/Docker/backend.Dockerfile',
 )
 
 allow_k8s_contexts('minikube')
