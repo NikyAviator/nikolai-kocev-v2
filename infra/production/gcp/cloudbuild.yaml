@@ -1,54 +1,47 @@
-# Builds FRONTEND and BACKEND and pushes :latest and :$SHORT_SHA tags.
-# Logs go to your bucket so the custom SA trigger runs.
-
 substitutions:
   _REGION: europe-north1
-  _AR_HOST: '${_REGION}-docker.pkg.dev/${PROJECT_ID}'
-  _FRONT_REPO: nkv2-frontend
-  _BACK_REPO: nkv2-backend
-  _LOGS_BUCKET: 'gs://nikysite-build-logs'
+  _FRONTEND_REPO: nkv2-frontend
+  _BACKEND_REPO: nkv2-backend
+  # Full image repository paths (repository + image name)
+  _FRONTEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_FRONTEND_REPO}/nkv2-frontend
+  _BACKEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_BACKEND_REPO}/nkv2-backend
 
 steps:
   # ---------- FRONTEND ----------
-  - name: 'gcr.io/cloud-builders/docker'
-    # Build context is the frontend folder.
-    # Dockerfile stays at infra/development/Docker/frontend.Dockerfile.
+  - name: gcr.io/cloud-builders/docker
     args:
-      [
-        'build',
-        '-f',
-        'infra/development/Docker/frontend.Dockerfile',
-        '-t',
-        '${_AR_HOST}/${_FRONT_REPO}:latest',
-        '-t',
-        '${_AR_HOST}/${_FRONT_REPO}:${SHORT_SHA}',
-        'frontend',
-      ]
+      - build
+      - -f
+      - infra/development/Docker/frontend.Dockerfile
+      - -t
+      - ${_FRONTEND_IMAGE}:${SHORT_SHA}
+      - -t
+      - ${_FRONTEND_IMAGE}:latest
+      - ./frontend
+
+  - name: gcr.io/cloud-builders/docker
+    args: ['push', '${_FRONTEND_IMAGE}:${SHORT_SHA}']
+  - name: gcr.io/cloud-builders/docker
+    args: ['push', '${_FRONTEND_IMAGE}:latest']
 
   # ---------- BACKEND ----------
-  - name: 'gcr.io/cloud-builders/docker'
-    # Build context is the backend folder.
+  - name: gcr.io/cloud-builders/docker
     args:
-      [
-        'build',
-        '-f',
-        'infra/development/Docker/backend.Dockerfile',
-        '-t',
-        '${_AR_HOST}/${_BACK_REPO}:latest',
-        '-t',
-        '${_AR_HOST}/${_BACK_REPO}:${SHORT_SHA}',
-        'backend',
-      ]
+      - build
+      - -f
+      - infra/development/Docker/backend.Dockerfile
+      - -t
+      - ${_BACKEND_IMAGE}:${SHORT_SHA}
+      - -t
+      - ${_BACKEND_IMAGE}:latest
+      - ./backend/services/blog-service # build context
 
-# Cloud Build will push any tags listed here after the steps complete.
-images:
-  - '${_AR_HOST}/${_FRONT_REPO}:latest'
-  - '${_AR_HOST}/${_FRONT_REPO}:${SHORT_SHA}'
-  - '${_AR_HOST}/${_BACK_REPO}:latest'
-  - '${_AR_HOST}/${_BACK_REPO}:${SHORT_SHA}'
+  - name: gcr.io/cloud-builders/docker
+    args: ['push', '${_BACKEND_IMAGE}:${SHORT_SHA}']
+  - name: gcr.io/cloud-builders/docker
+    args: ['push', '${_BACKEND_IMAGE}:latest']
 
-# Required for custom SA builds.
+# Use your user-managed logs bucket
+logsBucket: gs://nikysite-build-logs
 options:
   logging: GCS_ONLY
-
-logsBucket: '${_LOGS_BUCKET}'
