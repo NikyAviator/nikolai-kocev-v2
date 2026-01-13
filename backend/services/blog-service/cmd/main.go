@@ -21,6 +21,7 @@ func main() {
 	dbName := env.GetString("MONGODB_DBNAME", "nkv2")
 	port := env.GetString("PORT", "5000")
 	adminEmail := env.GetString("ADMIN_EMAIL", "")
+	apiSharedSecret := env.GetString("API_SHARED_SECRET", "")
 	allowDestructive := env.GetBool("ALLOW_DESTRUCTIVE", false)
 	registrationOpen := env.GetBool("REGISTRATION_OPEN", false)
 
@@ -52,7 +53,7 @@ func main() {
 	userSvc := service.NewUserService(userRepo)
 
 	// // Middleware
-	mws := middleware.NewSet(userSvc, adminEmail)
+	mws := middleware.NewSet(userSvc, adminEmail, apiSharedSecret)
 
 	// HTTP & Options
 	r := gin.Default()
@@ -61,6 +62,7 @@ func main() {
 		RegistrationOpen: registrationOpen,
 		MW:               mws,
 		AdminEmail:       adminEmail,
+		ApiSharedSecret:  apiSharedSecret,
 	})
 	log.Printf("blog-service listening on :%s", port)
 	log.Fatal(r.Run(":" + port))

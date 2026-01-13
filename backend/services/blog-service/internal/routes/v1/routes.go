@@ -17,6 +17,7 @@ type Options struct {
 	RegistrationOpen bool
 	MW               middleware.Set
 	AdminEmail       string
+	ApiSharedSecret  string
 }
 
 func Register(

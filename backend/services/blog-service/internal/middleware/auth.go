@@ -14,13 +14,14 @@ import (
 
 // Set bundles the handlers so we can DI them.
 type Set struct {
-	Authn     gin.HandlerFunc // validates JWT, puts claims into context
-	AdminOnly gin.HandlerFunc // ensures the caller is your admin in DB
-	Timeout   func(d time.Duration) gin.HandlerFunc
+	Authn           gin.HandlerFunc // validates JWT, puts claims into context
+	AdminOnly       gin.HandlerFunc // ensures the caller is your admin in DB
+	Timeout         func(d time.Duration) gin.HandlerFunc
+	ApiSharedSecret gin.HandlerFunc // ensures internal API calls have the secret
 }
 
 // NewSet wires middleware with dependencies (e.g., userSvc) once.
-func NewSet(userSvc service.UserService, adminEmail string) Set {
+func NewSet(userSvc service.UserService, adminEmail string, apiSharedSecret string) Set {
 	// 1) Authn: verify token and stash claim values on the context
 	authn := func(c *gin.Context) {
 		h := c.GetHeader("Authorization")
@@ -78,5 +79,14 @@ func NewSet(userSvc service.UserService, adminEmail string) Set {
 		}
 	}
 
-	return Set{Authn: authn, AdminOnly: adminOnly, Timeout: timeout}
+	// 4) ApiSharedSecret: validate internal API calls have the secret
+	apiSecret := func(c *gin.Context) {
+		if c.GetHeader("X-API-SECRET") != apiSharedSecret {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+			return
+		}
+		c.Next()
+	}
+
+	return Set{Authn: authn, AdminOnly: adminOnly, Timeout: timeout, ApiSharedSecret: apiSecret}
 }
