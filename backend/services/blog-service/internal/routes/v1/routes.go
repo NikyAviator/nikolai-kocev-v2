@@ -31,6 +31,7 @@ func Register(
 	// Health
 	api.GET("/healthz", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"ok": true}) })
 
+	// Internal API protection (Call needs to originate from frontend with secret)
 	api.Use(opts.MW.ApiSharedSecret)
 	// Public blog routes
 	api.GET("/blogs", controllers.ListBlogsController(blogSvc))
