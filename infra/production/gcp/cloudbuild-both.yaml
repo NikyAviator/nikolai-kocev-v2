@@ -6,6 +6,7 @@ substitutions:
   _FRONTEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_FRONTEND_REPO}/nkv2-frontend
   _BACKEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_BACKEND_REPO}/nkv2-backend
 
+# RESOURCES - adjust to production images instead
 steps:
   # ---------- FRONTEND ----------
   - name: gcr.io/cloud-builders/docker
