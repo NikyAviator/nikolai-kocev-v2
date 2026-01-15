@@ -32,7 +32,7 @@ RUN rm -rf ./*
 COPY --from=build /app/dist .
 
 # Copy the nginx configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY infra/development/Docker/nginx.local.conf /etc/nginx/nginx.conf
 
 # Expose the port
 EXPOSE 8080
