@@ -2,7 +2,6 @@
 package v1
 
 import (
-	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -26,10 +25,8 @@ func Register(
 	userSvc service.UserService,
 	opts Options,
 ) {
+	// Base API group
 	api := r.Group("/api")
-
-	// Health
-	api.GET("/healthz", func(c *gin.Context) { c.JSON(http.StatusOK, gin.H{"ok": true}) })
 
 	// Internal API protection (Call needs to originate from frontend with secret)
 	api.Use(opts.MW.ApiSharedSecret)
