@@ -1,13 +1,13 @@
 # --- Docker Builds ---
 docker_build(
     ref='frontend-image',
-    context='frontend',
+    context='.',
     dockerfile='infra/development/Docker/frontend.Dockerfile',
 )
 
 docker_build(
     ref='backend-image',
-    context='backend',
+    context='./backend',
     dockerfile='infra/development/Docker/backend.Dockerfile',
 )
 

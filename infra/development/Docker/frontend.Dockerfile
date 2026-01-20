@@ -2,16 +2,16 @@
 FROM node:current-alpine as build
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /app/frontend
 
 # Copy the package.json and package-lock.json files to the working directory
-COPY package*.json ./
+COPY frontend/package*.json ./
 
 # Install the dependencies
 RUN npm install
 
 # Copy the rest of the application code to the working directory
-COPY . .
+COPY frontend ./
 
 # Build the application for production
 RUN npm run build
@@ -29,7 +29,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 
 # Copy the static files from the previous stage
-COPY --from=build /app/dist .
+COPY --from=build /app/frontend/dist .
 
 # Copy the nginx configuration file
 COPY infra/development/Docker/nginx.local.conf /etc/nginx/nginx.conf
