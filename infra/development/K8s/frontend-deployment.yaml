@@ -17,6 +17,9 @@ spec:
       containers:
         - name: frontend
           image: frontend-image
+          envFrom:
+            - secretRef:
+                name: blog-service-env
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
