@@ -13,7 +13,7 @@
 
 - React
 - Tailwind CSS
-- Vite (front end building tool)
+- Vite
 
 **Back end:**
 
@@ -26,36 +26,45 @@
 - Bash
 - Docker
 - Kubernetes
-- Tilt
-- GCP (Google Cloud Platform with K8s)
+- Tilt (K8s for local dev)
+- Hosting via GCP (Google Cloud Platform with: Cloud - Triggers -> Build -> Run)
 
 ---
 
 ### Running in Development
 
-To run either the frontend or backend individually, follow these steps:
+For development environment we use a Tiltfile and Minikube for hosting of our K8s.
 
-To run **frontend**, cd into frontend and:
+To start our cluster, make sure you meet the following prerequisites:
+
+### Prerequisites:
+
+| Tool                                                       | Purpose                                     | Check version              |
+| ---------------------------------------------------------- | ------------------------------------------- | -------------------------- |
+| [Docker Desktop](https://www.docker.com/) or Docker Engine | Container runtime used by Minikube and Tilt | `docker --version`         |
+| [Minikube](https://minikube.sigs.k8s.io/docs/)             | Local single-node Kubernetes cluster        | `minikube version`         |
+| [kubectl](https://kubernetes.io/docs/tasks/tools/)         | Kubernetes CLI                              | `kubectl version --client` |
+| [Tilt](https://docs.tilt.dev/install.html)                 | Local dev orchestrator                      | `tilt version`             |
+
+---
+
+I recommend setting the following resources in your minikube VM:
 
 ```bash
-npm run dev
+minikube config set driver docker
+minikube config set cpus 2
+minikube config set memory 4096
+minikube config set disk-size 20g
+minikube start
 ```
 
-- Frontend (Vite: React & JS) will run on http://localhost:5173/
-
-To run **backend**
-
-From the root folder, run:
-
-1.  To create & run blog-service binary:
+Then enable ingress addons in minikube:
 
 ```bash
-# from repo root
-docker build -f infra/development/Docker/blog-service.Dockerfile -t blog-service ./backend
-docker run --rm -p 5000:5000 blog-service
+minikube addons enable ingress
 ```
 
-- Backend (GO) will run on http://localhost:5000/
+We need to have the env file created so that we can run the program:
 
 To create a **Secret** (dev only, and path added to .gitignore):
 
@@ -74,12 +83,6 @@ kubectl create secret generic blog-service-env \
   --from-env-file=infra/development/secrets/blog-service.env
 ```
 
-To enable ingress addons in minikube:
-
-```bash
-minikube addons enable ingress
-```
-
 ---
 
 ### Scripts
@@ -92,21 +95,6 @@ tree -I 'node_modules|.git|dist' -a -L 10
 
 ## DevOps
 
-We will use Tilt (https://tilt.dev/) to orchestrate local builds and deployments on a Kubernetes cluster via Minikube.
-
----
-
-### Prerequisites:
-
-| Tool                                                       | Purpose                                     | Check version              |
-| ---------------------------------------------------------- | ------------------------------------------- | -------------------------- |
-| [Docker Desktop](https://www.docker.com/) or Docker Engine | Container runtime used by Minikube and Tilt | `docker --version`         |
-| [Minikube](https://minikube.sigs.k8s.io/docs/)             | Local single-node Kubernetes cluster        | `minikube version`         |
-| [kubectl](https://kubernetes.io/docs/tasks/tools/)         | Kubernetes CLI                              | `kubectl version --client` |
-| [Tilt](https://docs.tilt.dev/install.html)                 | Local dev orchestrator                      | `tilt version`             |
-
----
-
 ### 🧰 Running the Project with Tilt
 
 From the **repo root**, simply run (and do not forget to have your minikube instance running):
@@ -114,22 +102,6 @@ From the **repo root**, simply run (and do not forget to have your minikube inst
 ```bash
 tilt up
 ```
-
-This will:
-
-1. **Build** the frontend Docker image using
-   infra/development/Docker/frontend.Dockerfile
-   with the context set to the frontend/ folder.
-
-2. **Deploy** the Kubernetes resources defined in
-   infra/development/K8s/frontend.yaml (Deployment) and
-   infra/development/K8s/frontend-service.yaml (Service).
-
-3. **Port-forward port** `8080` from the cluster to your local machine.
-
-4. Watch for file changes in the frontend/ directory — Tilt will rebuild and redeploy automatically.
-
----
 
 ### 🧹 Stopping / Cleaning Up
 
