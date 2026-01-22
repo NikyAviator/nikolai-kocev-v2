@@ -1,3 +1,4 @@
+# Dockerfile for DEVELOPMENT
 # Step 1: Use Node.js 23.9-alpine3.20 as the base image (https://hub.docker.com/_/node?tab=description&amp%3Bpage=1&amp%3Bname=alpine)
 FROM node:current-alpine as build
 

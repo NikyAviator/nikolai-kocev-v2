@@ -1,3 +1,4 @@
+# Dockerfile for PRODUCTION
 # --- Build step ---
 FROM node:current-alpine AS build
 WORKDIR /app
