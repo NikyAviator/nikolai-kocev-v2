@@ -113,3 +113,14 @@ minikube stop  # shuts down the cluster (keeps data)
 # or
 minikube delete --all --purge   # removes the cluster completely
 ```
+
+### Handy DevOps commands for local dev:
+
+To recreate stale pods:
+
+```bash
+tilt down
+kubectl get pods
+kubectl delete pod --all
+tilt up
+```
