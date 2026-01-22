@@ -75,12 +75,10 @@ kubectl create secret generic blog-service-env \
   --from-env-file=infra/development/secrets/blog-service.env
 ```
 
-To update later:
+To update later, just delete and create it again:
 
 ```bash
 kubectl delete secret blog-service-env
-kubectl create secret generic blog-service-env \
-  --from-env-file=infra/development/secrets/blog-service.env
 ```
 
 ---
@@ -105,11 +103,16 @@ tilt up
 
 ### 🧹 Stopping / Cleaning Up
 
-When you’re done:
+When you’re done and other minikube commands:
 
 ```bash
 tilt down      # stops all Tilt resources
 minikube stop  # shuts down the cluster (keeps data)
+---
+minikube config view # resources
+minikube status
+minikube profile list
+minikube --help
 ```
 
 or to nuke everything, use:
@@ -132,6 +135,7 @@ To recreate stale pods:
 
 ```bash
 tilt down
+kubectl get all
 kubectl get pods
 kubectl delete pod --all
 tilt up
