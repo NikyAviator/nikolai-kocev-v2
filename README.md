@@ -48,6 +48,14 @@ To start our cluster, make sure you meet the following prerequisites:
 
 ---
 
+Before starting stuff, check current docker context & other nice commands:
+
+```bash
+docker context ls # To check
+docker context use default # To switch (I prefer native dockerd (/run/docker.sock))
+docker info # check the stuff you running
+```
+
 I recommend setting the following resources in your minikube VM:
 
 ```bash
