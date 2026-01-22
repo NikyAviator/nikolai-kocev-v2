@@ -110,9 +110,21 @@ When you’re done:
 ```bash
 tilt down      # stops all Tilt resources
 minikube stop  # shuts down the cluster (keeps data)
-# or
+```
+
+or to nuke everything, use:
+
+```bash
 minikube delete --all --purge   # removes the cluster completely
 ```
+
+but only when:
+
+- Changed driver / core config (e.g. switched from Docker Desktop to native Docker)
+
+- Changed CPU/memory/disk size in a way that requires fresh node
+
+- The cluster is completely borked and not worth debugging
 
 ### Handy DevOps commands for local dev:
 
@@ -123,4 +135,6 @@ tilt down
 kubectl get pods
 kubectl delete pod --all
 tilt up
+---
+tilt logs -f
 ```
