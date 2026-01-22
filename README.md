@@ -91,9 +91,15 @@ To get a clear snapshot of any project you are working on, use:
 tree -I 'node_modules|.git|dist' -a -L 10
 ```
 
+To update **ALL** dependencies in the project, cd inte **/scripts** folder and run:
+
+```bash
+./update-all.sh
+```
+
 ## DevOps
 
-### 🧰 Running the Project with Tilt
+### Handy DevOps commands for local dev:
 
 From the **repo root**, simply run (and do not forget to have your minikube instance running):
 
@@ -101,7 +107,7 @@ From the **repo root**, simply run (and do not forget to have your minikube inst
 tilt up
 ```
 
-### 🧹 Stopping / Cleaning Up
+### Stopping / Cleaning Up
 
 When you’re done and other minikube commands:
 
@@ -129,7 +135,7 @@ but only when:
 
 - The cluster is completely borked and not worth debugging
 
-### Handy DevOps commands for local dev:
+###
 
 To recreate stale pods:
 
