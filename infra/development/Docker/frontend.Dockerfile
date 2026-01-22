@@ -1,43 +1,33 @@
 # Dockerfile for DEVELOPMENT
-# Step 1: Use Node.js 23.9-alpine3.20 as the base image (https://hub.docker.com/_/node?tab=description&amp%3Bpage=1&amp%3Bname=alpine)
 FROM node:current-alpine as build
 
-# Set the working directory inside the container
 WORKDIR /app/frontend
 
-# Copy the package.json and package-lock.json files to the working directory
 COPY frontend/package*.json ./
-
-# Install the dependencies
 RUN npm install
 
-# Copy the rest of the application code to the working directory
 COPY frontend ./
-
-# Build the application for production
 RUN npm run build
 
-# Step 2: Use an Nginx image to serve the static files
-# (https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/)
-# (https://nginx.org/en/docs/beginners_guide.html#proxy)
+# --- Runtime (Nginx) ---
+FROM nginx:alpine
 
-FROM nginx:alpine 
-
-# Setup working directory
+# 1. Serve built frontend
 WORKDIR /usr/share/nginx/html
-
-# Remove the placeholder site from the Nginx image
 RUN rm -rf ./*
-
-# Copy the static files from the previous stage
 COPY --from=build /app/frontend/dist .
 
-# Copy the nginx configuration file
-COPY infra/development/Docker/nginx.local.conf /etc/nginx/nginx.conf
+# 2. Copy Nginx template to where the official entrypoint expects it.
+#    The script /docker-entrypoint.d/20-envsubst-on-templates.sh
+#    will transform:
+#      /etc/nginx/templates/default.conf.template
+#    into:
+#      /etc/nginx/conf.d/default.conf
+COPY infra/development/Docker/nginx.local.template.conf \
+     /etc/nginx/templates/default.conf.template
 
-# Expose the port
+# 3. Expose the same port used by the service
 EXPOSE 8080
 
-# Start the nginx server
+# 4. Use the default entrypoint + CMD so envsubst runs automatically
 CMD ["nginx", "-g", "daemon off;"]
-

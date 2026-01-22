@@ -26,18 +26,18 @@ spec:
           envFrom:
             - secretRef:
                 name: blog-service-env
-          readinessProbe:
-            httpGet:
-              path: /api/healthz
-              port: 5000
-            initialDelaySeconds: 2
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /api/healthz
-              port: 5000
-            initialDelaySeconds: 5
-            periodSeconds: 10
+          # readinessProbe:
+          #   httpGet:
+          #     path: /api/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 2
+          #   periodSeconds: 5
+          # livenessProbe:
+          #   httpGet:
+          #     path: /api/healthz
+          #     port: 5000
+          #   initialDelaySeconds: 5
+          #   periodSeconds: 10
           resources:
             requests:
               memory: '64Mi'
