@@ -23,21 +23,46 @@ spec:
           env:
             - name: GIN_MODE
               value: release
-          envFrom:
-            - secretRef:
-                name: blog-service-env
-          # readinessProbe:
-          #   httpGet:
-          #     path: /api/healthz
-          #     port: 5000
-          #   initialDelaySeconds: 2
-          #   periodSeconds: 5
-          # livenessProbe:
-          #   httpGet:
-          #     path: /api/healthz
-          #     port: 5000
-          #   initialDelaySeconds: 5
-          #   periodSeconds: 10
+            - name: API_SHARED_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: API_SHARED_SECRET
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: SECRET_KEY
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: MONGODB_URI
+            - name: MONGODB_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: MONGODB_DBNAME
+            - name: ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: ADMIN_EMAIL
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: PORT
+            - name: ALLOW_DESTRUCTIVE
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: ALLOW_DESTRUCTIVE
+            - name: REGISTRATION_OPEN
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: REGISTRATION_OPEN
           resources:
             requests:
               memory: '64Mi'
