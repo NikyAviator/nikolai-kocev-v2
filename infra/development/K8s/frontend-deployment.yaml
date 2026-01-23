@@ -17,15 +17,16 @@ spec:
       containers:
         - name: frontend
           image: frontend-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # CRITICAL: Expose API_SHARED_SECRET for nginx envsubst
           env:
             - name: API_SHARED_SECRET
               valueFrom:
                 secretKeyRef:
                   name: blog-service-env
                   key: API_SHARED_SECRET
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
           readinessProbe:
             httpGet:
               path: /
