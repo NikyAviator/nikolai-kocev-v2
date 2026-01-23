@@ -63,6 +63,7 @@ minikube config set driver docker
 minikube config set cpus 2
 minikube config set memory 4096
 minikube config set disk-size 20g
+minikube config view # To check the set resources
 minikube start
 ```
 
