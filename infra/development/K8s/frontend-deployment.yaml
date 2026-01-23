@@ -17,9 +17,12 @@ spec:
       containers:
         - name: frontend
           image: frontend-image
-          envFrom:
-            - secretRef:
-                name: blog-service-env
+          env:
+            - name: API_SHARED_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: blog-service-env
+                  key: API_SHARED_SECRET
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
