@@ -2,7 +2,7 @@ module github.com/nikyaviator/nikolai-kocev-v2/backend
 
 go 1.24.6
 
-require github.com/golang-jwt/jwt/v5 v5.3.0
+require github.com/golang-jwt/jwt/v5 v5.3.1
 
 require (
 	github.com/bytedance/gopkg v0.1.3 // indirect
@@ -46,7 +46,7 @@ require (
 
 require (
 	github.com/gin-gonic/gin v1.11.0
-	go.mongodb.org/mongo-driver v1.17.7
+	go.mongodb.org/mongo-driver v1.17.8
 	golang.org/x/crypto v0.45.0
 	golang.org/x/text v0.31.0 // indirect
 )

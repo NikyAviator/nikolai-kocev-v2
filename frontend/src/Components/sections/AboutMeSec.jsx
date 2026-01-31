@@ -134,8 +134,10 @@ export default function AboutMeSec() {
                 <dt className="text-sm/6 text-gray-600 dark:text-gray-400">
                   Current book I am reading?
                 </dt>
-                <dd className="order-first text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                  <span>Sandworms of Dune. (Book 8 - Dune Series)</span>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  <span>
+                    The Wheel of Time - The Dragon Reborn. (Robert Jordan)
+                  </span>
                 </dd>
               </div>
               <div className="flex flex-col gap-y-2 max-sm:border-b max-sm:border-dotted max-sm:border-gray-200 max-sm:pb-4 dark:max-sm:border-gray-700">
