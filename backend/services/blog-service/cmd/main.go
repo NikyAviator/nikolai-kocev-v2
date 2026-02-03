@@ -18,7 +18,7 @@ import (
 func main() {
 	// DB Config (loads from env)
 	mongoURI := env.GetString("MONGODB_URI", "mongodb://localhost:27017")
-	dbName := env.GetString("MONGODB_DB", "nkv2")
+	dbName := env.GetString("MONGODB_DBNAME", "nkv2")
 	port := env.GetString("PORT", "5000")
 	adminEmail := env.GetString("ADMIN_EMAIL", "")
 	apiSharedSecret := env.GetString("API_SHARED_SECRET", "")
