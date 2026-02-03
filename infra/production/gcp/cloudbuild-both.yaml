@@ -13,7 +13,7 @@ steps:
     args:
       - build
       - -f
-      - infra/development/Docker/frontend.Dockerfile
+      - infra/production/Docker/frontend.Dockerfile
       - -t
       - ${_FRONTEND_IMAGE}:${SHORT_SHA}
       - -t
@@ -30,7 +30,7 @@ steps:
     args:
       - build
       - -f
-      - infra/development/Docker/backend.Dockerfile
+      - infra/production/Docker/backend.Dockerfile
       - -t
       - ${_BACKEND_IMAGE}:${SHORT_SHA}
       - -t

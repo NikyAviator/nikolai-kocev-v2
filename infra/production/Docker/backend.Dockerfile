@@ -1,3 +1,4 @@
+# Dockerfile for production blog-service
 # Build stage
 FROM golang:1.25 AS builder
 
