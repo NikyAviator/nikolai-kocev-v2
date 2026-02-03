@@ -11,13 +11,7 @@ spec:
     - host: localhost
       http:
         paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: backend
-                port:
-                  number: 5000
+          # ALL requests go to frontend (including /api)
           - path: /
             pathType: Prefix
             backend:
