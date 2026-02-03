@@ -33,11 +33,11 @@ spec:
                 secretKeyRef:
                   name: blog-service-env
                   key: SECRET_KEY
-            - name: MONGGOB_URI
+            - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: blog-service-env
-                  key: MONGGOB_URI
+                  key: MONGODB_URI
             - name: MONGODB_DBNAME
               valueFrom:
                 secretKeyRef:
