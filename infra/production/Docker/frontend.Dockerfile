@@ -16,7 +16,7 @@ RUN apk add --no-cache bash gettext
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Template -> we will render it on startup
-COPY infra/production/Docker/nginx.prod.conf.template /etc/nginx/templates/app.conf.template
+COPY infra/production/Docker/nginx.prod.template.conf /etc/nginx/templates/app.conf.template
 
 # Default entrypoint in official nginx image will execute /docker-entrypoint.d/*.sh
 # Render template to /etc/nginx/conf.d/default.conf before nginx starts
