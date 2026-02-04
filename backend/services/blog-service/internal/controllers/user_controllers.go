@@ -62,8 +62,8 @@ func LoginController(userSvc service.UserService) gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "invalid body"})
 			return
 		}
-		// 5s timeout for the call
-		ctx, cancel := context.WithTimeout(c.Request.Context(), 5*time.Second)
+		// 10s timeout for the call
+		ctx, cancel := context.WithTimeout(c.Request.Context(), 10*time.Second)
 		defer cancel()
 
 		token, err := userSvc.LoginUser(ctx, req)
