@@ -10,7 +10,7 @@ RUN npm run build
 # --- Runtime step ---
 FROM nginx:alpine
 # envsubst for rendering templates at container start
-RUN apk add --no-cache bash gettext
+RUN apk add --no-cache gettext
 
 # Static files
 COPY --from=build /app/dist /usr/share/nginx/html
