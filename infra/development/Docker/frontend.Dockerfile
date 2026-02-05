@@ -23,8 +23,7 @@ COPY --from=build /app/frontend/dist .
 #      /etc/nginx/templates/default.conf.template
 #    into:
 #      /etc/nginx/conf.d/default.conf
-COPY infra/development/Docker/nginx.local.template.conf \
-     /etc/nginx/templates/default.conf.template
+COPY infra/production/Docker/nginx.prod.template.conf /etc/nginx/templates/default.conf.template
 
 # 3. Expose the same port used by the service
 EXPOSE 8080
