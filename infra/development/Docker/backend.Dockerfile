@@ -8,8 +8,8 @@ WORKDIR /build
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY backend/services/blog-service ./services/blog-service
-COPY backend/shared ./shared
+COPY services/blog-service ./services/blog-service
+COPY shared ./shared
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o ./services/blog-service/bin/blog-service ./services/blog-service/cmd/main.go
 
