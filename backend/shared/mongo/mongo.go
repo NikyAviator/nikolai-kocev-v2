@@ -5,8 +5,8 @@ import (
 	"errors"
 	"time"
 
-	mongodrv "go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
+	mongodrv "go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
 // Config holds minimal connection configuration.
