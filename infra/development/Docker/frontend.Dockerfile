@@ -17,12 +17,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=build /app/frontend/dist .
 
-# 2. Copy Nginx template to where the official entrypoint expects it.
-#    The script /docker-entrypoint.d/20-envsubst-on-templates.sh
-#    will transform:
-#      /etc/nginx/templates/default.conf.template
-#    into:
-#      /etc/nginx/conf.d/default.conf
+# 2. Template - nginx will auto-envsubst to /etc/nginx/conf.d/default.conf
 COPY infra/production/Docker/nginx.prod.template.conf /etc/nginx/templates/default.conf.template
 
 # 3. Expose the same port used by the service
