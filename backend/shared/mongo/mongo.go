@@ -31,14 +31,14 @@ func ConnectMongoDB(parentCtx context.Context, cfg MongoConfig) (*mongodrv.Clien
 
 	// ApplyURI config; Atlas recommends pinning Server API v1 for stability.
 	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-	opts := options.Client().ApplyURI(cfg.URI).SetServerAPIOptions(serverAPI)
+	myOptions := options.Client().ApplyURI(cfg.URI).SetServerAPIOptions(serverAPI)
 
 	// Time-bound connect + ping
-	ctx, cancel := context.WithTimeout(parentCtx, cfg.ConnTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
 	defer cancel()
 
 	// Connect and Ping
-	client, err := mongodrv.Connect(ctx, opts)
+	client, err := mongodrv.Connect(myOptions)
 	if err != nil {
 		return nil, nil, nil, err
 	}
