@@ -1,15 +1,15 @@
+# Dockerfile for production blog-service
 # Build stage
 FROM golang:1.25 AS builder
 
 WORKDIR /build
 
-# Cache deps
-COPY go.mod go.sum ./
+# Copy backend files (when building from project root)
+COPY backend/go.mod backend/go.sum ./
 RUN go mod download
 
-# Copy shared code and the service
-COPY services/blog-service ./services/blog-service
-COPY shared ./shared
+COPY backend/services/blog-service ./services/blog-service
+COPY backend/shared ./shared
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o ./services/blog-service/bin/blog-service ./services/blog-service/cmd/main.go
 
