@@ -7,8 +7,8 @@ import (
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/v2/bson"
-	"go.mongodb.org/mongo-driver/v2/bson/primitive"
 
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
