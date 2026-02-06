@@ -51,7 +51,7 @@ func (r *MongoBlogRepository) Create(ctx context.Context, b *domain.Blog) error 
 	}
 	// Set the generated ID
 	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
-		b.ID = oid.Hex()
+		b.ID = oid
 	}
 	return nil
 }
@@ -61,7 +61,7 @@ func (r *MongoBlogRepository) Delete(ctx context.Context, id string) error {
 	if err != nil {
 		return err
 	}
-	_, err = r.coll.DeleteOne(ctx, primitive.M{"_id": oid})
+	_, err = r.coll.DeleteOne(ctx, bson.M{"_id": oid})
 	return err
 }
 
