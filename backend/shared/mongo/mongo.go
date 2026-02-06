@@ -34,7 +34,7 @@ func ConnectMongoDB(parentCtx context.Context, cfg MongoConfig) (*mongodrv.Clien
 	myOptions := options.Client().ApplyURI(cfg.URI).SetServerAPIOptions(serverAPI)
 
 	// Time-bound connect + ping
-	ctx, cancel := context.WithTimeout(context.Background(), 20*time.Second)
+	ctx, cancel := context.WithTimeout(parentCtx, cfg.ConnTimeout)
 	defer cancel()
 
 	// Connect and Ping

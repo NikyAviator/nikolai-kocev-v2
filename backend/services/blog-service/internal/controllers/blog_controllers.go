@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -60,6 +61,7 @@ func ListBlogsController(svc service.BlogService) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		blogs, err := svc.ListBlogs(c.Request.Context())
 		if err != nil {
+			log.Printf("ListBlogs error: %v", err)
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
