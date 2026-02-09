@@ -90,6 +90,13 @@ To update later, just delete and create it again:
 kubectl delete secret blog-service-env
 ```
 
+To check that it is created from correct file & Security Header check
+
+```bash
+kubectl get secret blog-service-env -o
+kubectl exec -it <backend-pod-name> -- env | grep API_SHARED_SECRET
+```
+
 ---
 
 ### Scripts
