@@ -37,7 +37,7 @@ func Register(
 	// Auth
 	api.POST("/login", controllers.LoginController(userSvc))
 
-	// Optional: self-service registration
+	// Create - User. Does not use X-API-Shared-Secret but is protected by registration open flag.
 	if opts.RegistrationOpen {
 		api.POST("/users", controllers.CreateUserController(userSvc))
 	}

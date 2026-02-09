@@ -68,11 +68,7 @@ func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
 
 func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, password string) (string, error) {
 	// Find user by email
-	var doc struct {
-		ID           primitive.ObjectID `bson:"_id"`
-		Email        string             `bson:"email"`
-		PasswordHash string             `bson:"passwordHash"`
-	}
+	var doc domain.User
 	err := r.coll.FindOne(ctx, bson.M{"email": email}).Decode(&doc)
 	if err != nil {
 		return "", err
