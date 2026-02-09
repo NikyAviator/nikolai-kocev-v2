@@ -39,10 +39,6 @@ func (r *MongoUserRepository) EnsureIndexes(ctx context.Context) error {
 }
 
 func (r *MongoUserRepository) Create(ctx context.Context, u *domain.User) error {
-	// Figure out where we insert date, createdAt, updatedAt. In service or repo (this layer)?
-	// now := time.Now()
-	// u.CreatedAt = now
-	// u.UpdatedAt = now
 
 	res, err := r.coll.InsertOne(ctx, u)
 	if err != nil {
@@ -50,7 +46,7 @@ func (r *MongoUserRepository) Create(ctx context.Context, u *domain.User) error 
 	}
 	// Set the generated ID
 	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
-		u.ID = oid.Hex()
+		u.ID = oid
 	}
 	return nil
 
