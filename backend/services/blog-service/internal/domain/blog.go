@@ -3,7 +3,7 @@ package domain
 import (
 	"time"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 type CreateBlogInput struct {
@@ -20,17 +20,17 @@ type CreateBlogInput struct {
 
 // Persisted model (what we store in Mongo)
 type Blog struct {
-	ID          primitive.ObjectID `bson:"_id,omitempty"   json:"id"`
-	Title       string             `bson:"title"           json:"title"`
-	Slug        string             `bson:"slug"            json:"slug"`
-	Excerpt     string             `bson:"excerpt"         json:"excerpt"`
-	ContentMD   string             `bson:"contentMd"       json:"contentMd"`
-	ImageURL    string             `bson:"imageUrl"        json:"imageUrl"`
-	Category    Category           `bson:"category"        json:"category"`
-	PublishedAt time.Time          `bson:"publishedAt"     json:"publishedAt"`
-	Tags        []string           `bson:"tags,omitempty"  json:"tags,omitempty"`
-	CreatedAt   time.Time          `bson:"createdAt"       json:"createdAt"`
-	UpdatedAt   time.Time          `bson:"updatedAt"       json:"updatedAt"`
+	ID          bson.ObjectID `bson:"_id,omitempty"   json:"id"`
+	Title       string        `bson:"title"           json:"title"`
+	Slug        string        `bson:"slug"            json:"slug"`
+	Excerpt     string        `bson:"excerpt"         json:"excerpt"`
+	ContentMD   string        `bson:"contentMd"       json:"contentMd"`
+	ImageURL    string        `bson:"imageUrl"        json:"imageUrl"`
+	Category    Category      `bson:"category"        json:"category"`
+	PublishedAt time.Time     `bson:"publishedAt"     json:"publishedAt"`
+	Tags        []string      `bson:"tags,omitempty"  json:"tags,omitempty"`
+	CreatedAt   time.Time     `bson:"createdAt"       json:"createdAt"`
+	UpdatedAt   time.Time     `bson:"updatedAt"       json:"updatedAt"`
 }
 
 type Category struct {

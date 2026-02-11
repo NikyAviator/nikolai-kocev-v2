@@ -7,7 +7,6 @@ import (
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/shared/utils"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/v2/bson"
 
 	"go.mongodb.org/mongo-driver/v2/mongo"
@@ -18,7 +17,7 @@ type UserRepository interface {
 	Create(ctx context.Context, u *domain.User) error
 	Delete(ctx context.Context, id string) error
 	ValidateCredentials(ctx context.Context, email, password string) (string /* userID */, error)
-	FindByID(ctx context.Context, id primitive.ObjectID) (*domain.User, error)
+	FindByID(ctx context.Context, id bson.ObjectID) (*domain.User, error)
 	FindByEmail(ctx context.Context, email string) (*domain.User, error)
 }
 
@@ -45,14 +44,14 @@ func (r *MongoUserRepository) Create(ctx context.Context, u *domain.User) error 
 		return err
 	}
 	// Set the generated ID
-	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
+	if oid, ok := res.InsertedID.(bson.ObjectID); ok {
 		u.ID = oid
 	}
 	return nil
 
 }
 func (r *MongoUserRepository) Delete(ctx context.Context, id string) error {
-	oid, err := primitive.ObjectIDFromHex(id)
+	oid, err := bson.ObjectIDFromHex(id)
 	if err != nil {
 		return err
 	}
@@ -82,7 +81,7 @@ func (r *MongoUserRepository) ValidateCredentials(ctx context.Context, email, pa
 }
 
 // These two are for claims.go middleware
-func (r *MongoUserRepository) FindByID(ctx context.Context, id primitive.ObjectID) (*domain.User, error) {
+func (r *MongoUserRepository) FindByID(ctx context.Context, id bson.ObjectID) (*domain.User, error) {
 	var usr domain.User
 	err := r.coll.FindOne(ctx, bson.M{"_id": id}).Decode(&usr)
 	if err != nil {
