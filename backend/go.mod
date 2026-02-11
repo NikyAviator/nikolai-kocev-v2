@@ -4,7 +4,6 @@ go 1.24.6
 
 require (
 	github.com/golang-jwt/jwt/v5 v5.3.1
-	go.mongodb.org/mongo-driver v1.17.9
 	go.mongodb.org/mongo-driver/v2 v2.5.0
 )
 
