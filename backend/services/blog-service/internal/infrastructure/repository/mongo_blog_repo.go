@@ -6,7 +6,6 @@ import (
 
 	"github.com/nikyaviator/nikolai-kocev-v2/backend/services/blog-service/internal/domain"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
@@ -50,14 +49,14 @@ func (r *MongoBlogRepository) Create(ctx context.Context, b *domain.Blog) error 
 		return err
 	}
 	// Set the generated ID
-	if oid, ok := res.InsertedID.(primitive.ObjectID); ok {
+	if oid, ok := res.InsertedID.(bson.ObjectID); ok {
 		b.ID = oid
 	}
 	return nil
 }
 
 func (r *MongoBlogRepository) Delete(ctx context.Context, id string) error {
-	oid, err := primitive.ObjectIDFromHex(id)
+	oid, err := bson.ObjectIDFromHex(id)
 	if err != nil {
 		return err
 	}
