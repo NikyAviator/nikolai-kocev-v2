@@ -15,18 +15,17 @@ RUN apk add --no-cache gettext
 # Static files
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Template -> we will render it on startup
-COPY infra/production/Docker/nginx.prod.template.conf /etc/nginx/templates/app.conf.template
+# Copy template to a neutral location (not /etc/nginx/templates/)
+COPY infra/production/Docker/nginx.prod.template.conf /etc/nginx/app.conf.template
 
-# Default entrypoint in official nginx image will execute /docker-entrypoint.d/*.sh
-# Render template to /etc/nginx/conf.d/default.conf before nginx starts
+# Inject env vars into the nginx config template at container start
 COPY --chown=root:root <<'EOF' /docker-entrypoint.d/10-render-templates.sh
 #!/usr/bin/env sh
 set -eu
 : "${BACKEND_BASE:?BACKEND_BASE is required}"
 : "${API_SHARED_SECRET:?API_SHARED_SECRET is required}"
 envsubst '${BACKEND_BASE} ${API_SHARED_SECRET}' \
-  < /etc/nginx/templates/app.conf.template \
+  < /etc/nginx/app.conf.template \
   > /etc/nginx/conf.d/default.conf
 EOF
 
