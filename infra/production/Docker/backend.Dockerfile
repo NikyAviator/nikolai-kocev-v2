@@ -13,7 +13,6 @@ COPY services/blog-service ./services/blog-service
 COPY shared ./shared
 
 # Build the blog-service binary
-# RUN CGO_ENABLED=0 GOOS=linux go build -o ./services/blog-service/bin/blog-service ./services/blog-service/cmd/main.go
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
     go build -ldflags="-w -s" \
     -o ./services/blog-service/bin/blog-service \
