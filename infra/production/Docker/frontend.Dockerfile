@@ -1,6 +1,6 @@
 # Dockerfile for PRODUCTION
 # --- Build step ---
-FROM node:25-alpine3.23 AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 COPY frontend/package*.json ./
 RUN npm ci
@@ -8,7 +8,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # --- Runtime step ---
-FROM nginx:mainline-alpine
+FROM nginx:stable-alpine
 # envsubst for rendering templates at container start
 RUN apk add --no-cache gettext
 
