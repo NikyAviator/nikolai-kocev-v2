@@ -1,5 +1,5 @@
 # Dockerfile for DEVELOPMENT
-FROM node:current-alpine as build
+FROM node:22-alpine AS build
 
 WORKDIR /app/frontend
 
@@ -10,7 +10,7 @@ COPY frontend ./
 RUN npm run build
 
 # --- Runtime (Nginx) ---
-FROM nginx:alpine
+FROM nginx:stable-alpine
 
 # 1. Serve built frontend
 WORKDIR /usr/share/nginx/html
