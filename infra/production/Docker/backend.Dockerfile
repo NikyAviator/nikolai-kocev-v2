@@ -12,7 +12,7 @@ RUN go mod download
 COPY services/blog-service ./services/blog-service
 COPY shared ./shared
 
-# Build the blog-service binary
+# Build the blog-service binary - strip out debug info and symbols for smaller image size
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
     go build -ldflags="-w -s" \
     -o ./services/blog-service/bin/blog-service \
