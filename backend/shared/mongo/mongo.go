@@ -13,7 +13,7 @@ import (
 type MongoConfig struct {
 	URI         string
 	DBName      string
-	ConnTimeout time.Duration // default 240s if zero
+	ConnTimeout time.Duration // default 30s if zero
 }
 
 // Connect opens a MongoDB connection, verifies it with Ping, and returns
@@ -26,7 +26,7 @@ func ConnectMongoDB(parentCtx context.Context, cfg MongoConfig) (*mongodrv.Clien
 		return nil, nil, nil, errors.New("mongo: Config.DBName is empty")
 	}
 	if cfg.ConnTimeout == 0 {
-		cfg.ConnTimeout = 240 * time.Second
+		cfg.ConnTimeout = 30 * time.Second
 	}
 
 	// ApplyURI config; Atlas recommends pinning Server API v1 for stability.
