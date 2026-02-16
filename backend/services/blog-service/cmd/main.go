@@ -29,7 +29,7 @@ func main() {
 	_, db, closeMongo, err := sharedmongo.ConnectMongoDB(context.Background(), sharedmongo.MongoConfig{
 		URI:         mongoURI,
 		DBName:      dbName,
-		ConnTimeout: 10 * time.Second,
+		ConnTimeout: 240 * time.Second,
 	})
 	if err != nil {
 		log.Fatal("mongo connect:", err)
