@@ -1,0 +1,14 @@
+{
+  "name": "nikolai-kocev-v2",
+  "scripts": {
+    "backend": "cd backend && nodemon server.js",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm:backend\" \"npm:frontend\"",
+    "seed": "cd backend && node config/seedBlog.js",
+    "seed:reset": "cd backend && node config/seedBlog.js --reset"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10"
+  }
+}

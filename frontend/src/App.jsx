@@ -3,18 +3,21 @@ import Header from './Components/Header.jsx';
 import HomePage from './Pages/HomePage.jsx';
 import Footer from './Components/Footer.jsx';
 import ScrollToTopButton from './Components/ui/ScrollToTopButton.jsx';
+import BlogHome from './Pages/BlogHome.jsx';
+import RenderOneBlog from './Pages/RenderOneBlog.jsx';
 
 import './styles.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col bg-white dark:bg-gray-900">
         <Header />
-
-        <main className="relative flex-grow">
+        <main className="relative grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/blogs" element={<BlogHome />} />
+            <Route path="/blogs/:slug" element={<RenderOneBlog />} />
           </Routes>
           <ScrollToTopButton />
         </main>

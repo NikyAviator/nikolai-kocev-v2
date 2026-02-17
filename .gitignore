@@ -1,2 +1,4 @@
 node_modules
-infra/*
+/backend/backend
+.env
+/infra/development/secrets
