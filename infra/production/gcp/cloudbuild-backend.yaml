@@ -44,7 +44,7 @@ steps:
 logsBucket: gs://nikysite-build-logs
 options:
   logging: GCS_ONLY
-  machineType: E2_HIGHCPU_8 # Faster builds
+  # machineType: E2_HIGHCPU_8 # Faster builds - needs adjustment (2 vCPUs will suffice?) .
 
 # Build timeout
 timeout: 1200s # 20 minutes total
