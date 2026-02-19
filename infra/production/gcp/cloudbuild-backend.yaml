@@ -1,0 +1,50 @@
+# infra/production/gcp/cloudbuild-backend.yaml
+# Builds and pushes ONLY the backend image
+# Triggered when backend/ or backend Dockerfile changes
+
+substitutions:
+  _REGION: europe-north1
+  _BACKEND_REPO: nkv2-backend
+  _BACKEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_BACKEND_REPO}/nkv2-backend
+
+steps:
+  # ---------- BUILD BACKEND ----------
+  - name: gcr.io/cloud-builders/docker
+    id: build-backend
+    args:
+      - build
+      - -f
+      - infra/production/Docker/backend.Dockerfile
+      - -t
+      - ${_BACKEND_IMAGE}:${SHORT_SHA}
+      - -t
+      - ${_BACKEND_IMAGE}:latest
+      - ./backend # Build context is ./backend
+    timeout: 600s # 10 minutes max
+
+  # ---------- PUSH BACKEND (SHORT_SHA TAG) ----------
+  - name: gcr.io/cloud-builders/docker
+    id: push-backend-sha
+    args:
+      - push
+      - ${_BACKEND_IMAGE}:${SHORT_SHA}
+    waitFor:
+      - build-backend
+
+  # ---------- PUSH BACKEND (LATEST TAG) ----------
+  - name: gcr.io/cloud-builders/docker
+    id: push-backend-latest
+    args:
+      - push
+      - ${_BACKEND_IMAGE}:latest
+    waitFor:
+      - build-backend
+
+# Store build logs
+logsBucket: gs://nikysite-build-logs
+options:
+  logging: GCS_ONLY
+  machineType: E2_HIGHCPU_8 # Faster builds
+
+# Build timeout
+timeout: 1200s # 20 minutes total

@@ -1,15 +1,19 @@
+# infra/production/gcp/cloudbuild-full.yaml
+# Builds and pushes BOTH frontend AND backend images
+# Use for: Full rebuilds, major changes, or manual triggers
+# NOT automatically triggered - manual use only
+
 substitutions:
   _REGION: europe-north1
   _FRONTEND_REPO: nkv2-frontend
   _BACKEND_REPO: nkv2-backend
-  # Full image repository paths (repository + image name)
   _FRONTEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_FRONTEND_REPO}/nkv2-frontend
   _BACKEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_BACKEND_REPO}/nkv2-backend
 
-# RESOURCES - adjust to production images instead
 steps:
   # ---------- FRONTEND ----------
   - name: gcr.io/cloud-builders/docker
+    id: build-frontend
     args:
       - build
       - -f
@@ -19,14 +23,21 @@ steps:
       - -t
       - ${_FRONTEND_IMAGE}:latest
       - .
+    timeout: 600s
 
   - name: gcr.io/cloud-builders/docker
+    id: push-frontend-sha
     args: ['push', '${_FRONTEND_IMAGE}:${SHORT_SHA}']
+    waitFor: ['build-frontend']
+
   - name: gcr.io/cloud-builders/docker
+    id: push-frontend-latest
     args: ['push', '${_FRONTEND_IMAGE}:latest']
+    waitFor: ['build-frontend']
 
   # ---------- BACKEND ----------
   - name: gcr.io/cloud-builders/docker
+    id: build-backend
     args:
       - build
       - -f
@@ -36,13 +47,25 @@ steps:
       - -t
       - ${_BACKEND_IMAGE}:latest
       - ./backend
+    timeout: 600s
+    # Can build in parallel with frontend!
+    waitFor: ['-'] # Don't wait for frontend
 
   - name: gcr.io/cloud-builders/docker
+    id: push-backend-sha
     args: ['push', '${_BACKEND_IMAGE}:${SHORT_SHA}']
-  - name: gcr.io/cloud-builders/docker
-    args: ['push', '${_BACKEND_IMAGE}:latest']
+    waitFor: ['build-backend']
 
-# Use your user-managed logs bucket
+  - name: gcr.io/cloud-builders/docker
+    id: push-backend-latest
+    args: ['push', '${_BACKEND_IMAGE}:latest']
+    waitFor: ['build-backend']
+
+# Store build logs
 logsBucket: gs://nikysite-build-logs
 options:
   logging: GCS_ONLY
+  machineType: E2_HIGHCPU_8 # Faster builds
+
+# Build timeout
+timeout: 1800s # 30 minutes for both
