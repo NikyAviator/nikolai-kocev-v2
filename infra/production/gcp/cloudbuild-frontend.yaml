@@ -1,0 +1,48 @@
+# infra/production/gcp/cloudbuild-frontend.yaml
+# Builds and pushes ONLY the frontend image
+
+substitutions:
+  _REGION: europe-north1
+  _FRONTEND_REPO: nkv2-frontend
+  _FRONTEND_IMAGE: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_FRONTEND_REPO}/nkv2-frontend
+
+steps:
+  # ---------- BUILD FRONTEND ----------
+  - name: gcr.io/cloud-builders/docker
+    id: build-frontend
+    args:
+      - build
+      - -f
+      - infra/production/Docker/frontend.Dockerfile
+      - -t
+      - ${_FRONTEND_IMAGE}:${SHORT_SHA}
+      - -t
+      - ${_FRONTEND_IMAGE}:latest
+      - .
+    timeout: 600s # 10 minutes max
+
+  # ---------- PUSH FRONTEND (SHORT_SHA TAG) ----------
+  - name: gcr.io/cloud-builders/docker
+    id: push-frontend-sha
+    args:
+      - push
+      - ${_FRONTEND_IMAGE}:${SHORT_SHA}
+    waitFor:
+      - build-frontend
+
+  # ---------- PUSH FRONTEND (LATEST TAG) ----------
+  - name: gcr.io/cloud-builders/docker
+    id: push-frontend-latest
+    args:
+      - push
+      - ${_FRONTEND_IMAGE}:latest
+    waitFor:
+      - build-frontend
+
+# Store build logs
+logsBucket: gs://nikysite-build-logs
+options:
+  logging: GCS_ONLY
+
+# Build timeout
+timeout: 1200s # 20 minutes total
