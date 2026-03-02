@@ -28,7 +28,8 @@ export default function AboutmeSection() {
           {/* left column: text */}
           <div className="space-y-6 lg:flex-1">
             <p className="rounded-xl bg-black/40 p-6 text-white backdrop-blur-md">
-              Developer, pilot, and lifelong learner based in Lund, Sweden.
+              Developer, pilot, and lifelong learner. I am based in Lund,
+              Sweden.
             </p>
             <p className="rounded-xl bg-black/40 p-6 text-white backdrop-blur-md">
               My first hands-on experience with “the cloud” came as a flight
@@ -61,10 +62,10 @@ export default function AboutmeSection() {
             rel="noopener noreferrer"
             className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span className="mx-5">Download My CV</span>
+            <span className="mx-5">Open/View My CV</span>
             <img
               src="/svg/download.svg"
-              alt="GitHub"
+              alt="Download"
               className="h-6 w-6 flex-shrink-0"
             />
           </a>

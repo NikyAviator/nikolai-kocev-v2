@@ -26,7 +26,11 @@ export default function Header() {
         className="flex items-end-safe justify-between p-6 lg:px-8"
       >
         {/* brand */}
-        <Link to="/" className="-m-1.5 p-1.5 text-xl font-bold text-indigo-600">
+        <Link
+          to="/"
+          className="-m-1.5 p-1.5 text-xl font-bold text-yellow-600"
+          onClick={closeMobile}
+        >
           NikyAviator
         </Link>
         {/* desktop auth links */}
@@ -36,7 +40,7 @@ export default function Header() {
         <button
           onClick={toggleTheme}
           aria-label="Toggle theme"
-          className="rounded-md p-2 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 lg:hidden dark:text-indigo-400"
+          className="rounded-md p-2.5 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 lg:hidden dark:text-indigo-400"
         >
           {dark ? (
             <SunIcon className="size-5" />
@@ -47,7 +51,7 @@ export default function Header() {
 
         <button
           onClick={() => setMobileOpen(true)}
-          className="-m-2.5 rounded-md p-2.5 text-indigo-600 lg:hidden"
+          className="rounded-md p-2.5 text-indigo-600 lg:hidden"
         >
           <span className="sr-only">Open menu</span>
           <Bars3Icon className="size-6" />
@@ -70,7 +74,7 @@ export default function Header() {
             to="/blogs"
             className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
           >
-            Blogs
+            Blog
           </Link>
         </div>
       </nav>
@@ -83,7 +87,7 @@ export default function Header() {
           <div className="relative flex items-center justify-between">
             <Link
               to="/"
-              className="-m-1.5 p-1.5 text-xl font-bold text-indigo-600"
+              className="-m-1.5 p-1.5 text-xl font-bold text-yellow-600"
               onClick={closeMobile}
             >
               NikyAviator
@@ -110,14 +114,14 @@ export default function Header() {
             </button>
           </div>
 
-          {/* right-aligned Blogs button */}
+          {/* right-aligned Blog button */}
           <div className="mt-6 flex justify-end">
             <Link
               to="/blogs"
               onClick={closeMobile}
-              className="inline-block rounded-md bg-indigo-600 px-3 py-3 text-white hover:bg-indigo-500"
+              className="m-2 inline-block rounded-md bg-indigo-600 px-3 py-3 text-white hover:bg-indigo-500"
             >
-              Blogs
+              Blog
             </Link>
           </div>
         </DialogPanel>
