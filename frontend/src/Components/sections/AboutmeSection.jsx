@@ -9,7 +9,7 @@ export default function AboutmeSection() {
   const closeModal = () => setSelectedImage(null);
 
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+    <div className="relative isolate overflow-hidden bg-white py-24 sm:py-32 dark:bg-gray-900">
       <img
         alt="Twin engine jet airliner climbing away from the camera, with blue sky as background."
         src="/images/pic1.jpg"
