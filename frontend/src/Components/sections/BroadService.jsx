@@ -24,13 +24,13 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Who am I? And what I offer!
           </h2>
-          <p className="mt-4 text-gray-500">
+          <p className="mt-4 text-gray-900 dark:text-white">
             As a digital creative, your laptop or tablet is at the center of
             your work. Keep your device safe with a fabric sleeve that matches
             in quality and looks.
@@ -51,10 +51,10 @@ export default function Example() {
                   'mt-6 lg:col-span-5 lg:row-start-1 lg:mt-0 xl:col-span-4',
                 )}
               >
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                   {feature.name}
                 </h3>
-                <p className="mt-2 text-sm text-gray-500">
+                <p className="mt-2 text-sm text-gray-500 dark:text-white">
                   {feature.description}
                 </p>
               </div>
