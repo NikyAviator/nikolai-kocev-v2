@@ -47,6 +47,15 @@ export default function Example() {
             passionate about creating efficient and scalable applications that
             solve real-world problems.
           </p>
+
+          <p className="mt-4 text-gray-900 dark:text-white">
+            {' '}
+            I help individuals and businesses with a wide range of IT services,
+            including computer setup and repair, Linux installation and
+            migration, backup and data protection, modern website development,
+            and cloud automation. I am dedicated to providing high-quality
+            solutions that meet the unique needs of each client.
+          </p>
         </div>
 
         <div className="mt-16 space-y-16">
