@@ -31,9 +31,13 @@ export default function Example() {
             What do I offer?
           </h2>
           <p className="mt-4 text-gray-900 dark:text-white">
-            I doven deep into the world of GNU/Linux and software development.
-            With my techical expertise I can help you break free of Microsofts
-            clutch on your computer and software.
+            I doven deep into the world of software development, exploring
+            various technologies and programming languages. I have a strong
+            foundation in web development, including front-end and back-end
+            technologies. I am proficient in languages such as JavaScript,
+            Python, and Java, and I have experience working with frameworks like
+            React, Node.js, and Django. I am passionate about creating efficient
+            and scalable applications that solve real-world problems.
           </p>
         </div>
 
