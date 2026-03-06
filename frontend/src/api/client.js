@@ -1,6 +1,6 @@
 export async function getBlogs() {
   try {
-    const res = await fetch('/api/blogs', {
+    const res = await fetch('/api/blog', {
       headers: { Accept: 'application/json' },
     });
     if (!res.ok) {
@@ -16,7 +16,7 @@ export async function getBlogs() {
 
 export async function getBlogBySlug(slug) {
   try {
-    const res = await fetch(`/api/blogs/${encodeURIComponent(slug)}`, {
+    const res = await fetch(`/api/blog/${encodeURIComponent(slug)}`, {
       headers: { Accept: 'application/json' },
     });
     if (!res.ok) {
