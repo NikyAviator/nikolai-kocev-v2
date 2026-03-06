@@ -31,8 +31,8 @@ func Register(
 	// Internal API protection (Call needs to originate from frontend with secret)
 	api.Use(opts.MW.ApiSharedSecret)
 	// Public blog routes
-	api.GET("/blogs", controllers.ListBlogsController(blogSvc))
-	api.GET("/blogs/:slug", controllers.GetBlogBySlugController(blogSvc))
+	api.GET("/blog", controllers.ListBlogsController(blogSvc))
+	api.GET("/blog/:slug", controllers.GetBlogBySlugController(blogSvc))
 
 	// Auth
 	api.POST("/login", controllers.LoginController(userSvc))
@@ -51,11 +51,11 @@ func Register(
 	)
 
 	// Blog management
-	admin.POST("/blogs", controllers.CreateBlogController(blogSvc))
-	// admin.PUT("/blogs/:id", controllers.UpdateBlogController(blogSvc)) Future path
-	admin.DELETE("/blogs/:id", controllers.DeleteBlogController(blogSvc))
+	admin.POST("/blog", controllers.CreateBlogController(blogSvc))
+	// admin.PUT("/blog/:id", controllers.UpdateBlogController(blogSvc)) Future path
+	admin.DELETE("/blog/:id", controllers.DeleteBlogController(blogSvc))
 	if opts.AllowDestructive {
-		admin.DELETE("/blogs", controllers.DeleteAllBlogsController(blogSvc))
+		admin.DELETE("/blog", controllers.DeleteAllBlogsController(blogSvc))
 	}
 
 	// User management (example)
