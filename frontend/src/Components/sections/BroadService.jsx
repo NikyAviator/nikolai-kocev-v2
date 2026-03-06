@@ -28,12 +28,12 @@ export default function Example() {
       <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-            Who am I? And what I offer!
+            What do I offer?
           </h2>
           <p className="mt-4 text-gray-900 dark:text-white">
-            As a digital creative, your laptop or tablet is at the center of
-            your work. Keep your device safe with a fabric sleeve that matches
-            in quality and looks.
+            I doven deep into the world of GNU/Linux and software development.
+            With my techical expertise I can help you break free of Microsofts
+            clutch on your computer and software.
           </p>
         </div>
 
