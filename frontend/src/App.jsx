@@ -18,8 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<DisplayServicesPage />} />
-            <Route path="/blogs" element={<BlogHome />} />
-            <Route path="/blogs/:slug" element={<RenderOneBlog />} />
+            <Route path="/blog" element={<BlogHome />} />
+            <Route path="/blog/:slug" element={<RenderOneBlog />} />
           </Routes>
           <ScrollToTopButton />
         </main>

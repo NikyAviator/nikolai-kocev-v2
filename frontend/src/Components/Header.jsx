@@ -15,7 +15,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   // { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
-  { to: '/blogs', label: 'Blog' },
+  { to: '/blog', label: 'Blog' },
 ];
 
 // Reusable link style — apply to both desktop and mobile links
