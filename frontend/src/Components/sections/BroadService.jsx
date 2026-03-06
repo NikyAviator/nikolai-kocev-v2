@@ -1,20 +1,28 @@
 const features = [
   {
-    name: 'Minimal and thoughtful',
-    description:
-      'Our laptop sleeve is compact and precisely fits 13" devices. The zipper allows you to access the interior with ease, and the front pouch provides a convenient place for your charger cable.',
-    imageSrc:
-      'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-feature-07-detail-01.jpg',
-    imageAlt:
-      'White canvas laptop sleeve with gray felt interior, silver zipper, and tan leather zipper pull.',
+    name: 'Computer Setup & Repair',
+    description: '...',
+    imageSrc: '/images/repair.jpg',
   },
   {
-    name: 'Refined details',
-    description:
-      'We design every detail with the best materials and finishes. This laptop sleeve features durable canvas with double-stitched construction, a felt interior, and a high quality zipper that hold up to daily use.',
-    imageSrc:
-      'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-feature-07-detail-02.jpg',
-    imageAlt: 'Detail of zipper pull with tan leather and silver rivet.',
+    name: 'Linux Installation & Migration',
+    description: '...',
+    imageSrc: '/images/linux.jpg',
+  },
+  {
+    name: 'Backup & Data Protection',
+    description: '...',
+    imageSrc: '/images/backup.jpg',
+  },
+  {
+    name: 'Modern Websites',
+    description: '...',
+    imageSrc: '/images/web.jpg',
+  },
+  {
+    name: 'Cloud & Automation',
+    description: '...',
+    imageSrc: '/images/cloud.jpg',
   },
 ];
 
@@ -32,12 +40,12 @@ export default function Example() {
           </h2>
           <p className="mt-4 text-gray-900 dark:text-white">
             I doven deep into the world of software development, exploring
-            various technologies and programming languages. I have a strong
-            foundation in web development, including front-end and back-end
-            technologies. I am proficient in languages such as JavaScript,
-            Python, and Java, and I have experience working with frameworks like
-            React, Node.js, and Django. I am passionate about creating efficient
-            and scalable applications that solve real-world problems.
+            various technologies and programming languages. I have a foundation
+            in web development, including front-end and back-end technologies. I
+            am proficient in languages such as JavaScript and Golang and I have
+            experience working with frameworks like React, Node.js & Gin. I am
+            passionate about creating efficient and scalable applications that
+            solve real-world problems.
           </p>
         </div>
 
