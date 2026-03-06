@@ -1,5 +1,4 @@
-'use client';
-
+// 'use client' is a Next.js directive — not needed in Vite/React, safe to remove
 import { useCallback, useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import {
@@ -11,118 +10,112 @@ import {
 import useDarkMode from './hooks/useDarkMode';
 import { Link } from 'react-router-dom';
 
+// All nav links defined in one place — easy to add/remove links here
+const navLinks = [
+  { to: '/', label: 'Home' },
+  // { to: '/about', label: 'About' },
+  { to: '/services', label: 'Services' },
+  { to: '/blogs', label: 'Blog' },
+];
+
+// Reusable link style — apply to both desktop and mobile links
+const linkClass =
+  'rounded-full bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors duration-150';
+
 export default function Header() {
   const [dark, setDark] = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // memoised handlers
-  const toggleTheme = useCallback(() => setDark(!dark), [dark, setDark]);
+  const toggleTheme = useCallback(() => setDark((d) => !d), [setDark]);
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   return (
-    <header>
+    <header className="border-b border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-900">
       <nav
         aria-label="Global"
-        className="flex items-end-safe justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
       >
-        {/* brand */}
+        {/* ── 1. Brand (always left) ── */}
         <Link
           to="/"
-          className="-m-1.5 p-1.5 text-xl font-bold text-yellow-600"
+          className="-m-1.5 p-1.5 text-xl font-bold text-yellow-500 transition-colors duration-150 hover:text-yellow-400"
           onClick={closeMobile}
         >
           NikyAviator
         </Link>
-        {/* desktop auth links */}
 
-        {/* mobile hamburger */}
-        {/* mobile theme toggle (visible on <lg) */}
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="rounded-md p-2.5 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 lg:hidden dark:text-indigo-400"
-        >
-          {dark ? (
-            <SunIcon className="size-5" />
-          ) : (
-            <MoonIcon className="size-5" />
-          )}
-        </button>
+        {/* ── 2. Desktop nav links (center, hidden on mobile) ── */}
+        <div className="hidden lg:flex lg:items-center lg:gap-3">
+          {navLinks.map(({ to, label }) => (
+            <Link key={to} to={to} className={linkClass}>
+              {label}
+            </Link>
+          ))}
+        </div>
 
-        <button
-          onClick={() => setMobileOpen(true)}
-          className="rounded-md p-2.5 text-indigo-600 lg:hidden"
-        >
-          <span className="sr-only">Open menu</span>
-          <Bars3Icon className="size-6" />
-        </button>
-
-        {/* desktop theme toggle */}
-        <button
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className="hidden rounded-md p-2 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 lg:inline-flex dark:text-indigo-400"
-        >
-          {dark ? (
-            <SunIcon className="size-5" />
-          ) : (
-            <MoonIcon className="size-5" />
-          )}
-        </button>
-        <div className="hidden lg:flex lg:items-end lg:gap-4">
-          <Link
-            to="/blogs"
-            className="ml-4 inline-block rounded-md bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500"
+        {/* ── 3. Right side controls (always visible) ── */}
+        <div className="flex items-center gap-2">
+          {/* Theme toggle — one button, works for both desktop and mobile */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="rounded-md p-2 text-indigo-600 ring-1 ring-indigo-600/30 transition-colors duration-150 hover:bg-indigo-600/10 dark:text-indigo-400"
           >
-            Blog
-          </Link>
+            {dark ? (
+              <SunIcon className="size-5" />
+            ) : (
+              <MoonIcon className="size-5" />
+            )}
+          </button>
+
+          {/* Hamburger — mobile only */}
+          <button
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+            className="rounded-md p-2 text-indigo-600 transition-colors duration-150 hover:bg-indigo-600/10 lg:hidden"
+          >
+            <Bars3Icon className="size-6" />
+          </button>
         </div>
       </nav>
 
-      {/* mobile dialog */}
+      {/* ── Mobile slide-in dialog ── */}
       <Dialog open={mobileOpen} onClose={closeMobile} className="lg:hidden">
-        <div className="fixed inset-0 bg-black/40" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full max-w-sm overflow-y-auto bg-white px-6 py-6 sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900">
-          {/* top row: brand (left), theme toggle (center), close (right) */}
-          <div className="relative flex items-center justify-between">
+        {/* Dim backdrop */}
+        <div className="fixed inset-0 z-10 bg-black/40" />
+
+        <DialogPanel className="fixed inset-y-0 right-0 z-20 w-full max-w-sm overflow-y-auto bg-white px-6 py-6 sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900">
+          {/* Top row: brand (left) — close button (right) */}
+          <div className="mb-8 flex items-center justify-between">
             <Link
               to="/"
-              className="-m-1.5 p-1.5 text-xl font-bold text-yellow-600"
+              className="text-xl font-bold text-yellow-500 transition-colors duration-150 hover:text-yellow-400"
               onClick={closeMobile}
             >
               NikyAviator
             </Link>
 
             <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="absolute left-1/2 -translate-x-1/2 rounded-md p-2.5 text-indigo-600 ring-1 ring-indigo-600/30 hover:bg-indigo-600/10 dark:text-indigo-400"
-            >
-              {dark ? (
-                <SunIcon className="size-5" />
-              ) : (
-                <MoonIcon className="size-5" />
-              )}
-            </button>
-
-            <button
               onClick={closeMobile}
-              className="-m-2.5 rounded-md p-2.5 text-indigo-600"
+              aria-label="Close menu"
+              className="rounded-md p-2 text-indigo-600 transition-colors duration-150 hover:bg-indigo-600/10"
             >
-              <span className="sr-only">Close menu</span>
               <XMarkIcon className="size-6" />
             </button>
           </div>
 
-          {/* right-aligned Blog button */}
-          <div className="mt-6 flex justify-end">
-            <Link
-              to="/blogs"
-              onClick={closeMobile}
-              className="m-2 inline-block rounded-md bg-indigo-600 px-3 py-3 text-white hover:bg-indigo-500"
-            >
-              Blog
-            </Link>
+          {/* Mobile nav links — stacked vertically */}
+          <div className="flex flex-col gap-3">
+            {navLinks.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                onClick={closeMobile}
+                className={linkClass + ' py-3 text-center text-base'}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </DialogPanel>
       </Dialog>
