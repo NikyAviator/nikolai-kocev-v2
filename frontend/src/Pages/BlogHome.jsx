@@ -75,7 +75,7 @@ export default function BlogHome() {
 
                     <div className="group relative grow">
                       <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                        <Link to={`/blogs/${post.slug}`}>{post.title}</Link>
+                        <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                       </h3>
 
                       {post.excerpt && (
