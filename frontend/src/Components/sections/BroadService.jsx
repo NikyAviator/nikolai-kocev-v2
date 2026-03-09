@@ -1,10 +1,5 @@
 const features = [
   {
-    name: 'Computer Setup & Repair',
-    description: '...',
-    imageSrc: '/images/repair.jpg',
-  },
-  {
     name: 'Linux Installation & Migration',
     description: '...',
     imageSrc: '/images/linux.jpg',
@@ -15,14 +10,9 @@ const features = [
     imageSrc: '/images/backup.jpg',
   },
   {
-    name: 'Modern Websites',
+    name: 'Modern Websites, Cloud Hosting & Deployment',
     description: '...',
     imageSrc: '/images/web.jpg',
-  },
-  {
-    name: 'Cloud & Automation',
-    description: '...',
-    imageSrc: '/images/cloud.jpg',
   },
 ];
 
@@ -39,13 +29,12 @@ export default function Example() {
             What do I offer?
           </h2>
           <p className="mt-4 text-gray-900 dark:text-white">
-            I doven deep into the world of software development, exploring
-            various technologies and programming languages. I have a foundation
-            in web development, including front-end and back-end technologies. I
-            am proficient in languages such as JavaScript and Golang and I have
-            experience working with frameworks like React, Node.js & Gin. I am
-            passionate about creating efficient and scalable applications that
-            solve real-world problems.
+            I have doven deep into the world of software development, exploring
+            various technologies and programming languages. I am proficient in
+            languages such as JavaScript and Golang and I have experience
+            working with frameworks like React, Node.js & Gin. I am passionate
+            about creating efficient and scalable applications that solve
+            real-world problems.
           </p>
 
           <p className="mt-4 text-gray-900 dark:text-white">
@@ -53,8 +42,8 @@ export default function Example() {
             I help individuals and businesses with a wide range of IT services,
             including computer setup and repair, Linux installation and
             migration, backup and data protection, modern website development,
-            and cloud automation. I am dedicated to providing high-quality
-            solutions that meet the unique needs of each client.
+            and cloud deployment. I am dedicated to providing quality solutions
+            that meet the unique needs of each client.
           </p>
         </div>
 
