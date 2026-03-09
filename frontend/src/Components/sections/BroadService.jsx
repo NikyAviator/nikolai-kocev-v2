@@ -5,14 +5,14 @@ const features = [
     imageSrc: '/images/linux.jpg',
   },
   {
-    name: 'Backup & Data Protection',
-    description: '...',
-    imageSrc: '/images/backup.jpg',
-  },
-  {
     name: 'Modern Websites, Cloud Hosting & Deployment',
     description: '...',
     imageSrc: '/images/web.jpg',
+  },
+  {
+    name: 'Backup & Data Protection',
+    description: '...',
+    imageSrc: '/images/backup.jpg',
   },
 ];
 
