@@ -2,17 +2,17 @@ const features = [
   {
     name: 'Linux Installation & Migration',
     description: '...',
-    imageSrc: '/images/linux.jpg',
+    imageSrc: '/images/linux-pic.jpg',
   },
   {
     name: 'Modern Websites, Cloud Hosting & Deployment',
     description: '...',
-    imageSrc: '/images/web.jpg',
+    imageSrc: '/images/linux-pic-2.jpg',
   },
   {
     name: 'Backup & Data Protection',
     description: '...',
-    imageSrc: '/images/backup.jpg',
+    imageSrc: '/images/harddrive.jpg',
   },
 ];
 
