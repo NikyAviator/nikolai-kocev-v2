@@ -7,7 +7,7 @@ const features = [
   {
     name: 'Modern Websites, Cloud Hosting & Deployment',
     description: '...',
-    imageSrc: '/images/linux-pic-2.jpg',
+    imageSrc: '/images/build-your-website.jpg',
   },
   {
     name: 'Backup & Data Protection',
@@ -28,14 +28,6 @@ export default function Example() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             What do I offer?
           </h2>
-          <p className="mt-4 text-gray-900 dark:text-white">
-            I have doven deep into the world of software development, exploring
-            various technologies and programming languages. I am proficient in
-            languages such as JavaScript and Golang and I have experience
-            working with frameworks like React, Node.js & Gin. I am passionate
-            about creating efficient and scalable applications that solve
-            real-world problems.
-          </p>
 
           <p className="mt-4 text-gray-900 dark:text-white">
             {' '}
