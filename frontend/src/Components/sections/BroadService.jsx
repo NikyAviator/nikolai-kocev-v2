@@ -26,16 +26,16 @@ export default function Example() {
       <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-            What do I offer?
+            My IT Services
           </h2>
 
           <p className="mt-4 text-2xl text-gray-900 dark:text-white">
             {' '}
             I help individuals and businesses with a wide range of IT services,
-            including computer setup and repair, Linux installation and
-            migration, backup and data protection, modern website development,
-            and cloud deployment. I am dedicated to providing quality solutions
-            that meet the unique needs of each client.
+            including computer setup, Linux & Windows installation. I can also
+            conduct data migration, backup and data protection, modern website
+            development, and cloud deployment. I am dedicated to providing
+            quality solutions that meet the unique needs of each client.
           </p>
         </div>
 
