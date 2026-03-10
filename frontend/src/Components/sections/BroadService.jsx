@@ -29,7 +29,7 @@ export default function Example() {
             What do I offer?
           </h2>
 
-          <p className="mt-4 text-gray-900 dark:text-white">
+          <p className="mt-4 text-2xl text-gray-900 dark:text-white">
             {' '}
             I help individuals and businesses with a wide range of IT services,
             including computer setup and repair, Linux installation and
