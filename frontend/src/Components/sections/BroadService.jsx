@@ -31,11 +31,10 @@ export default function Example() {
 
           <p className="mt-4 text-2xl text-gray-900 dark:text-white">
             {' '}
-            I help individuals and businesses with a wide range of IT services,
-            including computer setup, Linux & Windows installation. I can also
-            conduct data migration, backup and data protection, modern website
-            development, and cloud deployment. I am dedicated to providing
-            quality solutions that meet the unique needs of each client.
+            I help individuals and businesses with a wide range of IT services.
+            I specialize in computer setups, Linux & Windows installations. I
+            can also create modern and responsive websites, and provide cloud
+            deployment solutions.
           </p>
         </div>
 
