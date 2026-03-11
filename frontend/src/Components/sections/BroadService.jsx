@@ -31,10 +31,9 @@ export default function Example() {
 
           <p className="mt-4 text-2xl text-gray-900 dark:text-white">
             {' '}
-            I help individuals and businesses with a wide range of IT services.
-            I specialize in computer setups, Linux & Windows installations. I
-            can also create modern and responsive websites, and provide cloud
-            deployment solutions.
+            I provide practical IT solutions for individuals and small
+            businesses. My work focuses on three areas: reliable computer
+            systems, modern websites, and secure data protection.
           </p>
         </div>
 
@@ -55,7 +54,7 @@ export default function Example() {
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                   {feature.name}
                 </h3>
-                <p className="mt-2 text-sm text-gray-500 dark:text-white">
+                <p className="mt-2 text-lg text-gray-500 dark:text-white">
                   {feature.description}
                 </p>
               </div>
