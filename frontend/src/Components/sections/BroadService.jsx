@@ -5,7 +5,7 @@ const features = [
     imageSrc: '/images/linux-pic.jpg',
   },
   {
-    name: 'Modern Websites, Cloud Hosting & Deployment',
+    name: 'Modern Websites & Web Applications',
     description: `A website should load fast, look sharp on any screen, and actually represent your business well. I build handmade single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
     imageSrc: '/images/build-your-website.jpg',
   },
