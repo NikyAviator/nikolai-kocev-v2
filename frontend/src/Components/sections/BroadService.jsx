@@ -1,17 +1,17 @@
 const features = [
   {
-    name: 'Linux Installation & Migration',
-    description: '...',
+    name: 'IT Support & Migration',
+    description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure and troubleshoot Linux, Windows and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable across Debian, Ubuntu, Mint, Arch and more, and I'll recommend the right distribution for your needs and skill level.`,
     imageSrc: '/images/linux-pic.jpg',
   },
   {
     name: 'Modern Websites, Cloud Hosting & Deployment',
-    description: '...',
+    description: `A website should load fast, look sharp on any screen, and actually represent your business well. I build handmade single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
     imageSrc: '/images/build-your-website.jpg',
   },
   {
     name: 'Backup & Data Protection',
-    description: '...',
+    description: `Most people only think about backups after something goes wrong. I help you set up automatic, reliable backup routines before that happens — using tools like rsync and Syncthing to keep your files safe without you having to think about it. I'll also help you get started with a password manager if you're not using one yet. Small steps that make a real difference.`,
     imageSrc: '/images/harddrive.jpg',
   },
 ];
