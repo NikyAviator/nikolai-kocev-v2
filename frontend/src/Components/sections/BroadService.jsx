@@ -1,18 +1,30 @@
+// src/Components/sections/BroadService.jsx
+import { Link } from 'react-router-dom';
+
+// ─── Service data ────────────────────────────────────────────
+// Add learnMoreLink when a detail page exists for that service.
+
 const features = [
   {
     name: 'IT Support & Migration',
     description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure and troubleshoot Linux, Windows and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable across Debian, Ubuntu, Mint, Arch and more, and I'll recommend the right distribution for your needs and skill level.`,
     imageSrc: '/images/linux-pic.jpg',
+    imageAlt: 'A Linux terminal open on a desktop workstation.',
+    learnMoreLink: '/services/it-support',
   },
   {
     name: 'Modern Websites & Web Applications',
     description: `A website should load fast, look sharp on any screen, and actually represent your business well. I build handmade single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
     imageSrc: '/images/build-your-website.jpg',
+    imageAlt: 'A modern web application displayed on a laptop screen.',
+    learnMoreLink: '/services/webdev',
   },
   {
     name: 'Backup & Data Protection',
     description: `Most people only think about backups after something goes wrong. I help you set up automatic, reliable backup routines before that happens — using tools like rsync and Syncthing to keep your files safe without you having to think about it. I'll also help you get started with a password manager if you're not using one yet. Small steps that make a real difference.`,
     imageSrc: '/images/harddrive.jpg',
+    imageAlt: 'An external hard drive and USB cable on a desk.',
+    // learnMoreLink intentionally omitted
   },
 ];
 
@@ -20,29 +32,31 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+// ─── Component ────────────────────────────────────────────────────────────────
+export default function BroadService() {
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
+        {/* Section header */}
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             My IT Services
           </h2>
-
-          <p className="mt-4 text-2xl text-gray-900 dark:text-white">
-            {' '}
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
             I provide practical IT solutions for individuals and small
             businesses. My work focuses on three areas: reliable computer
             systems, modern websites, and secure data protection.
           </p>
         </div>
 
+        {/* Service rows */}
         <div className="mt-16 space-y-16">
           {features.map((feature, featureIdx) => (
             <div
               key={feature.name}
               className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
             >
+              {/* Text block */}
               <div
                 className={classNames(
                   featureIdx % 2 === 0
@@ -51,13 +65,28 @@ export default function Example() {
                   'mt-6 lg:col-span-5 lg:row-start-1 lg:mt-0 xl:col-span-4',
                 )}
               >
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {feature.name}
                 </h3>
-                <p className="mt-2 text-lg text-gray-500 dark:text-white">
+
+                <p className="mt-3 text-base/7 text-gray-500 dark:text-gray-400">
                   {feature.description}
                 </p>
+
+                {/* ── Conditional "Product overview" link ── */}
+                {/* Only renders when learnMoreLink is defined in the data above */}
+                {feature.learnMoreLink && (
+                  <Link
+                    to={feature.learnMoreLink}
+                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors duration-150 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                  >
+                    Product overview
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                )}
               </div>
+
+              {/* Image block */}
               <div
                 className={classNames(
                   featureIdx % 2 === 0
@@ -69,7 +98,7 @@ export default function Example() {
                 <img
                   alt={feature.imageAlt}
                   src={feature.imageSrc}
-                  className="aspect-5/2 w-full rounded-lg bg-gray-100 object-cover"
+                  className="aspect-5/2 w-full rounded-lg bg-gray-100 object-cover dark:bg-gray-800"
                 />
               </div>
             </div>
