@@ -8,12 +8,12 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/react';
-import { StarIcon } from '@heroicons/react/20/solid';
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
+// import { StarIcon } from '@heroicons/react/20/solid';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const product = {
-  name: 'Zip Tote Basket',
-  price: '$140',
+  name: 'IT Support Service',
+  price: '€40 / hour',
   rating: 4,
   images: [
     {
@@ -41,29 +41,29 @@ const product = {
       alt: 'Back angled view with bag open and handles to the side.',
     },
   ],
-  colors: [
-    {
-      id: 'washed-black',
-      name: 'Washed Black',
-      classes: 'bg-gray-700 checked:outline-gray-700',
-    },
-    {
-      id: 'white',
-      name: 'White',
-      classes: 'bg-white checked:outline-gray-400',
-    },
-    {
-      id: 'washed-gray',
-      name: 'Washed Gray',
-      classes: 'bg-gray-500 checked:outline-gray-500',
-    },
-  ],
+  // colors: [
+  //   {
+  //     id: 'washed-black',
+  //     name: 'Washed Black',
+  //     classes: 'bg-gray-700 checked:outline-gray-700',
+  //   },
+  //   {
+  //     id: 'white',
+  //     name: 'White',
+  //     classes: 'bg-white checked:outline-gray-400',
+  //   },
+  //   {
+  //     id: 'washed-gray',
+  //     name: 'Washed Gray',
+  //     classes: 'bg-gray-500 checked:outline-gray-500',
+  //   },
+  // ],
   description: `
-    <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
+    <p>The IT Support Service provides comprehensive support for your IT needs.</p>
   `,
   details: [
     {
-      name: 'Features',
+      name: 'Linux Support',
       items: [
         'Multiple strap configurations',
         'Spacious interior with top zip',
@@ -75,7 +75,7 @@ const product = {
       ],
     },
     {
-      name: 'Care',
+      name: 'Windows Support',
       items: [
         'Spot clean as needed',
         'Hand wash with mild soap',
@@ -84,7 +84,7 @@ const product = {
       ],
     },
     {
-      name: 'Shipping',
+      name: 'Backups and Recovery',
       items: [
         'Free shipping on orders over $300',
         'International shipping available',
@@ -166,7 +166,8 @@ export default function ItSupportServicePage() {
               </p>
             </div>
 
-            {/* Reviews */}
+            {/* Reviews - MAPS OUT THE STARS BASED ON THE RATING. FOR FUTURE IMPLEMENTATION */}
+            {/*
             <div className="mt-3">
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
@@ -186,7 +187,7 @@ export default function ItSupportServicePage() {
                 </div>
                 <p className="sr-only">{product.rating} out of 5 stars</p>
               </div>
-            </div>
+            </div> */}
 
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
@@ -199,7 +200,7 @@ export default function ItSupportServicePage() {
 
             <form className="mt-6">
               {/* Colors */}
-              <div>
+              {/* <div>
                 <h3 className="text-sm font-medium text-gray-600">Color</h3>
 
                 <fieldset aria-label="Choose a color" className="mt-2">
@@ -224,22 +225,14 @@ export default function ItSupportServicePage() {
                     ))}
                   </div>
                 </fieldset>
-              </div>
+              </div> */}
 
               <div className="mt-10 flex">
                 <button
                   type="submit"
                   className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden sm:w-full"
                 >
-                  Add to bag
-                </button>
-
-                <button
-                  type="button"
-                  className="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                >
-                  <HeartIcon aria-hidden="true" className="size-6 shrink-0" />
-                  <span className="sr-only">Add to favorites</span>
+                  Contact Me
                 </button>
               </div>
             </form>
