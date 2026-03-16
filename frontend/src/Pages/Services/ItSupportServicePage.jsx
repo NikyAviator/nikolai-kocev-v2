@@ -13,76 +13,72 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const product = {
   name: 'IT Support Service',
-  price: '€40 / hour',
-  rating: 4,
+  price: 'Contact for quote',
+
   images: [
     {
       id: 1,
-      name: 'Angled view',
-      src: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-01.jpg',
-      alt: 'Angled front view with bag zipped and handles upright.',
+      name: 'Linux support',
+      src: '/images/linux-pic.jpg',
+      alt: 'Linux support and troubleshooting service',
     },
     {
       id: 2,
-      name: 'Front view',
-      src: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-02.jpg',
-      alt: 'Front view with bag zipped and handles upright.',
+      name: 'Backups and recovery',
+      src: '/images/harddrive.jpg',
+      alt: 'Backup and recovery service',
     },
     {
       id: 3,
-      name: 'Back view',
-      src: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-03.jpg',
-      alt: 'Back view with bag zipped and straps hanging down.',
-    },
-    {
-      id: 4,
-      name: 'Back angle open view',
-      src: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-03-product-04.jpg',
-      alt: 'Back angled view with bag open and handles to the side.',
+      name: 'Website help',
+      src: '/images/build-your-website.jpg',
+      alt: 'Website and business IT support service',
     },
   ],
 
   description: `
-    <p>The IT Support Service provides comprehensive support for your IT needs.</p>
+    <p>I help individuals and small businesses with practical IT support: Linux, Windows and macOS troubleshooting, migrations, backups, and websites.</p>
+    <p>My focus is clear communication, reliable solutions, and support that makes everyday tech easier to use and maintain.</p>
   `,
   details: [
     {
-      name: 'Linux Support',
+      name: 'Linux, Windows & macOS Support',
       items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
+        'Troubleshooting slow or unstable computers',
+        'Operating system installation and setup',
+        'Software installation and update help',
+        'Printer, Wi-Fi and device troubleshooting',
+        'General system cleanup and performance improvements',
       ],
     },
     {
-      name: 'Windows Support',
+      name: 'Windows to Linux Migration',
       items: [
-        'Spot clean as needed',
-        'Hand wash with mild soap',
-        'Machine wash interior dividers',
-        'Treat handle and tabs with leather conditioner',
+        'Safe migration of important files from Windows to Linux',
+        'Guidance on choosing the right Linux distribution',
+        'Installation and first-time setup',
+        'Help with drivers, printers and everyday applications',
+        'Post-installation support so the new system feels usable and stable',
       ],
     },
     {
-      name: 'Backups and Recovery',
+      name: 'Backups & Recovery',
       items: [
-        'Free shipping on orders over $300',
-        'International shipping available',
-        'Expedited shipping options',
-        'Signature required upon delivery',
+        'Backup strategy for documents and photos',
+        'External drive and local backup setup',
+        'Help with restoring lost or deleted files',
+        'Basic data protection and safety guidance',
+        'Practical solutions for home users and freelancers',
       ],
     },
     {
-      name: 'Returns',
+      name: 'Websites & Small Business IT',
       items: [
-        'Easy return requests',
-        'Pre-paid shipping label included',
-        '10% restocking fee for returns',
-        '60 day return window',
+        'Simple business websites and portfolio sites',
+        'Help with hosting, domains and deployment',
+        'Technical support for small business tools',
+        'Website updates and maintenance',
+        'Ongoing support for digital presence and IT needs',
       ],
     },
   ],
