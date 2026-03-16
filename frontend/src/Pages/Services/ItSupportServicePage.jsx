@@ -41,23 +41,7 @@ const product = {
       alt: 'Back angled view with bag open and handles to the side.',
     },
   ],
-  // colors: [
-  //   {
-  //     id: 'washed-black',
-  //     name: 'Washed Black',
-  //     classes: 'bg-gray-700 checked:outline-gray-700',
-  //   },
-  //   {
-  //     id: 'white',
-  //     name: 'White',
-  //     classes: 'bg-white checked:outline-gray-400',
-  //   },
-  //   {
-  //     id: 'washed-gray',
-  //     name: 'Washed Gray',
-  //     classes: 'bg-gray-500 checked:outline-gray-500',
-  //   },
-  // ],
+
   description: `
     <p>The IT Support Service provides comprehensive support for your IT needs.</p>
   `,
@@ -103,10 +87,10 @@ const product = {
     },
   ],
 };
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+// WHAT DOES THIS DO? EXPLAIN PLEASE
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ');
+// }
 
 export default function ItSupportServicePage() {
   return (
@@ -199,34 +183,6 @@ export default function ItSupportServicePage() {
             </div>
 
             <form className="mt-6">
-              {/* Colors */}
-              {/* <div>
-                <h3 className="text-sm font-medium text-gray-600">Color</h3>
-
-                <fieldset aria-label="Choose a color" className="mt-2">
-                  <div className="flex items-center gap-x-3">
-                    {product.colors.map((color) => (
-                      <div
-                        key={color.id}
-                        className="flex rounded-full outline -outline-offset-1 outline-black/10"
-                      >
-                        <input
-                          defaultValue={color.id}
-                          defaultChecked={color === product.colors[0]}
-                          name="color"
-                          type="radio"
-                          aria-label={color.name}
-                          className={classNames(
-                            color.classes,
-                            'size-8 appearance-none rounded-full forced-color-adjust-none checked:outline-2 checked:outline-offset-2 focus-visible:outline-3 focus-visible:outline-offset-3',
-                          )}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </fieldset>
-              </div> */}
-
               <div className="mt-10 flex">
                 <button
                   type="submit"
