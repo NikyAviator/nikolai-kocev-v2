@@ -8,7 +8,6 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/react';
-// import { StarIcon } from '@heroicons/react/20/solid';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const product = {
@@ -83,10 +82,6 @@ const product = {
     },
   ],
 };
-// WHAT DOES THIS DO? EXPLAIN PLEASE
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(' ');
-// }
 
 export default function ItSupportServicePage() {
   return (
@@ -145,29 +140,6 @@ export default function ItSupportServicePage() {
                 {product.price}
               </p>
             </div>
-
-            {/* Reviews - MAPS OUT THE STARS BASED ON THE RATING. FOR FUTURE IMPLEMENTATION */}
-            {/*
-            <div className="mt-3">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
-                      key={rating}
-                      aria-hidden="true"
-                      className={classNames(
-                        product.rating > rating
-                          ? 'text-indigo-500'
-                          : 'text-gray-300',
-                        'size-5 shrink-0',
-                      )}
-                    />
-                  ))}
-                </div>
-                <p className="sr-only">{product.rating} out of 5 stars</p>
-              </div>
-            </div> */}
 
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
