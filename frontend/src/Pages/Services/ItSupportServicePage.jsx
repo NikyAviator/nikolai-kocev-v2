@@ -58,6 +58,8 @@ const product = {
         'Installation and first-time setup',
         'Help with drivers, printers and everyday applications',
         'Post-installation support so the new system feels usable and stable',
+        'Auto updates and scripts to keep the system secure and up to date',
+        'Distros I work with and recommend: Arch, Debian, Ubuntu, Linux Mint',
       ],
     },
     {
@@ -70,16 +72,16 @@ const product = {
         'Practical solutions for home users and freelancers',
       ],
     },
-    {
-      name: 'Websites & Small Business IT',
-      items: [
-        'Simple business websites and portfolio sites',
-        'Help with hosting, domains and deployment',
-        'Technical support for small business tools',
-        'Website updates and maintenance',
-        'Ongoing support for digital presence and IT needs',
-      ],
-    },
+    // {
+    //   name: 'Websites & Small Business IT',
+    //   items: [
+    //     'Simple business websites and portfolio sites',
+    //     'Help with hosting, domains and deployment',
+    //     'Technical support for small business tools',
+    //     'Website updates and maintenance',
+    //     'Ongoing support for digital presence and IT needs',
+    //   ],
+    // },
   ],
 };
 
@@ -181,7 +183,7 @@ export default function ItSupportServicePage() {
                     <h3>
                       <DisclosureButton className="group relative flex w-full items-center justify-between py-6 text-left">
                         {/* Label: gray-900 default, indigo-600 when open — dark equivalents */}
-                        <span className="text-sm font-medium text-gray-900 group-data-open:text-indigo-600 dark:text-gray-100 dark:group-data-open:text-indigo-400">
+                        <span className="text font-medium text-gray-900 group-data-open:text-indigo-600 dark:text-gray-100 dark:group-data-open:text-indigo-400">
                           {detail.name}
                         </span>
                         <span className="ml-6 flex items-center">
@@ -203,7 +205,7 @@ export default function ItSupportServicePage() {
                       <ul
                         role="list"
                         // text-gray-700 → dark:text-gray-300, marker gray-300 → dark:marker-gray-600
-                        className="list-disc space-y-1 pl-5 text-sm/6 text-gray-700 marker:text-gray-300 dark:text-gray-300 dark:marker:text-gray-600"
+                        className="text-medium list-disc space-y-1 pl-5 text-gray-700 marker:text-gray-300 dark:text-gray-300 dark:marker:text-gray-600"
                       >
                         {detail.items.map((item) => (
                           <li key={item} className="pl-2">
