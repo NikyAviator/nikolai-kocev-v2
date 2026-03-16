@@ -24,7 +24,10 @@ function App() {
               path="/services/it-support"
               element={<ItSupportServicePage />}
             />
-            <Route path="/services/webdev" element={<WebdevServicePage />} />
+            <Route
+              path="/services/web-development"
+              element={<WebdevServicePage />}
+            />
             <Route path="/blog" element={<BlogHome />} />
             <Route path="/blog/:slug" element={<RenderOneBlog />} />
           </Routes>

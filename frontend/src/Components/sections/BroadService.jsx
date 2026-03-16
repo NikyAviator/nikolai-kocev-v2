@@ -17,7 +17,7 @@ const features = [
     description: `A website should load fast, look sharp on any screen, and actually represent your business well. I build handmade single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
     imageSrc: '/images/build-your-website.jpg',
     imageAlt: 'A modern web application displayed on a laptop screen.',
-    learnMoreLink: '/services/webdev',
+    learnMoreLink: '/services/web-development',
   },
   {
     name: 'Backup & Data Protection',
