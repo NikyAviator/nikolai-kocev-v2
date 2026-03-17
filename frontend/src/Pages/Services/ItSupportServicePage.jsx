@@ -18,14 +18,14 @@ const product = {
     {
       id: 1,
       name: 'Linux support',
-      src: '/images/linux-pic.jpg',
-      alt: 'Linux support and troubleshooting service',
+      src: '/images/arch-debian-ubuntu.png',
+      alt: 'Linux, Arch, Debian and Ubuntu support service',
     },
     {
       id: 2,
-      name: 'Backups and recovery',
-      src: '/images/harddrive.jpg',
-      alt: 'Backup and recovery service',
+      name: 'Linux, Windows and macOS support',
+      src: '/images/linux-repair.png',
+      alt: 'Linux, Windows and macOS support service',
     },
     {
       id: 3,
