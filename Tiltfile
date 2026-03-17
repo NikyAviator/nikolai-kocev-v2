@@ -1,14 +1,14 @@
 # --- Docker Builds ---
 docker_build(
-    ref='frontend-image',
-    context='.',
-    dockerfile='infra/development/Docker/frontend.Dockerfile',
-)
-
-docker_build(
     ref='backend-image',
     context='./backend',
     dockerfile='infra/development/Docker/backend.Dockerfile',
+)
+
+docker_build(
+    ref='frontend-image',
+    context='.',
+    dockerfile='infra/development/Docker/frontend.Dockerfile',
 )
 
 allow_k8s_contexts('minikube')
