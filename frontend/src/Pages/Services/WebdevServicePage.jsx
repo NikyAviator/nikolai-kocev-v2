@@ -18,13 +18,13 @@ const product = {
     {
       id: 1,
       name: 'Modern website',
-      src: '/images/build-your-website.jpg',
+      src: '/images/creative-agency.png',
       alt: 'A modern website displayed on a laptop screen.',
     },
     {
       id: 2,
       name: 'Cloud deployment',
-      src: '/images/pic9.jpg',
+      src: '/images/gcp-go-k8s-docker.png',
       alt: 'Cloud infrastructure and deployment.',
     },
     {
