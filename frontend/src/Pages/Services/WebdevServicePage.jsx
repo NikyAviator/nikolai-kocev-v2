@@ -24,7 +24,7 @@ const product = {
     {
       id: 2,
       name: 'Cloud deployment',
-      src: '/images/gcp-go-k8s-docker.png',
+      src: '/images/build-your-website.jpg',
       alt: 'Cloud infrastructure and deployment.',
     },
     {
