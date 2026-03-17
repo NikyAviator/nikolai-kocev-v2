@@ -29,9 +29,9 @@ const product = {
     },
     {
       id: 3,
-      name: 'Website help',
-      src: '/images/build-your-website.jpg',
-      alt: 'Website and business IT support service',
+      name: 'Backups and data protection',
+      src: '/images/backup.png',
+      alt: 'Backups and data protection service',
     },
   ],
 
