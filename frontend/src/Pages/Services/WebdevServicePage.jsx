@@ -29,9 +29,9 @@ const product = {
     },
     {
       id: 3,
-      name: 'Clean code',
+      name: 'Malmoe from the Air',
       src: '/images/pic7.jpg',
-      alt: 'Clean, handwritten React code in an editor.',
+      alt: 'Aerial view of Malmoe city.',
     },
   ],
 
