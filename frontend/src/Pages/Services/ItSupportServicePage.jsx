@@ -41,16 +41,6 @@ const product = {
   `,
   details: [
     {
-      name: 'Linux, Windows & macOS Support',
-      items: [
-        'Troubleshooting slow or unstable computers',
-        'Operating system installation and setup',
-        'Software installation and update help',
-        'Printer, Wi-Fi and device troubleshooting',
-        'General system cleanup and performance improvements',
-      ],
-    },
-    {
       name: 'Windows to Linux Migration',
       items: [
         'Safe migration of important files from Windows to Linux',
@@ -63,6 +53,16 @@ const product = {
       ],
     },
     {
+      name: 'Linux, Windows & macOS Support',
+      items: [
+        'Troubleshooting slow or unstable computers',
+        'Operating system installation and setup',
+        'Software installation and update help',
+        'Printer, Wi-Fi and device troubleshooting',
+        'General system cleanup and performance improvements',
+      ],
+    },
+    {
       name: 'Backups & Recovery',
       items: [
         'Backup strategy for documents and photos',
@@ -72,16 +72,6 @@ const product = {
         'Practical solutions for home users and freelancers',
       ],
     },
-    // {
-    //   name: 'Websites & Small Business IT',
-    //   items: [
-    //     'Simple business websites and portfolio sites',
-    //     'Help with hosting, domains and deployment',
-    //     'Technical support for small business tools',
-    //     'Website updates and maintenance',
-    //     'Ongoing support for digital presence and IT needs',
-    //   ],
-    // },
   ],
 };
 
