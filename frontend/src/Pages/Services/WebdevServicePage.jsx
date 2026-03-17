@@ -30,7 +30,7 @@ const product = {
     {
       id: 3,
       name: 'Clean code',
-      src: '/images/pic10.jpg',
+      src: '/images/pic7.jpg',
       alt: 'Clean, handwritten React code in an editor.',
     },
   ],
