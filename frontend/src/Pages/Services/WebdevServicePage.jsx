@@ -23,15 +23,15 @@ const product = {
     },
     {
       id: 2,
-      name: 'Cloud deployment',
-      src: '/images/build-your-website.jpg',
-      alt: 'Cloud infrastructure and deployment.',
+      name: 'Web application deployment',
+      src: '/images/webdev2.png',
+      alt: 'Web application development illustration',
     },
     {
       id: 3,
-      name: 'Malmoe from the Air',
-      src: '/images/pic7.jpg',
-      alt: 'Aerial view of Malmoe city.',
+      name: 'Web Development process',
+      src: '/images/webdev1.jpg',
+      alt: 'Web development process illustration.',
     },
   ],
 
