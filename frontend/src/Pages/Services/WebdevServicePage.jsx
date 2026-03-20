@@ -38,7 +38,7 @@ const product = {
 
   description: `
    <p>I build fast, modern websites and web applications using React and Tailwind CSS — custom-built, mobile-first, and built to last. No bloated templates, no page builders. Just clean code that you own.</p>
-<p>Need more than a static site? I can add a backend in Go, connect a database, and deploy the full application to the cloud. Whether you need a simple landing page or a full web application, I will scope it honestly and build it properly.</p>
+<p>Need more than a static site? I can add a backend in Go, connect a database, and deploy the full application to the cloud. Whether you need a simple landing page or a full web application, I will scope it honestly, build it cleanly, and deliver something you are proud of.</p>
   `,
 
   details: [
