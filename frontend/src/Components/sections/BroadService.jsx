@@ -7,21 +7,21 @@ import { Link } from 'react-router-dom';
 const features = [
   {
     name: 'IT Support & Migration',
-    description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure and troubleshoot Linux, Windows and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable across Debian, Ubuntu, Mint, Arch and more. I can recommend the right distribution for your needs and skill level.`,
+    description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure and troubleshoot Linux, Windows, and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable across Debian, Ubuntu, Mint, Arch, and more. I can recommend the right distribution for your needs and skill level.`,
     imageSrc: '/images/linux-pic.jpg',
     imageAlt: 'A Linux terminal open on a desktop workstation.',
     learnMoreLink: '/services/it-support',
   },
   {
     name: 'Modern Websites & Web Applications',
-    description: `A website should load fast, look sharp on any screen and accurately represent your business. I build custom single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
+    description: `A website should load quickly, look sharp on any screen, and accurately represent your business. I build custom single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
     imageSrc: '/images/gcp-go-k8s-docker.png',
     imageAlt: 'A modern web application displayed on a laptop screen.',
     learnMoreLink: '/services/web-development',
   },
   {
     name: 'Backup & Data Protection',
-    description: `Most people only think about backups after something goes wrong. I help you set up automatic, reliable backup routines before that happens — using tools like rsync and Syncthing, to keep your files safe without you having to think about it. I'll also help you get started with a password manager if you're not using one yet. Small steps that make a real difference.`,
+    description: `Most people only think about backups after something goes wrong. I help you set up automatic, reliable backup routines before that happens — using tools like rsync and Syncthing to keep your files safe. I'll also help you get started with a password manager if you're not using one yet. Small steps that make a real difference.`,
     imageSrc: '/images/harddrive.jpg',
     imageAlt: 'An external hard drive and USB cable on a desk.',
     // learnMoreLink intentionally omitted

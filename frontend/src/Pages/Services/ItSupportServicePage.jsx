@@ -20,13 +20,13 @@ const product = {
       id: 1,
       name: 'Linux support',
       src: '/images/arch-debian-ubuntu.png',
-      alt: 'Linux, Arch, Debian and Ubuntu support service',
+      alt: 'Linux, Arch, Debian, and Ubuntu support service',
     },
     {
       id: 2,
       name: 'Linux, Windows & macOS Support',
       src: '/images/linux-repair.png',
-      alt: 'Linux, Windows & macOS support service',
+      alt: 'Linux, Windows, and macOS support service',
     },
     {
       id: 3,
