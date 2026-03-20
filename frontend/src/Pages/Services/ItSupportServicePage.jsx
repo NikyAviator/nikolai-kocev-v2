@@ -11,7 +11,7 @@ import {
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const product = {
-  name: 'IT Support Service',
+  name: 'IT Support & Computer Help',
   price: 'Contact for quote',
 
   images: [
@@ -36,8 +36,8 @@ const product = {
   ],
 
   description: `
-    <p>I help individuals and small businesses with practical IT support: Linux, Windows and macOS troubleshooting, migrations, backups, and websites.</p>
-    <p>My focus is clear communication, reliable solutions, and support that makes everyday tech easier to use and maintain.</p>
+   <p>I help individuals and small businesses with practical IT support, including Linux, Windows, and macOS troubleshooting, system migrations, backups, and general technical help.</p>
+<p>My focus is clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and trust.</p>
   `,
   details: [
     {
@@ -48,8 +48,8 @@ const product = {
         'Installation and first-time setup',
         'Help with drivers, printers and everyday applications',
         'Post-installation support so the new system feels usable and stable',
-        'Auto updates and scripts to keep the system secure and up to date',
-        'Distros I work with and recommend: Arch, Debian, Ubuntu, Linux Mint',
+        'Automatic updates and scripts to help keep the system secure and up to date',
+        'Linux distributions I work with and recommend: Arch, Debian, Ubuntu, and Linux Mint',
       ],
     },
     {
@@ -58,7 +58,7 @@ const product = {
         'Troubleshooting slow or unstable computers',
         'Operating system installation and setup',
         'Software installation and update help',
-        'Printer, Wi-Fi and device troubleshooting',
+        'Printer, Wi-Fi, and device troubleshooting',
         'Network hardening with firewalls and best practices',
         'General system cleanup and performance improvements',
       ],
@@ -66,7 +66,7 @@ const product = {
     {
       name: 'Backups & Recovery',
       items: [
-        'Backup strategy for documents and photos',
+        'Practical solutions for home users and freelancers',
         'External drive and local backup setup',
         'Help with restoring lost or deleted files',
         'Basic data protection and safety guidance',

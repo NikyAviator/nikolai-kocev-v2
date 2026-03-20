@@ -11,7 +11,7 @@ import {
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 const product = {
-  name: 'Web Development',
+  name: 'Web Development Services',
   price: 'Contact for quote',
 
   images: [
@@ -36,16 +36,16 @@ const product = {
   ],
 
   description: `
-    <p>I build fast, modern websites and web applications using React and Tailwind CSS — handmade, mobile-first, and built to last. No bloated templates, no page builders. Just clean code that you own.</p>
-    <p>Need more than a static site? I can add a backend in Go, connect a database, and deploy the whole thing to the cloud. Whether you need a simple landing page or a full web application, I will scope it honestly and build it properly.</p>
+   <p>I build fast, modern websites and web applications using React and Tailwind CSS — custom-built, mobile-first, and made to last. No bloated templates, no page builders. Just clean code that you own.</p>
+<p>Need more than a static site? I can add a backend in Go, connect a database, and deploy the full application to the cloud. Whether you need a simple landing page or a full web application, I will scope it honestly and build it properly.</p>
   `,
 
   details: [
     {
       name: 'React Single-Page Applications',
       items: [
-        'Handmade SPA built with React and Tailwind CSS',
-        'Mobile-first, responsive design on all screen sizes',
+        'Custom-built single-page applications with React and Tailwind CSS',
+        'Responsive design across all screen sizes',
         'Fast load times — no bloated templates or page builders',
         'Clean, maintainable code that you fully own',
         'Component-based architecture that is easy to extend',
@@ -56,7 +56,7 @@ const product = {
       name: 'Backend & APIs',
       items: [
         'REST API development in Go (Golang)',
-        'JavaScript / Node.js backends where appropriate',
+        'JavaScript and Node.js backends where appropriate',
         'MongoDB and PostgreSQL database integration',
         'User authentication and session handling',
         'Secure API design with proper error handling',
@@ -79,7 +79,7 @@ const product = {
         'Full ownership of all source code via GitHub',
         'Access to your own hosting account and domain',
         'A handover session to walk you through everything',
-        'Documentation so you or anyone else can maintain it',
+        'Documentation so you or another developer can maintain it',
         'Optional ongoing maintenance and support agreement',
       ],
     },
