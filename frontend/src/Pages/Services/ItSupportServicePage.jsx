@@ -66,7 +66,7 @@ const product = {
     {
       name: 'Backups & Recovery',
       items: [
-        'Practical solutions for home users and freelancers',
+        'Backup strategies for documents and photos',
         'External drive and local backup setup',
         'Help with restoring lost or deleted files',
         'Basic data protection and safety guidance',
