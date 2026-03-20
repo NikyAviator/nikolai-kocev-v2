@@ -38,7 +38,7 @@ const product = {
 
   description: `
    <p>I help individuals and small businesses with practical IT support, including Linux, Windows, and macOS troubleshooting, system migrations, backups, and general technical help.</p>
-<p>My focus is clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and trust.</p>
+<p>My focus is on clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and trust.</p>
   `,
   details: [
     {

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const features = [
   {
     name: 'IT Support & Migration',
-    description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure and troubleshoot Linux, Windows, and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable across Debian, Ubuntu, Mint, Arch, and more. I can recommend the right distribution for your needs and skill level.`,
+    description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure, and troubleshoot Linux, Windows, and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable working with Debian, Ubuntu, Mint, Arch, and more. I can recommend the right distribution for your needs and skill level.`,
     imageSrc: '/images/linux-pic.jpg',
     imageAlt: 'A Linux terminal open on a desktop workstation.',
     learnMoreLink: '/services/it-support',

@@ -26,7 +26,7 @@ const product = {
       id: 2,
       name: 'Web application deployment',
       src: '/images/webdev2.png',
-      alt: 'Web application development illustration',
+      alt: 'A web application development illustration',
     },
     {
       id: 3,
