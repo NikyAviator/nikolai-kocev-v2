@@ -23,15 +23,15 @@ const product = {
     },
     {
       id: 2,
-      name: 'Linux, Windows and macOS support',
+      name: 'Linux, Windows & macOS Support',
       src: '/images/linux-repair.png',
-      alt: 'Linux, Windows and macOS support service',
+      alt: 'Linux, Windows & macOS support service',
     },
     {
       id: 3,
-      name: 'Backups and data protection',
+      name: 'Backups & Data Protection',
       src: '/images/backup.png',
-      alt: 'Backups and data protection service',
+      alt: 'Backups & Data Protection service',
     },
   ],
 
@@ -46,14 +46,14 @@ const product = {
         'Safe migration of important files from Windows to Linux',
         'Guidance on choosing the right Linux distribution',
         'Installation and first-time setup',
-        'Help with drivers, printers and everyday applications',
+        'Help with drivers, printers, and everyday applications',
         'Post-installation support so the new system feels usable and stable',
         'Automatic updates and scripts to help keep the system secure and up to date',
         'Linux distributions I work with and recommend: Arch, Debian, Ubuntu, and Linux Mint',
       ],
     },
     {
-      name: 'Linux, Windows, and macOS support service',
+      name: 'Linux, Windows & macOS Support',
       items: [
         'Troubleshooting slow or unstable computers',
         'Operating system installation and setup',
