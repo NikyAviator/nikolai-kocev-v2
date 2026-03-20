@@ -38,7 +38,7 @@ const product = {
 
   description: `
    <p>I help individuals and small businesses with practical IT support, including Linux, Windows, and macOS troubleshooting, system migrations, backups, and general technical help.</p>
-<p>My focus is on clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and trust.</p>
+<p>My focus is on clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and rely on.</p>
   `,
   details: [
     {
@@ -50,7 +50,7 @@ const product = {
         'Help with drivers, printers, and everyday applications',
         'Post-installation support so the new system feels usable and stable',
         'Automatic updates and scripts to help keep the system secure and up to date',
-        'Linux distributions I work with and recommend: Arch, Debian, Ubuntu, and Linux Mint',
+        'Distributions I work with: Arch, Debian, Ubuntu, and Linux Mint',
       ],
     },
     {
