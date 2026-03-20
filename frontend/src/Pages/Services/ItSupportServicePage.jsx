@@ -59,6 +59,7 @@ const product = {
         'Operating system installation and setup',
         'Software installation and update help',
         'Printer, Wi-Fi and device troubleshooting',
+        'Network hardening with firewalls and best practices',
         'General system cleanup and performance improvements',
       ],
     },
