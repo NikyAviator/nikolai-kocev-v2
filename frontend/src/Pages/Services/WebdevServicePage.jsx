@@ -29,7 +29,7 @@ const product = {
     },
     {
       id: 3,
-      name: 'Web Development process',
+      name: 'Web development process',
       src: '/images/webdev1.jpg',
       alt: 'Web development process illustration.',
     },
@@ -76,7 +76,7 @@ const product = {
     {
       name: 'What You Get When the Project Is Done',
       items: [
-        'Full ownership of all source code via GitHub',
+        'Full ownership of all source code through GitHub',
         'Access to your own hosting account and domain',
         'A handover session to walk you through everything',
         'Documentation so you or another developer can maintain it',

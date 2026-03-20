@@ -53,11 +53,11 @@ const product = {
       ],
     },
     {
-      name: 'Linux, Windows & macOS Support',
+      name: 'Linux, Windows, and macOS support service',
       items: [
         'Troubleshooting slow or unstable computers',
         'Operating system installation and setup',
-        'Software installation and update help',
+        'Software installation and update support',
         'Printer, Wi-Fi, and device troubleshooting',
         'Network hardening with firewalls and best practices',
         'General system cleanup and performance improvements',
