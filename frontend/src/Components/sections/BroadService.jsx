@@ -39,10 +39,10 @@ export default function BroadService() {
       <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
         {/* Section header */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-400">
             My IT Services
           </h2>
-          <p className="mt-4 text-lg text-gray-500 dark:text-white">
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
             I provide practical IT solutions for individuals and small
             businesses. My work focuses on three areas: reliable computer
             systems, modern websites, and secure data protection.
@@ -69,7 +69,7 @@ export default function BroadService() {
                   {feature.name}
                 </h3>
 
-                <p className="mt-3 text-base/7 text-gray-500 dark:text-white">
+                <p className="mt-3 text-base/7 text-gray-500 dark:text-gray-400">
                   {feature.description}
                 </p>
 
