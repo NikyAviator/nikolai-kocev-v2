@@ -149,7 +149,6 @@ export default function ItSupportServicePage() {
             </div>
 
             {/* CTA button */}
-            {/* Using an <a> with mailto instead of a <form> — cleaner for a contact action */}
             <div className="mt-10">
               <a
                 href="mailto:nikyaviator@gmail.com"
@@ -165,13 +164,11 @@ export default function ItSupportServicePage() {
                 Additional details
               </h2>
 
-              {/* divide-y and border-t: gray-200 light → gray-700 dark */}
               <div className="divide-y divide-gray-200 border-t border-gray-200 dark:divide-gray-700 dark:border-gray-700">
                 {product.details.map((detail) => (
                   <Disclosure key={detail.name} as="div">
                     <h3>
                       <DisclosureButton className="group flex w-full items-center justify-between py-6 text-left">
-                        {/* Label: gray-900 default, indigo-600 when open — dark equivalents */}
                         <span className="text-sm font-medium text-gray-900 group-data-open:text-indigo-600 dark:text-gray-100 dark:group-data-open:text-indigo-400">
                           {detail.name}
                         </span>
@@ -193,7 +190,6 @@ export default function ItSupportServicePage() {
                     <DisclosurePanel className="pb-6">
                       <ul
                         role="list"
-                        // text-gray-700 → dark:text-gray-300, marker gray-300 → dark:marker-gray-600
                         className="list-disc space-y-1 pl-5 text-gray-700 marker:text-gray-300 dark:text-gray-300 dark:marker:text-gray-600"
                       >
                         {detail.items.map((item) => (

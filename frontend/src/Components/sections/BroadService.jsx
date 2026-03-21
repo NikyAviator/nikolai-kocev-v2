@@ -73,8 +73,7 @@ export default function BroadService() {
                   {feature.description}
                 </p>
 
-                {/* ── Conditional "Product overview" link ── */}
-                {/* Only renders when learnMoreLink is defined in the data above */}
+                {/* ── Conditional "View service details" link ── */}
                 {feature.learnMoreLink && (
                   <Link
                     to={feature.learnMoreLink}
