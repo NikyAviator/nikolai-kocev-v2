@@ -75,7 +75,7 @@ const product = {
       ],
     },
     {
-      name: 'What You Get When the Project Is Done',
+      name: 'Project Delivery & Handover',
       items: [
         'Full ownership of all source code through GitHub',
         'Access to your own hosting account and domain',
