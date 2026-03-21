@@ -5,6 +5,9 @@ import Footer from './Components/Footer.jsx';
 import ScrollToTopButton from './Components/ui/ScrollToTopButton.jsx';
 import BlogHome from './Pages/BlogHome.jsx';
 import RenderOneBlog from './Pages/RenderOneBlog.jsx';
+import DisplayServicesPage from './Pages/DisplayServicesPage.jsx';
+import ItSupportServicePage from './Pages/Services/ItSupportServicePage.jsx';
+import WebdevServicePage from './Pages/Services/WebdevServicePage.jsx';
 
 import './styles.css';
 
@@ -16,8 +19,17 @@ function App() {
         <main className="relative grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/blogs" element={<BlogHome />} />
-            <Route path="/blogs/:slug" element={<RenderOneBlog />} />
+            <Route path="/services" element={<DisplayServicesPage />} />
+            <Route
+              path="/services/it-support"
+              element={<ItSupportServicePage />}
+            />
+            <Route
+              path="/services/web-development"
+              element={<WebdevServicePage />}
+            />
+            <Route path="/blog" element={<BlogHome />} />
+            <Route path="/blog/:slug" element={<RenderOneBlog />} />
           </Routes>
           <ScrollToTopButton />
         </main>
