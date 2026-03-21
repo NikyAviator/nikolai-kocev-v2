@@ -36,10 +36,10 @@ const product = {
     },
   ],
 
-  description: `
-   <p>I help individuals and small businesses with practical IT support, including Linux, Windows, and macOS troubleshooting, system migrations, backups, and general technical help.</p>
-<p>My focus is on clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and rely on.</p>
-  `,
+  description: [
+    'I help individuals and small businesses with practical IT support, including Linux, Windows, and macOS troubleshooting, system migrations, backups, and general technical assistance.',
+    'My focus is clear communication, reliable solutions, and support that makes everyday technology easier to use, maintain, and trust.',
+  ],
   details: [
     {
       name: 'Windows to Linux Migration',
@@ -141,14 +141,11 @@ export default function ItSupportServicePage() {
               </p>
             </div>
 
-            {/* Description — rendered from HTML string */}
-            <div className="mt-6">
-              <h3 className="sr-only">Description</h3>
-              <div
-                dangerouslySetInnerHTML={{ __html: product.description }}
-                // text-gray-700 → dark:text-gray-300
-                className="space-y-6 text-base text-gray-700 dark:text-gray-300"
-              />
+            {/* Description paragraphs */}
+            <div className="mt-6 space-y-4 text-base text-gray-700 dark:text-gray-300">
+              {product.description.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             {/* CTA button */}

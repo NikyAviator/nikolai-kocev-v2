@@ -36,10 +36,10 @@ const product = {
     },
   ],
 
-  description: `
-   <p>I build fast, modern websites and web applications using React and Tailwind CSS — custom-built, mobile-first, and built to last. No bloated templates, no page builders. Just clean code that you own.</p>
-<p>Need more than a static site? I can add a backend in Go, connect a database, and deploy the full application to the cloud. Whether you need a simple landing page or a full web application, I will scope it honestly, build it cleanly, and deliver something you are proud of.</p>
-  `,
+  description: [
+    'I build fast, modern websites and web applications using React and Tailwind CSS — custom-built, mobile-first, and built to last. No bloated templates, no page builders. Just clean code that you own.',
+    'Need more than a static site? I can add a backend in Go, connect a database, and deploy the full application to the cloud. Whether you need a simple landing page or a full web application, I will scope it honestly, build it cleanly, and deliver something you are proud of.',
+  ],
 
   details: [
     {
@@ -168,13 +168,11 @@ export default function WebdevServicePage() {
               ))}
             </div>
 
-            {/* Description */}
-            <div className="mt-6">
-              <h3 className="sr-only">Description</h3>
-              <div
-                dangerouslySetInnerHTML={{ __html: product.description }}
-                className="space-y-4 text-base text-gray-700 dark:text-gray-300"
-              />
+            {/* Description paragraphs */}
+            <div className="mt-6 space-y-4 text-base text-gray-700 dark:text-gray-300">
+              {product.description.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             {/* CTA */}
