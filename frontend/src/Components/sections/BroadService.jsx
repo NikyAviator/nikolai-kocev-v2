@@ -80,7 +80,7 @@ export default function BroadService() {
                     to={feature.learnMoreLink}
                     className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors duration-150 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
                   >
-                    Product overview
+                    View service details
                     <span aria-hidden="true">→</span>
                   </Link>
                 )}
