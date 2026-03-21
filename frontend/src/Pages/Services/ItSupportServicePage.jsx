@@ -91,7 +91,6 @@ export default function ItSupportServicePage() {
                 {product.images.map((image) => (
                   <Tab
                     key={image.id}
-                    // bg-white → dark:bg-gray-800, text-gray-900 → dark:text-gray-100
                     className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700"
                   >
                     <span className="sr-only">{image.name}</span>
@@ -102,7 +101,7 @@ export default function ItSupportServicePage() {
                         className="size-full object-cover"
                       />
                     </span>
-                    {/* Selected ring — same indigo in both modes */}
+
                     <span
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 group-data-selected:ring-indigo-500 dark:ring-offset-gray-800"
