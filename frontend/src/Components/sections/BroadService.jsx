@@ -42,7 +42,7 @@ export default function BroadService() {
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             My IT Services
           </h2>
-          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
             I provide practical IT solutions for individuals and small
             businesses. My work focuses on three areas: reliable computer
             systems, modern websites, and secure data protection.
@@ -69,7 +69,7 @@ export default function BroadService() {
                   {feature.name}
                 </h3>
 
-                <p className="mt-3 text-base/7 text-gray-500 dark:text-gray-400">
+                <p className="mt-3 text-base/7 text-gray-500 dark:text-gray-300">
                   {feature.description}
                 </p>
 
