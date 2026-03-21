@@ -67,7 +67,7 @@ const product = {
       name: 'Cloud Hosting & Deployment',
       items: [
         'Deployment to Google Cloud Platform (GCP)',
-        'Containerised with Docker for consistent environments',
+        'Containerized with Docker for consistent environments',
         'Kubernetes orchestration for scalable applications',
         'Custom domain setup and HTTPS configuration',
         'CI/CD pipelines so updates can be deployed automatically',

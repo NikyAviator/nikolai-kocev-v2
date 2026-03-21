@@ -175,7 +175,7 @@ export default function ItSupportServicePage() {
                     <h3>
                       <DisclosureButton className="group flex w-full items-center justify-between py-6 text-left">
                         {/* Label: gray-900 default, indigo-600 when open — dark equivalents */}
-                        <span className="text font-medium text-gray-900 group-data-open:text-indigo-600 dark:text-gray-100 dark:group-data-open:text-indigo-400">
+                        <span className="text-sm font-medium text-gray-900 group-data-open:text-indigo-600 dark:text-gray-100 dark:group-data-open:text-indigo-400">
                           {detail.name}
                         </span>
                         <span className="ml-6 flex shrink-0 items-center self-center">
