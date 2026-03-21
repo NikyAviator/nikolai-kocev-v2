@@ -96,7 +96,7 @@ export default function WebdevServicePage() {
           <TabGroup className="flex flex-col-reverse">
             {/* Thumbnail selector */}
             <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-              <TabList className="grid grid-cols-4 gap-6">
+              <TabList className="grid grid-cols-3 gap-6">
                 {product.images.map((image) => (
                   <Tab
                     key={image.id}
