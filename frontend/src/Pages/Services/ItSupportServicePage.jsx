@@ -197,7 +197,7 @@ export default function ItSupportServicePage() {
                       <ul
                         role="list"
                         // text-gray-700 → dark:text-gray-300, marker gray-300 → dark:marker-gray-600
-                        className="text-medium list-disc space-y-1 pl-5 text-gray-700 marker:text-gray-300 dark:text-gray-300 dark:marker:text-gray-600"
+                        className="list-disc space-y-1 pl-5 text-gray-700 marker:text-gray-300 dark:text-gray-300 dark:marker:text-gray-600"
                       >
                         {detail.items.map((item) => (
                           <li key={item} className="pl-2">
