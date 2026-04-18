@@ -57,7 +57,7 @@ export default function AboutmeSection() {
         {/* 4. Buttons row */}
         <div className="mx-auto mt-12 grid grid-cols-1 gap-4 sm:grid-cols-4 lg:mx-0">
           <a
-            href="/Nikolai-Kocev-CV.pdf"
+            href="/NK-CV-IT-ENG.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
