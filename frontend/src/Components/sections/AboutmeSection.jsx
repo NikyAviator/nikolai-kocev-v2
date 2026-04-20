@@ -55,14 +55,28 @@ export default function AboutmeSection() {
         </div>
 
         {/* 4. Buttons row */}
-        <div className="mx-auto mt-12 grid grid-cols-1 gap-4 sm:grid-cols-4 lg:mx-0">
+        <div className="mx-auto mt-12 grid grid-cols-1 gap-4 sm:grid-cols-5 lg:mx-0">
           <a
             href="/NK-CV-IT-ENG.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span className="mx-5">Open/View My CV</span>
+            <span className="mx-5">CV (English)</span>
+            <img
+              src="/svg/download.svg"
+              alt="Download"
+              className="h-6 w-6 shrink-0"
+            />
+          </a>
+
+          <a
+            href="/NK-CV-IT-SWE.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
+          >
+            <span className="mx-5">CV (Svenska)</span>
             <img
               src="/svg/download.svg"
               alt="Download"
