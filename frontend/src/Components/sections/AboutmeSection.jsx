@@ -49,7 +49,7 @@ export default function AboutmeSection() {
             <img
               src="/images/pic4.jpg"
               alt="Portrait of Nikolai in front of a workstation"
-              className="w-full rounded-xl border-1 border-black object-cover"
+              className="w-full rounded-xl border border-black object-cover"
             />
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function AboutmeSection() {
             <img
               src="/svg/download.svg"
               alt="Download"
-              className="h-6 w-6 flex-shrink-0"
+              className="h-6 w-6 shrink-0"
             />
           </a>
 
@@ -81,7 +81,7 @@ export default function AboutmeSection() {
             <img
               src="/svg/github.svg"
               alt="GitHub"
-              className="h-6 w-6 flex-shrink-0"
+              className="h-6 w-6 shrink-0"
             />
           </a>
 
@@ -96,7 +96,7 @@ export default function AboutmeSection() {
             <img
               src="/svg/linkedin.svg"
               alt="LinkedIn"
-              className="h-6 w-6 flex-shrink-0"
+              className="h-6 w-6 shrink-0"
             />
           </a>
 
@@ -109,7 +109,7 @@ export default function AboutmeSection() {
             <img
               src="/svg/email.svg"
               alt="Email"
-              className="h-6 w-6 flex-shrink-0"
+              className="h-6 w-6 shrink-0"
             />
           </a>
         </div>
