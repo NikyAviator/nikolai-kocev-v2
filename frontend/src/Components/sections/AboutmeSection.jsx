@@ -76,7 +76,7 @@ export default function AboutmeSection() {
             rel="noopener noreferrer"
             className="btn-contact flex flex-row justify-center text-lg sm:text-xl"
           >
-            <span className="mx-5">CV (Svenska)</span>
+            <span className="mx-5 whitespace-nowrap">CV (Svenska)</span>
             <img
               src="/svg/download.svg"
               alt="Download"
