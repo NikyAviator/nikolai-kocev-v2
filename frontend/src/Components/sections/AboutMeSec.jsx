@@ -136,8 +136,7 @@ export default function AboutMeSec() {
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>
-                    The Wheel of Time - The Fires of Heaven. (Robert Jordan -
-                    Book 5)
+                    The Wheel of Time - Lord of Chaos. (Robert Jordan - Book 6)
                   </span>
                 </dd>
               </div>
