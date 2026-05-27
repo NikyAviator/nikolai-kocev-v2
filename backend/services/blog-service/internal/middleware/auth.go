@@ -1,4 +1,4 @@
-// internal/middleware/auth.go
+// internal/middleware/auth.go - nkv2 Blog Service authentication and authorization middleware
 package middleware
 
 import (

@@ -1,4 +1,4 @@
-// internal/routes/v1/routes.go
+// internal/routes/v1/routes.go - nkv2 Blog Service API v1 routes
 package v1
 
 import (

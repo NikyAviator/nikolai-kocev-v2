@@ -1,3 +1,4 @@
+// internal/controllers/blog_controllers.go - nkv2 Blog Service blog controllers
 package controllers
 
 import (

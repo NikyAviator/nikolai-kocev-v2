@@ -1,3 +1,4 @@
+// Main entry point nkv2 blog-service. Sets up HTTP server, connects to MongoDB, wires up routes and controllers.
 package main
 
 import (
