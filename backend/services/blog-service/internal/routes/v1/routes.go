@@ -1,4 +1,6 @@
 // internal/routes/v1/routes.go - nkv2 Blog Service API v1 routes
+// This file defines the API endpoints for version 1 of the blog service.
+// It wires up the controllers to the Gin router and applies any necessary middleware for authentication and authorization.
 package v1
 
 import (

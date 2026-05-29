@@ -1,3 +1,7 @@
+// auth_user_repo.go - nkv2 Blog Service UserRepository implementation using MongoDB.
+// This file implements the UserRepository interface defined in the repository package.
+// It provides methods for creating users, validating credentials, and finding users by ID or email.
+// The implementation uses MongoDB as the data store and includes index creation for efficient querying.
 package repository
 
 import (

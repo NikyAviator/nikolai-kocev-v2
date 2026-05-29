@@ -1,4 +1,5 @@
-// internal/controllers/user_controllers.go - nkv2 Blog Service user controllers
+// internal/controllers/user_controllers.go - nkv2 Blog user controllers.
+// This file defines the HTTP handlers for user-related operations such as creating a user, deleting a user, and logging in.
 package controllers
 
 import (

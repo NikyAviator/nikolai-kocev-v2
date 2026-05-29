@@ -1,3 +1,5 @@
+// user_service.go - nkv2. Implements business logic for user management: registration, login, deletion.
+// Depends on UserRepository for data access and utils for password hashing and JWT handling.
 package service
 
 import (
