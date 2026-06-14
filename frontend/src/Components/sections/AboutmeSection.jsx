@@ -29,9 +29,9 @@ export default function AboutmeSection() {
               Sweden.
             </p>
             <p className="rounded-xl bg-black/40 p-6 text-white backdrop-blur-md">
-              My first hands-on experience with "the cloud" came as a flight
-              instructor, helping people take off — quite literally. Over time,
-              my curiosity led me to explore a different kind of altitude
+              My first hands-on experience with &quot;the cloud&quot; came as a
+              flight instructor, helping people take off — quite literally. Over
+              time, my curiosity led me to explore a different kind of altitude
               through programming, DevOps, and cloud infrastructure. Today, I
               enjoy working with Linux, open source technologies, and building
               systems that are reliable, secure, and thoughtfully designed.
