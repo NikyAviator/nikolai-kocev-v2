@@ -22,21 +22,26 @@ export default function BlogHome() {
     })();
   }, []);
 
-  if (loading) return <div className="p-8 text-center">Loading…</div>;
+  if (loading)
+    return (
+      <div className="p-8 text-center text-gray-900 dark:text-white">
+        Loading…
+      </div>
+    );
   if (err) return <div className="p-8 text-center text-red-600">{err}</div>;
 
   return (
     <div className="bg-white py-24 sm:py-32 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-600 sm:text-5xl dark:text-gray-400">
+          <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl dark:text-white">
             From the Blog
           </h2>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {posts.length === 0 ? (
-            <div className="col-span-full text-center text-gray-500">
+            <div className="col-span-full text-center text-gray-500 dark:text-gray-400">
               No blog posts available.
             </div>
           ) : (
@@ -65,21 +70,23 @@ export default function BlogHome() {
 
                   <div className="flex max-w-xl grow flex-col justify-between">
                     <div className="mt-8 flex items-center gap-x-4 text-xs">
-                      <time className="text-gray-500">{pub}</time>
+                      <time className="text-gray-500 dark:text-gray-400">
+                        {pub}
+                      </time>
                       {post.category?.title && (
-                        <span className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600">
+                        <span className="relative z-10 rounded-full bg-gray-100 px-3 py-1.5 font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-200">
                           {post.category.title}
                         </span>
                       )}
                     </div>
 
                     <div className="group relative grow">
-                      <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
+                      <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600 dark:text-white dark:group-hover:text-gray-300">
                         <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                       </h3>
 
                       {post.excerpt && (
-                        <p className="mt-5 line-clamp-3 text-sm/6 text-gray-600">
+                        <p className="mt-5 line-clamp-3 text-sm/6 text-gray-600 dark:text-gray-400">
                           {post.excerpt}
                         </p>
                       )}

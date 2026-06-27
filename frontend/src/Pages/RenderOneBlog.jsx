@@ -25,7 +25,12 @@ export default function RenderOneBlog() {
     })();
   }, [slug]);
 
-  if (loading) return <div className="p-8 text-center">Loading…</div>;
+  if (loading)
+    return (
+      <div className="p-8 text-center text-gray-900 dark:text-white">
+        Loading…
+      </div>
+    );
   if (err) return <div className="p-8 text-center text-red-600">{err}</div>;
   if (!blog) return null;
 
@@ -38,27 +43,27 @@ export default function RenderOneBlog() {
     : '';
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+    <article className="mx-auto min-h-screen max-w-3xl bg-white px-4 py-12 sm:px-6 lg:px-8 dark:bg-gray-900">
       {/* Meta */}
       <div className="mb-6">
         {blog.category?.title && (
-          <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600">
+          <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-200">
             {blog.category.title}
           </span>
         )}
         {published && (
-          <span className="ml-3 align-middle text-xs text-gray-500">
+          <span className="ml-3 align-middle text-xs text-gray-500 dark:text-gray-400">
             {published}
           </span>
         )}
       </div>
 
       {/* Title */}
-      <h1 className="text-dark mb-3 text-3xl font-bold tracking-tight sm:text-4xl dark:text-white">
+      <h1 className="mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
         {blog.title}
       </h1>
 
-      {/* Hero image (constrained to content width) */}
+      {/* Hero image */}
       {blog.imageUrl && (
         <figure className="my-8">
           <img
@@ -70,7 +75,7 @@ export default function RenderOneBlog() {
       )}
 
       {/* Content */}
-      <div className="prose prose-lg prose-neutral max-w-none">
+      <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {blog.contentMd || ''}
         </ReactMarkdown>

@@ -10,7 +10,7 @@ export default function AboutmeSection() {
       <img
         alt="Twin engine jet airliner climbing away from the camera, with blue sky as background."
         src="/images/pic1.jpg"
-        className="absolute inset-0 -z-10 w-full object-cover object-right md:object-center"
+        className="absolute inset-0 -z-10 size-full object-cover object-right md:object-center"
       />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -24,11 +24,11 @@ export default function AboutmeSection() {
         <div className="mt-8 lg:flex lg:items-start lg:gap-8">
           {/* left column: text */}
           <div className="space-y-6 lg:flex-1">
-            <p className="rounded-xl bg-black/40 p-6 text-white backdrop-blur-md">
+            <p className="rounded-xl bg-black/50 p-6 text-white backdrop-blur-md">
               Developer, pilot, and lifelong learner. I am based in Lund,
               Sweden.
             </p>
-            <p className="rounded-xl bg-black/40 p-6 text-white backdrop-blur-md">
+            <p className="rounded-xl bg-black/50 p-6 text-white backdrop-blur-md">
               My first hands-on experience with &quot;the cloud&quot; came as a
               flight instructor, helping people take off — quite literally. Over
               time, my curiosity led me to explore a different kind of altitude
@@ -41,12 +41,12 @@ export default function AboutmeSection() {
           {/* right column: image */}
           <div
             onClick={() => setSelectedImage('/images/pic4.jpg')}
-            className="mt-8 lg:mt-0 lg:flex-1"
+            className="mt-8 cursor-pointer lg:mt-0 lg:flex-1"
           >
             <img
               src="/images/pic4.jpg"
               alt="Portrait of Nikolai in front of a workstation"
-              className="w-full rounded-xl border border-black object-cover"
+              className="w-full rounded-xl border border-white/20 object-cover"
             />
           </div>
         </div>
