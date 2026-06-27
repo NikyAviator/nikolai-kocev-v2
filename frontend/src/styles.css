@@ -6,7 +6,6 @@
 /* ── Button: contact/social row ─────────────────────────────────────────── */
 @layer components {
   .btn-contact {
-    /* Shape & spacing */
     border-radius: 0.5rem;
     padding: 0.55rem 1rem;
     font-weight: 600;
@@ -17,27 +16,28 @@
       color 0.15s ease,
       border-color 0.15s ease;
 
-    /* Light mode: white fill, visible border, dark text */
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 1.5px solid rgba(255, 255, 255, 0.8);
-    color: #ffffff;
-    backdrop-filter: blur(6px);
+    /* Light mode: yellow text + border to pop against the dark background image */
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #facc15;
+    color: #ecc00e;
   }
 
   .btn-contact:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-color: #ffffff;
+    background-color: rgba(250, 204, 21, 0.15);
+    border-color: #fde047;
+    color: #fde047;
   }
 
-  /* Dark mode: subtle dark fill, white border, white text */
+  /* Dark mode: same yellow — consistent brand feel */
   :where(.dark, .dark *) .btn-contact {
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    color: #f3f4f6;
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 2px solid #facc15;
+    color: #facc15;
   }
 
   :where(.dark, .dark *) .btn-contact:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(250, 204, 21, 0.15);
+    border-color: #fde047;
+    color: #fde047;
   }
 }
