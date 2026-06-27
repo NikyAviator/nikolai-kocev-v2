@@ -24,12 +24,12 @@ export default function AboutMeSec() {
               Hello fellow traveler, I am Nikolai Kocev, born and raised in
               Sweden with roots from Bulgaria.
             </h2>
-            <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-base/7 text-gray-600 dark:text-white">
               A fullstack developer and DevOps enthusiast with a deep love for
               Linux, cloud infrastructure, and smart automation.
             </p>
 
-            <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-base/7 text-gray-600 dark:text-white">
               I have always been drawn to systems that connect people. That is
               what led me to aviation. After years of training, I took to the
               skies as a flight instructor, teaching others to fly. From the
@@ -38,7 +38,7 @@ export default function AboutMeSec() {
               it simply shifted into code.
             </p>
 
-            <p className="mt-6 text-base/7 text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-base/7 text-gray-600 dark:text-white">
               When the pandemic grounded aviation, a friend nudged me toward
               tech. The doorway was Linux. My first Arch install took eight
               hours — and sparked something permanent. I immersed myself in open
@@ -46,14 +46,14 @@ export default function AboutMeSec() {
               development here in Lund, and I have not stopped learning since.
             </p>
 
-            <p className="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
+            <p className="mt-8 text-base/7 text-gray-600 dark:text-white">
               Today, I focus on building and deploying software with intention
               and care. My work is shaped by curiosity, consistency, and a deep
               interest in meaningful systems. If my background resonates with
               what you are looking for, I would be happy to connect.
             </p>
 
-            <p className="mt-8 text-base/7 text-gray-600 dark:text-gray-400">
+            <p className="mt-8 text-base/7 text-gray-600 dark:text-white">
               Outside of code, I play bass guitar, tweak my Linux and Windows
               setup, and explore the skies through flight simulators and real
               aircraft. I love to exercise and keep active, I daily do yoga and
@@ -117,7 +117,7 @@ export default function AboutMeSec() {
 
           {/* “Things I Like” stats (beneath images on large, underneath text on small) */}
           <div className="max-lg:mt-16 lg:col-span-1">
-            <p className="text-base/7 font-semibold text-gray-500 dark:text-gray-400">
+            <p className="text-base/7 font-semibold text-gray-500 dark:text-white">
               Things I Like
             </p>
             <hr className="mt-6 border-t border-gray-200 dark:border-gray-700" />
