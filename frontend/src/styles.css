@@ -2,3 +2,42 @@
 
 /* Custom variant for toggling dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Button: contact/social row ─────────────────────────────────────────── */
+@layer components {
+  .btn-contact {
+    /* Shape & spacing */
+    border-radius: 0.5rem;
+    padding: 0.55rem 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+
+    /* Light mode: white fill, visible border, dark text */
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+    backdrop-filter: blur(6px);
+  }
+
+  .btn-contact:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: #ffffff;
+  }
+
+  /* Dark mode: subtle dark fill, white border, white text */
+  :where(.dark, .dark *) .btn-contact {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    color: #f3f4f6;
+  }
+
+  :where(.dark, .dark *) .btn-contact:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+}
