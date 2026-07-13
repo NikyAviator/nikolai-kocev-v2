@@ -136,7 +136,7 @@ export default function AboutMeSec() {
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>
-                    The Wheel of Time - The Path of Daggers. (Book 8 - Robert
+                    The Wheel of Time - Winter&apos;s Heart. (Book 9 - Robert
                     Jordan)
                   </span>
                 </dd>
