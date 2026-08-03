@@ -136,7 +136,7 @@ export default function AboutMeSec() {
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>
-                    The Wheel of Time - Winter&apos;s Heart. (Book 9 - Robert
+                    The Wheel of Time - Crossroads of Twilight (Book 10 - Robert
                     Jordan)
                   </span>
                 </dd>
