@@ -132,7 +132,7 @@ export default function AboutMeSec() {
               </div>
               <div className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4 dark:border-gray-700">
                 <dt className="text-sm/6 text-gray-600 dark:text-gray-400">
-                  Current book I am reading?
+                  Current book I&apos;m reading?
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>
