@@ -110,7 +110,7 @@ export default function AboutmeSection() {
           </a>
 
           <a
-            href="mailto:nikyaviator@gmail.com"
+            href="mailto:nikolai_kocev@hotmail.com"
             className="btn-contact flex flex-row items-center justify-center gap-2 text-base"
           >
             <span>Email Me</span>
