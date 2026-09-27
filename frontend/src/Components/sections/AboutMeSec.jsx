@@ -136,8 +136,7 @@ export default function AboutMeSec() {
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>
-                    The Wheel of Time - Knife of Dreams (Book 11 - Robert
-                    Jordan)
+                    The Wheel of Time - New Spring (Book 0 - Robert Jordan)
                   </span>
                 </dd>
               </div>
