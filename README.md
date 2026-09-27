@@ -115,8 +115,6 @@ access to the resource is denied` (it's trying to push to Docker Hub's
    sudo ufw allow in on virbr1 to any port 53 proto tcp comment "minikube kvm2 DNS"
    sudo ufw reload
    ```
-   Full writeup of both driver bugs, how they were diagnosed, and why:
-   `it-business/Linux/Arch/vm-networking/networking-vms.md`, section 10.
 
 ```bash
 minikube delete --all --purge   # required before switching driver
