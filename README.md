@@ -67,6 +67,18 @@ minikube config view # To check the set resources
 minikube start
 ```
 
+I currently have a bug with docker driver, so I will test via kvm2.
+
+```bash
+minikube config set driver kvm2
+minikube config set cpus 4
+minikube config set memory 8192
+minikube config set disk-size 20g
+minikube config view   # verify
+minikube start
+
+```
+
 Then enable ingress addons in minikube:
 
 ```bash
