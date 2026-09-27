@@ -67,17 +67,73 @@ minikube config view # To check the set resources
 minikube start
 ```
 
-I currently have a bug with docker driver, so I will test via kvm2.
+#### Switching driver to `kvm2` (only if `docker` breaks)
+
+`docker` is the default and normally "just works" — same kernel as the host,
+images build straight into minikube, no extra setup. Only switch to `kvm2`
+if you hit a specific bug: pods can't reach `10.96.x.x` (the K8s API
+ClusterIP), new pod-to-Service connections time out, or
+`minikube addons enable ingress` hangs forever on "Verifying ingress
+addon...". That's a real, seen-before issue tied to how the `docker` driver
+shares the host's kernel — `kvm2` gives the node its own separate kernel,
+sidestepping it entirely.
+
+**What changes with `kvm2`, in short:**
+
+1. **The node becomes a real VM**, not a container sharing your host's
+   Docker daemon — so it can no longer see images you `docker build`
+   locally. `tilt up` will fail with `docker push: ... denied: requested
+access to the resource is denied` (it's trying to push to Docker Hub's
+   reserved `library/` namespace by default). **Fix:** run
+   `minikube addons enable registry`, then add to the Tiltfile:
+
+   ```python
+   default_registry('localhost:5000')
+   local_resource('registry-pf',
+     serve_cmd='kubectl -n kube-system port-forward svc/registry 5000:80',
+     allow_parallel=True)
+   ```
+
+   (mirrors the existing `ingress-pf` port-forward pattern below.)
+
+2. **`kvm2` needs its own driver binary + `libvirtd` running** — not
+   installed by default:
+
+   ```bash
+   yay -S docker-machine-driver-kvm2
+   sudo systemctl enable --now libvirtd
+   ```
+
+3. **`kvm2` creates its own libvirt network**, separate from any existing
+   VM setup (e.g. `virbr0`) — usually `virbr1`. If `minikube start` creates
+   the VM but it never gets an IP (`didn't return IP after 1m30s`), your
+   firewall doesn't know about this new bridge yet. Check
+   `virsh net-list --all` for the actual bridge name, then (UFW example):
+   ```bash
+   sudo ufw allow in on virbr1 to any port 67 proto udp comment "minikube kvm2 DHCP"
+   sudo ufw allow in on virbr1 to any port 53 proto udp comment "minikube kvm2 DNS"
+   sudo ufw allow in on virbr1 to any port 53 proto tcp comment "minikube kvm2 DNS"
+   sudo ufw reload
+   ```
+   Full writeup of both driver bugs, how they were diagnosed, and why:
+   `it-business/Linux/Arch/vm-networking/networking-vms.md`, section 10.
 
 ```bash
+minikube delete --all --purge   # required before switching driver
 minikube config set driver kvm2
 minikube config set cpus 4
 minikube config set memory 8192
 minikube config set disk-size 20g
 minikube config view   # verify
 minikube start
-
 ```
+
+To switch back to `docker` later: `minikube delete --all --purge`, then
+`minikube config set driver docker` and `minikube start` again — and remove
+the `default_registry(...)`/`registry-pf` lines from the Tiltfile, since
+`docker` doesn't need them.
+
+---
 
 Then enable ingress addons in minikube:
 
