@@ -1,3 +1,11 @@
+# Send built images to minikube's own in-cluster registry (enabled via
+# `minikube addons enable registry`) instead of Docker Hub. Needed because
+# the cluster's runtime is containerd, not docker — containerd can't see
+# images sitting in the host's Docker daemon, so they have to actually be
+# pulled from somewhere. See it-business/tools/k8s/k8s.md for the full
+# explanation of why.
+default_registry('localhost:5000')
+
 # --- Docker Builds ---
 docker_build(
     ref='backend-image',
@@ -31,5 +39,17 @@ k8s_resource('backend', port_forwards=[])
 local_resource(
   'ingress-pf',
   serve_cmd='kubectl -n ingress-nginx port-forward svc/ingress-nginx-controller 8080:80',
+  allow_parallel=True,
+)
+
+# Tunnels localhost:5000 (where `docker push` sends built images) to the
+# in-cluster registry Service. The cluster's own containerd pulls the same
+# `localhost:5000/...` reference via the registry-proxy DaemonSet, which
+# listens on each node's own local port 5000 — same address, two different
+# local processes, each valid from its own side. See k8s.md for why this
+# works.
+local_resource(
+  'registry-pf',
+  serve_cmd='kubectl -n kube-system port-forward svc/registry 5000:80',
   allow_parallel=True,
 )
