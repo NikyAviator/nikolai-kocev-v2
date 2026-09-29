@@ -54,7 +54,7 @@ export default function AboutmeSection() {
         {/* Buttons row */}
         <div className="mx-auto mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mx-0 lg:grid-cols-5">
           <a
-            href="/NK-CV-IT-ENG.pdf"
+            href="/nk-cv-eng.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-contact flex flex-row items-center justify-center gap-2 text-base"
@@ -68,7 +68,7 @@ export default function AboutmeSection() {
           </a>
 
           <a
-            href="/NK-CV-IT-SWE.pdf"
+            href="/nk-cv-swe.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-contact flex flex-row items-center justify-center gap-2 text-base"
