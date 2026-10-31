@@ -6,6 +6,14 @@ import { Link } from 'react-router-dom';
 
 const features = [
   {
+    name: 'AI Agents & Workflow Automation',
+    description: `Most "AI integration" is a chatbot bolted onto a website. I work with the other kind: autonomous agents that read files, run scripts, call APIs and chain tools together to finish a task instead of just answering questions about it. I run Hermes, an open-source agent, on my own Linux machine, connected to both local and cloud-based LLMs, and I use it to automate repetitive computer work such as extracting structured data from documents. I can help you set up and configure an agent for a specific, repetitive task, run it with a local model when your data shouldn't leave your own hardware, and keep a human review step in the loop before anything important is changed or uploaded. If you have a rules-based task eating up staff time, I'm happy to look at whether an agent is a sensible fit, and to tell you honestly when it isn't.`,
+    imageSrc: '/images/AI-orchestrator.png',
+    imageAlt:
+      'A developer workstation showing cloud, automation, and orchestration tooling.',
+    learnMoreLink: '/services/ai-automation',
+  },
+  {
     name: 'IT Support & Migration',
     description: `Your computer should work for you, not against you. I help individuals and small businesses install, configure, and troubleshoot Linux, Windows, and macOS — and when you're ready to leave Windows behind, I'll make sure the transition is smooth and that nothing important gets left behind. I'm comfortable working with Debian, Ubuntu, Mint, Arch, and more, and I can recommend the right distribution for your needs.`,
     imageSrc: '/images/linux-pic.jpg',
@@ -15,8 +23,9 @@ const features = [
   {
     name: 'Modern Websites & Web Applications',
     description: `A website should load quickly, look sharp on any screen, and accurately represent your business. I build custom single-page applications in React — no bloated templates, no page builders. Just clean, modern code that you own. Whether you need a simple landing page or a full web application with a backend, I'll scope it honestly and build it properly.`,
-    imageSrc: '/images/gcp-go-k8s-docker.png',
-    imageAlt: 'A modern web application displayed on a laptop screen.',
+    imageSrc: '/images/build-your-website.jpg',
+    imageAlt:
+      'A laptop displaying a modern website design next to a cup of coffee.',
     learnMoreLink: '/services/web-development',
   },
   {
