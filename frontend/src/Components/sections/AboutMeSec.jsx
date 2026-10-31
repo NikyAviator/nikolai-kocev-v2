@@ -136,7 +136,7 @@ export default function AboutMeSec() {
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   <span>
-                    The Wheel of Time - The Gathering Storm (Book 12 - Robert
+                    The Wheel of Time - Towers of Midnight (Book 13 - Robert
                     Jordan & Brandon Sanderson)
                   </span>
                 </dd>
