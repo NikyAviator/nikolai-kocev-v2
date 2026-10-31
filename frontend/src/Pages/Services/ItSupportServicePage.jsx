@@ -150,7 +150,7 @@ export default function ItSupportServicePage() {
             {/* CTA button */}
             <div className="mt-10">
               <a
-                href="mailto:nikyaviator@gmail.com"
+                href="mailto:nikolai_kocev@hotmail.com"
                 className="flex w-full max-w-xs items-center justify-center rounded-md bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden dark:focus:ring-offset-gray-900"
               >
                 Contact Me
