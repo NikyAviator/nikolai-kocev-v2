@@ -31,7 +31,7 @@ const product = {
     {
       id: 3,
       name: 'Local & self-hosted setup',
-      src: '/images/arch-debian-ubuntu.png',
+      src: '/images/ais-3.png',
       alt: 'A self-hosted Linux environment running local AI tooling.',
     },
   ],
