@@ -8,6 +8,7 @@ import RenderOneBlog from './Pages/RenderOneBlog.jsx';
 import DisplayServicesPage from './Pages/DisplayServicesPage.jsx';
 import ItSupportServicePage from './Pages/Services/ItSupportServicePage.jsx';
 import WebdevServicePage from './Pages/Services/WebdevServicePage.jsx';
+import AIServicePage from './Pages/Services/AIServicePage.jsx';
 
 import './styles.css';
 
@@ -27,6 +28,10 @@ function App() {
             <Route
               path="/services/web-development"
               element={<WebdevServicePage />}
+            />
+            <Route
+              path="/services/ai-automation"
+              element={<AIServicePage />}
             />
             <Route path="/blog" element={<BlogHome />} />
             <Route path="/blog/:slug" element={<RenderOneBlog />} />
