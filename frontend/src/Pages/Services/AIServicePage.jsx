@@ -37,8 +37,8 @@ const product = {
   ],
 
   description: [
-    'I install and configure autonomous AI agents for businesses — not a chatbot bolted onto your website, but a system that actually does the work: reading files, running scripts, calling your APIs, and orchestrating multiple tools to finish a task end-to-end. I build and run my own agent framework, Hermes, and tailor it to your specific workflow rather than selling a one-size-fits-all bot.',
-    "Every agent I set up includes a human-review step for anything sensitive, so nothing important happens without your sign-off. If a repetitive, rules-based task is eating up staff time, I'll scope whether an agent can safely take it over — and set it up for you.",
+    'I install and configure autonomous AI agents for businesses. Not a chatbot on your website, but a system that does the work: reading files, running scripts, calling your APIs and combining tools to finish a task from start to end. I use Hermes Agent, an open-source framework from Nous Research that runs on your own machine or server, works with any major AI model or a fully local one, and learns your recurring tasks so it gets better over time. I tailor each setup to your workflow instead of selling a one-size-fits-all bot.',
+    "Every agent includes a human review step for anything sensitive, so nothing important happens without your approval. If a repetitive, rules-based task is taking up your team's time, I'll assess whether an agent can handle it safely, and set it up for you.",
   ],
 
   details: [
