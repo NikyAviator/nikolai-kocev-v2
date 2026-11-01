@@ -26,39 +26,29 @@ export default function AboutMeSec() {
             </h2>
             <p className="mt-6 text-base/7 text-gray-600 dark:text-white">
               A fullstack developer and DevOps enthusiast with a deep love for
-              Linux, cloud infrastructure, and smart automation.
+              Linux, cloud infrastructure and smart automation.
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600 dark:text-white">
-              I have always been drawn to systems that connect people. That is
-              what led me to aviation. After years of training, I took to the
-              skies as a flight instructor, teaching others to fly. From the
-              cockpit, I learned to stay calm under pressure, to act with
-              precision when every decision counts. That mindset never left me —
-              it simply shifted into code.
+              Before tech, I was a flight instructor. The cockpit taught me to
+              stay calm under pressure and act with precision when every
+              decision counts. That mindset never left me; it simply moved into
+              code.
             </p>
 
             <p className="mt-6 text-base/7 text-gray-600 dark:text-white">
               When the pandemic grounded aviation, a friend nudged me toward
-              tech. The doorway was Linux. My first Arch install took eight
-              hours — and sparked something permanent. I immersed myself in open
-              source, cloud platforms, and backend systems. I studied fullstack
-              development here in Lund, and I have not stopped learning since.
+              tech. My first Arch Linux install took eight hours and sparked
+              something permanent. I studied fullstack development in Lund,
+              completed two backend internships at IKEA, and I'm now studying to
+              become an IT technician at Lexicon in Malmö.
             </p>
 
             <p className="mt-8 text-base/7 text-gray-600 dark:text-white">
-              Today, I focus on building and deploying software with intention
-              and care. My work is shaped by curiosity, consistency, and a deep
-              interest in meaningful systems. If my background resonates with
-              what you are looking for, I would be happy to connect.
-            </p>
-
-            <p className="mt-8 text-base/7 text-gray-600 dark:text-white">
-              Outside of code, I play bass guitar, tweak my Linux and Windows
-              setup, and explore the skies through flight simulators and real
-              aircraft. I love to exercise and keep active, I daily do yoga and
-              I am always up for a tennis game. I believe in lifelong learning,
-              shared knowledge, and meaningful work that helps others grow.
+              Outside of code, I play bass guitar, fly in simulators and real
+              aircraft, and stay active with daily yoga and the occasional
+              tennis match. I believe in lifelong learning and meaningful work
+              that helps others grow.
             </p>
           </div>
 
