@@ -25,7 +25,7 @@ const product = {
     {
       id: 2,
       name: 'Linux, Windows & macOS Support',
-      src: '/images/linux-repair.png',
+      src: '/images/it-sup-svc-2.png',
       alt: 'Linux, Windows, and macOS support service',
     },
     {
