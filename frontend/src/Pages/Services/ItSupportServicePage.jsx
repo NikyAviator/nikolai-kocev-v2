@@ -31,7 +31,7 @@ const product = {
     {
       id: 3,
       name: 'Backups & Data Protection',
-      src: '/images/backup.png',
+      src: '/images/it-sup-svc-3.png',
       alt: 'Backup and data protection service',
     },
   ],
