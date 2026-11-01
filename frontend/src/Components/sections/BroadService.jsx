@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const features = [
   {
     name: 'AI Agents & Workflow Automation',
-    description: `Most "AI integration" is a chatbot bolted onto a website. I work with the other kind: autonomous agents that read files, run scripts, call APIs and chain tools together to finish a task instead of just answering questions about it. I run Hermes, an open-source agent, on my own Linux machine, connected to both local and cloud-based LLMs, and I use it to automate repetitive computer work such as extracting structured data from documents. I can help you set up and configure an agent for a specific, repetitive task, run it with a local model when your data shouldn't leave your own hardware, and keep a human review step in the loop before anything important is changed or uploaded. If you have a rules-based task eating up staff time, I'm happy to look at whether an agent is a sensible fit, and to tell you honestly when it isn't.`,
+    description: `I work and install autonomous agents that read files, run scripts, call APIs and chain tools together to finish a task instead of just answering questions about it. I can help you set up and configure an agent for a specific, repetitive task, run it with a local model when your data shouldn't leave your own hardware, and keep a human review step in the loop before anything important is changed or uploaded.`,
     imageSrc: '/images/AI-orchestrator.png',
     imageAlt:
       'A developer workstation showing cloud, automation, and orchestration tooling.',
