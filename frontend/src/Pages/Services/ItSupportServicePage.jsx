@@ -19,7 +19,7 @@ const product = {
     {
       id: 1,
       name: 'Linux support',
-      src: '/images/arch-debian-ubuntu.png',
+      src: '/images/it-sup-svc-1.png',
       alt: 'Linux, Arch, Debian, and Ubuntu support service',
     },
     {
